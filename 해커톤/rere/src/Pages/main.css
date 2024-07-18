@@ -1,0 +1,75 @@
+/* main.css */
+body {
+  background-color: black;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: rgb(252, 244, 236);
+}
+img {
+  width: 100%;
+  margin-top: -200px;
+  max-width: 400px; /* 적절한 최대 너비 설정 */
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+.category {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* 최소 150px, 가능한 최대 너비로 자동 조정 */
+  gap: 15px; /* 각 버튼 사이의 간격 */
+  width: 100%;
+  max-width: 400px; /* 최대 너비 설정 */
+  margin-bottom: 40%;
+}
+span {
+  font-size: larger;
+  color: #29351a;
+}
+.category button {
+  width: 100%;
+  padding: 5px;
+  background-color: #fcf4ec;
+  border: 1px solid #29351a;
+  box-shadow: 2px 2px 2px grey;
+  border-radius: 5px;
+  color: #29351a;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  white-space: nowrap; /* 텍스트가 길어도 줄 바꿈 없이 표시 */
+}
+
+.category button:hover {
+  background-color: #dacbbd;
+}
+
+.category button:focus {
+  outline: none;
+}
+
+.category button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@media (min-width: 600px) {
+  .category {
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 화면 너비가 600px 이상일 때 3열로 고정 */
+  }
+}

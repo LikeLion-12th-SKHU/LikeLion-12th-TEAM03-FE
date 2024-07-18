@@ -4,7 +4,6 @@ html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: rgb(252, 244, 236);
 }
 
 .join-container {
@@ -15,6 +14,13 @@ html {
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  background-color: rgb(252, 244, 236);
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .join-form h2 {
@@ -47,7 +53,7 @@ html {
 .join-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #29351a;
   border: none;
   border-radius: 5px;
   color: white;
@@ -56,7 +62,7 @@ html {
 }
 
 .join-button:hover {
-  background-color: #0056b3;
+  background-color: #141b0d;
 }
 
 .join-button:disabled {

@@ -1,0 +1,8 @@
+.nav-item {
+  font-size: 1.5rem;
+  color: #9b9a9a;
+}
+
+.nav-item.active {
+  color: #3c4e26; /* 활성화된 항목의 색상 */
+}

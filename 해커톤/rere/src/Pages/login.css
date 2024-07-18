@@ -4,7 +4,6 @@ html {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
-  background-color: rgb(252, 244, 236);
 }
 
 .login-container {
@@ -15,6 +14,7 @@ html {
   height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  background-color: rgb(252, 244, 236);
 }
 
 .login-image {
@@ -34,15 +34,17 @@ html {
 .login-form h2 {
   margin-bottom: 20px;
   color: #333;
+  text-align: center;
 }
 
 .error-message {
   color: red;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .login-input {
-  width: 100%;
+  width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
@@ -59,7 +61,7 @@ html {
 .login-button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #29351a;
   border: none;
   border-radius: 5px;
   color: white;
