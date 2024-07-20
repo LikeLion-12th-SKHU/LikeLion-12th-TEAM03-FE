@@ -13,11 +13,13 @@ import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
 import Light from "./CategoryPages/Light";
 import Plant from "./CategoryPages/Plant";
 import Pet from "./CategoryPages/Pet";
-import Wall from "./Pages/wall";
+import Wall from "./Pages/standard";
 import Chat from "./Pages/chat";
 import Community from "./Pages/community";
 import MyPage from "./Pages/myPage";
 import PsyTest from "./Pages/psyTest";
+import DetailsPage from "./DetailPages/DetailPage";
+
 function App() {
   return (
     <Router>
@@ -43,6 +45,7 @@ function App() {
         <Route path="/recommended/pet" element={<Pet />} />
         <Route path="/search/wall" element={<Wall />} />
         <Route path="/psytest" element={<PsyTest />} />
+        <Route path="/details/:id" element={<DetailsPage />} />
       </Routes>
     </Router>
   );
