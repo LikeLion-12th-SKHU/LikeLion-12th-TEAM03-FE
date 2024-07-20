@@ -25,7 +25,7 @@ function Login() {
     setIsLoading(false);
 
     if (response.ok) {
-      navigate("/main");
+      navigate("/psytest");
     } else {
       const data = await response.json();
       setError(data.message);

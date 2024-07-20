@@ -13,50 +13,53 @@ const Main = () => {
     navigate(path);
   };
   return (
-    <div className="main-container">
-      <TopNav />
-      <div>
-        <img src="/img/main.png" alt="advertisement" />
+    <div className="real-main-container">
+      <div className="top-half">
+        <TopNav />
+        <div>
+          <img src="/img/main.png" alt="advertisement" className="ad" />
+        </div>
+        <div className="main-text">
+          <p>
+            <span>다양한 상품</span>을 만나보세요!
+          </p>
+        </div>
+        <div className="category">
+          <button onClick={() => handleNavigation("/recommended/wallpaper")}>
+            벽지/바닥재
+          </button>
+          <button onClick={() => handleNavigation("/recommended/furniture")}>
+            가구/수납
+          </button>
+          <button onClick={() => handleNavigation("/recommended/candle")}>
+            캔들/디퓨저
+          </button>
+          <button onClick={() => handleNavigation("/recommended/interior")}>
+            인테리어 소품
+          </button>
+          <button onClick={() => handleNavigation("/recommended/fabric")}>
+            패브릭
+          </button>
+          <button
+            onClick={() => handleNavigation("/recommended/houseHoldGoods")}
+          >
+            생활용품
+          </button>
+          <button onClick={() => handleNavigation("/recommended/light")}>
+            조명
+          </button>
+          <button onClick={() => handleNavigation("/recommended/plant")}>
+            식물/꽃
+          </button>
+          <button onClick={() => handleNavigation("/recommended/pet")}>
+            반려동물용품
+          </button>
+          <div className="content"></div>
+        </div>
       </div>
-      <div className="main-text">
-        <p>
-          <span>
-            <b>다양한 상품</b>
-          </span>
-          을 만나보세요
-        </p>
+      <div className="bottom-half">
+        <BottomNav />
       </div>
-      <div className="category">
-        <button onClick={() => handleNavigation("/recommended/wallpaper")}>
-          벽지/바닥재
-        </button>
-        <button onClick={() => handleNavigation("/recommended/furniture")}>
-          가구/수납
-        </button>
-        <button onClick={() => handleNavigation("/recommended/candle")}>
-          캔들/디퓨저
-        </button>
-        <button onClick={() => handleNavigation("/recommended/interior")}>
-          인테리어 소품
-        </button>
-        <button onClick={() => handleNavigation("/recommended/fabric")}>
-          패브릭
-        </button>
-        <button onClick={() => handleNavigation("/recommended/houseHoldGoods")}>
-          생활용품
-        </button>
-        <button onClick={() => handleNavigation("/recommended/light")}>
-          조명
-        </button>
-        <button onClick={() => handleNavigation("/recommended/plant")}>
-          식물/꽃
-        </button>
-        <button onClick={() => handleNavigation("/recommended/pet")}>
-          반려동물용품
-        </button>
-        <div className="content"></div>
-      </div>
-      <BottomNav />
     </div>
   );
 };

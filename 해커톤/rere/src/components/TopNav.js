@@ -11,7 +11,7 @@ const TopNavContainer = styled.div`
   transform: translateX(-50%);
   width: 100%;
   max-width: 500px;
-  height: 35px;
+  height: 3%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,16 +24,17 @@ const TopNavContainer = styled.div`
 
 const MainLogoImg = styled.img`
   width: 100%;
-  max-width: 120px;
+  max-width: 100px;
   cursor: pointer;
-  margin-top: 20px;
-  margin-left: 150px;
+  margin-top: 0;
+  margin-left: 40%;
 `;
 const Heart = styled.div`
   color: brown;
-  font-size: 30px;
-  margin-left: 120px;
+  font-size: 25px;
+  margin-left: 23%;
   cursor: pointer;
+  margin-right: 10%;
 `;
 const TopNav = () => {
   const navigate = useNavigate();

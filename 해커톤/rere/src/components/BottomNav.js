@@ -15,7 +15,7 @@ const BottomNavContainer = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fff;
+  background-color: #dfd3c2;
   padding: 10px 0;
   border-top: 1px solid #ccc;
 `;

@@ -2,7 +2,7 @@ import React from "react";
 import TopNav from "../components/TopNav";
 import BottomNav from "../components/BottomNav";
 
-function Recommended() {
+function Community() {
   return (
     <div className="main-container">
       <TopNav />
@@ -11,4 +11,4 @@ function Recommended() {
     </div>
   );
 }
-export default Recommended;
+export default Community;
