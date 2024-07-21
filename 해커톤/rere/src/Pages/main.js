@@ -1,9 +1,9 @@
 // Main.js
-import React from "react";
 import BottomNav from "../components/BottomNav";
 import TopNav from "../components/TopNav";
 import { useNavigate } from "react-router-dom";
 import "./main.css";
+import React, { useState, useEffect } from "react";
 
 const Main = () => {
   const navigate = useNavigate(); // useNavigate 훅 사용
@@ -12,6 +12,22 @@ const Main = () => {
   const handleNavigation = (path) => {
     navigate(path);
   };
+
+  const Today = () => {
+    const [date, setData] = useState(new Date());
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setData(new Date());
+      }, 1000);
+
+      return () => clearInterval(interval);
+    }, []);
+
+    const day = date.toLocaleDateString("ko-KR", { weekday: "long" });
+    return <div className="today">{day},</div>;
+  };
+
   return (
     <div className="real-main-container">
       <div className="top-half">
@@ -58,6 +74,28 @@ const Main = () => {
         </div>
       </div>
       <div className="bottom-half">
+        <div className="circle">
+          <div className="circle1"></div>
+          <div className="circle2"></div>
+          <div className="circle3"></div>
+          <img src="/img/furniture.jpg" className="circle4"></img>
+        </div>
+        <div className="description">
+          <div className="tired">피곤한</div>
+          <Today />
+          <div className="comment">이런 분위기는 어떠세요?</div>
+          <div className="keywords">
+            <div className="keyword1">
+              <div className="keyCircle1"></div>
+              <div className="word1">&#35;따뜻한</div>
+            </div>
+            <div className="keyword2">
+              <div className="keyCircle2"></div>
+              <div className="word2">&#35;휴식</div>
+            </div>
+          </div>
+        </div>
+
         <BottomNav />
       </div>
     </div>

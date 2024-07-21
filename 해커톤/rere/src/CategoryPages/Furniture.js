@@ -202,10 +202,11 @@ function Furniture() {
             <DropdownItem>조명</DropdownItem>
           </Dropdown>
         )}
+        <Write>
+          <FontAwesomeIcon icon={faPlus} /> 글쓰기
+        </Write>
       </FullScreen>
-      <Write>
-        <FontAwesomeIcon icon={faPlus} /> 글쓰기
-      </Write>
+
       <BottomNav />
     </div>
   );

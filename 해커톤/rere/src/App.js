@@ -10,7 +10,6 @@ import Candle from "./CategoryPages/Candle";
 import Light from "./CategoryPages/Light";
 import Plant from "./CategoryPages/Plant";
 import Pet from "./CategoryPages/Pet";
-import Wall from "./Pages/wall";
 import Chat from "./Pages/chat";
 import Community from "./Pages/community";
 import MyPage from "./Pages/myPage";
@@ -41,7 +40,6 @@ function App() {
           path="/recommended/houseHoldGoods"
           element={<HouseHoldGoods />}
         />
-        <Route path="/search/wall" element={<Wall />} />
         <Route path="/psytest" element={<PsyTest />} />
         <Route path="/details/:id" element={<DetailsPage />} />
       </Routes>

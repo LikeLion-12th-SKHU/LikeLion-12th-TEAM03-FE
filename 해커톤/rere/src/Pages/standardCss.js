@@ -28,6 +28,7 @@ export const FullScreen = styled.div`
   height: 880px;
   width: 100%;
   margin-top: 35px;
+  max-width: 500px;
 `;
 
 export const Header = styled.header`
