@@ -23,7 +23,7 @@ import {
   PriceInfo,
   Dropdown,
   DropdownItem,
-} from "./css/searchWall";
+} from "./standardCss";
 
 const sections = [
   {
