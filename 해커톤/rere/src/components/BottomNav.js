@@ -18,6 +18,8 @@ const BottomNavContainer = styled.div`
   background-color: #dfd3c2;
   padding: 10px 0;
   border-top: 1px solid #ccc;
+  max-height: 45px;
+  height: 100%;
 `;
 
 const NavIcon = styled.div`
@@ -62,6 +64,8 @@ const BottomNav = () => {
           icon="fa-solid fa-house"
           className={activeNav === 1 ? "nav-item active" : "nav-item"}
         />
+        <br />
+        <div className="iconFont">홈</div>
       </NavIcon>
       <NavIcon>
         <FontAwesomeIcon
@@ -69,6 +73,8 @@ const BottomNav = () => {
           onClick={() => handleButtonClick(2, "/recommended")}
           className={activeNav === 2 ? "nav-item active" : "nav-item"}
         />
+        <br />
+        <div className="iconFont">추천</div>
       </NavIcon>
       <NavIcon>
         <FontAwesomeIcon
@@ -76,6 +82,8 @@ const BottomNav = () => {
           onClick={() => handleButtonClick(3, "/community")}
           className={activeNav === 3 ? "nav-item active" : "nav-item"}
         />
+        <br />
+        <div className="iconFont">커뮤니티</div>
       </NavIcon>
       <NavIcon>
         <FontAwesomeIcon
@@ -83,6 +91,8 @@ const BottomNav = () => {
           onClick={() => handleButtonClick(4, "/chat")}
           className={activeNav === 4 ? "nav-item active" : "nav-item"}
         />
+        <br />
+        <div className="iconFont">채팅</div>
       </NavIcon>
       <NavIcon>
         <FontAwesomeIcon
@@ -90,6 +100,8 @@ const BottomNav = () => {
           onClick={() => handleButtonClick(5, "/mypage")}
           className={activeNav === 5 ? "nav-item active" : "nav-item"}
         />
+        <br />
+        <div className="iconFont">마이페이지</div>
       </NavIcon>
     </BottomNavContainer>
   );

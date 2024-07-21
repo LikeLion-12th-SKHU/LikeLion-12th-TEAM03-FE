@@ -3,13 +3,13 @@ import "./psyTest.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 
-function PsyTest() {
+function FireInside() {
   return (
     <div className="main-container">
-      <TestTopNav text="우울 체크" />
+      <TestTopNav text="불안 체크" />
       <div></div>
       <TestBottomNav />
     </div>
   );
 }
-export default PsyTest;
+export default FireInside;

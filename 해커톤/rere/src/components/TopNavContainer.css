@@ -1,0 +1,13 @@
+p {
+  font-family: "SUITE", sans-serif;
+}
+
+.test-title {
+  margin-right: 35%;
+}
+
+.PrevPage {
+  margin-right: 32%;
+  font-size: large;
+  cursor: pointer;
+}

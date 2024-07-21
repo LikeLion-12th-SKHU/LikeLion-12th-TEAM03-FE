@@ -58,6 +58,7 @@ const Main = () => {
         </div>
       </div>
       <div className="bottom-half">
+        <div className="bottom-img"></div>
         <BottomNav />
       </div>
     </div>

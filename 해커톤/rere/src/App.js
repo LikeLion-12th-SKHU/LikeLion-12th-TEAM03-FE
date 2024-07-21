@@ -18,6 +18,7 @@ import Chat from "./Pages/chat";
 import Community from "./Pages/community";
 import MyPage from "./Pages/myPage";
 import PsyTest from "./Pages/psyTest";
+import FireInside from "./Pages/fireInside";
 function App() {
   return (
     <Router>
@@ -43,6 +44,7 @@ function App() {
         <Route path="/recommended/pet" element={<Pet />} />
         <Route path="/search/wall" element={<Wall />} />
         <Route path="/psytest" element={<PsyTest />} />
+        <Route path="/psytest/fireinside" element={<FireInside />} />
       </Routes>
     </Router>
   );
