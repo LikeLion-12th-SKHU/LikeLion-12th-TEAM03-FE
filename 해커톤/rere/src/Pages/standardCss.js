@@ -27,7 +27,6 @@ export const FullScreen = styled.div`
   background-color: white;
   height: 880px;
   width: 100%;
-  margin-top: 35px;
   max-width: 500px;
 `;
 

@@ -65,20 +65,6 @@ const sections = [
     place: "강남구 - 2시간 전",
     price: "50,000원",
   },
-  {
-    id: 5,
-    tag: "#따뜻한 #휴식",
-    title: "인테리어 조명 처리합니다",
-    place: "항동 - 8시간 전",
-    price: "30,000원",
-  },
-  {
-    id: 6,
-    tag: "#모던한 #디자인",
-    title: "모던한 가구 판매합니다",
-    place: "강남구 - 2시간 전",
-    price: "50,000원",
-  },
   // 더 많은 데이터를 추가할 수 있음
 ];
 
@@ -108,6 +94,10 @@ function Candle() {
 
   const handleSectionClick = (id) => {
     navigate(`/details/${id}`);
+  };
+
+  const writeClick = () => {
+    navigate(`/write`);
   };
 
   return (
@@ -203,7 +193,7 @@ function Candle() {
           </Dropdown>
         )}
       </FullScreen>
-      <Write>
+      <Write onClick={() => writeClick()}>
         <FontAwesomeIcon icon={faPlus} /> 글쓰기
       </Write>
       <BottomNav />

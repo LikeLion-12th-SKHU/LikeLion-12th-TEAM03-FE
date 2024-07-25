@@ -18,6 +18,8 @@ import Interior from "./CategoryPages/Interior";
 import Fabric from "./CategoryPages/Fabric";
 import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
 import DetailsSeller from "./DetailPages/DetailSeller";
+import UserWrite from "./Pages/userWrite";
+
 function App() {
   return (
     <Router>
@@ -40,6 +42,7 @@ function App() {
           path="/recommended/houseHoldGoods"
           element={<HouseHoldGoods />}
         />
+        <Route path="/write" element={<UserWrite />} />
         <Route path="/psytest" element={<PsyTest />} />
         <Route path="/details/:id" element={<DetailsSeller />} />
       </Routes>
