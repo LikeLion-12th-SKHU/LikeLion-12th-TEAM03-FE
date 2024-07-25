@@ -57,6 +57,7 @@ export const Description = styled.div`
   background-color: #fcf4ec;
   height: 250px;
   margin-top: 10px;
+  height: 53%;
 `;
 
 export const UserInfo = styled.div`

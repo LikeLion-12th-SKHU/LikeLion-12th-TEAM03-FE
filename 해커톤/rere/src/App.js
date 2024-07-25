@@ -14,10 +14,10 @@ import Chat from "./Pages/chat";
 import Community from "./Pages/community";
 import MyPage from "./Pages/myPage";
 import PsyTest from "./Pages/psyTest";
-import DetailsPage from "./DetailPages/DetailPage";
 import Interior from "./CategoryPages/Interior";
 import Fabric from "./CategoryPages/Fabric";
 import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
+import DetailsConsumer from "./DetailPages/DetailConsumer";
 function App() {
   return (
     <Router>
@@ -41,7 +41,7 @@ function App() {
           element={<HouseHoldGoods />}
         />
         <Route path="/psytest" element={<PsyTest />} />
-        <Route path="/details/:id" element={<DetailsPage />} />
+        <Route path="/details/:id" element={<DetailsConsumer />} />
       </Routes>
     </Router>
   );
