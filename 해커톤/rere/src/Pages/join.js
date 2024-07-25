@@ -21,7 +21,7 @@ function Join() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("/users/join", {
+      const response = await fetch("https://cinining.store/users/join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,10 +35,10 @@ function Join() {
         navigate("/login");
       } else {
         const data = await response.json();
-        setError(data.message);
+        setError(data.message || "회원가입 실패");
       }
     } catch (error) {
-      console.error("Error joining:", error);
+      console.error("Error 발생!:", error);
       setError("An error occurred while joining. Please try again later.");
       setIsLoading(false);
     }

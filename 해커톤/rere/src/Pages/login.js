@@ -13,11 +13,12 @@ function Login() {
     event.preventDefault();
 
     setIsLoading(true);
-
-    const response = await fetch("/users/login", {
+    const token = localStorage.getItem("token"); // 로컬 스토리지에 저장된 토큰
+    const response = await fetch("https://cinining.store/users/join", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`, // JWT 토큰을 인증 헤더에 추가
       },
       body: JSON.stringify({ loginId, password }),
     });
