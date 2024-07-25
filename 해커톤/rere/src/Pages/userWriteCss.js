@@ -1,0 +1,208 @@
+import styled from "styled-components";
+export const HeaderLeftIcon = styled.div`
+  color: #806e56;
+  font-size: 170%;
+  display: flex;
+  align-items: center;
+  margin-left: 4%;
+`;
+
+export const HeaderCenterWrite = styled.div`
+  color: #29351a;
+  font-weight: 800;
+  font-size: 120%;
+  position: relative;
+  left: 5%;
+`;
+
+export const HeaderRightIcon = styled.div`
+  color: #806e56;
+  display: flex;
+  align-items: center;
+  font-size: 180%;
+  position: relative;
+  right: 5%;
+`;
+
+export const Main = styled.div`
+  border: 1px solid black;
+  margin-top: 76px;
+  padding-top: 3%;
+  padding-left: 8%;
+  font-size: 80%;
+  font-weight: 700;
+  height: 700px;
+`;
+
+export const Title = styled.div`
+  border: 1px solid black;
+  display: flex;
+`;
+
+export const TitleName = styled.div`
+  margin-right: 7%;
+  display: flex;
+  align-items: center;
+`;
+
+export const TitleInput = styled.input`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 3% 2%;
+  border: none;
+`;
+
+export const Content = styled.div`
+  border: 1px solid black;
+  margin-top: 4%;
+  display: flex;
+  height: 20%;
+`;
+
+export const ContentName = styled.div`
+  border: 1px solid black;
+  margin-right: 7%;
+  display: flex;
+  margin-top: 2%;
+`;
+
+export const ContentInput = styled.textarea`
+  display: block;
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  height: 90%;
+  padding: 3% 2%;
+  border: none;
+`;
+
+export const Photo = styled.div`
+  border: 1px solid black;
+  margin-top: 4%;
+  display: flex;
+`;
+
+export const PhotoName = styled.div`
+  margin-right: 7%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-left: -5%;
+`;
+
+export const PhotoInput = styled.div`
+  background-color: #fcf4ec;
+  width: 50%;
+  height: 15%;
+  padding: 5%;
+  border-radius: 15px;
+  color: #806e56;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
+`;
+
+export const PhotoResult = styled.div`
+  width: 73%;
+  height: 10%;
+  padding: 3% 2%;
+  border: none;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-top: 10px;
+`;
+
+export const Place = styled.div`
+  border: 1px solid black;
+  margin-top: 4%;
+  display: flex;
+`;
+
+export const PlaceName = styled.div`
+  margin-right: 7%;
+  margin-left: -5%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+`;
+
+export const PlaceInput = styled.textarea`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 1% 2%;
+  border: none;
+`;
+
+export const DealInput = styled.textarea`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 41%;
+  padding: 1% 2%;
+  border: none;
+`;
+
+export const PriceName = styled.div`
+  margin-right: 7%;
+  display: flex;
+  align-items: center;
+`;
+
+export const PriceInput = styled.textarea`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 61%;
+  padding: 1% 2%;
+  border: none;
+  margin-left: 2%;
+`;
+
+export const Keyword = styled.div`
+  border: 1px solid black;
+  margin-top: 4%;
+  display: flex;
+`;
+
+export const KeywordName = styled.div`
+  margin-right: 7%;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+`;
+
+export const KeywordInput = styled.div`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 2% 3%;
+  border: none;
+  margin-left: -2%;
+  color: #806e56;
+`;
+
+export const Color = styled.div`
+  border: 1px solid black;
+  margin-top: 4%;
+  display: flex;
+`;
+
+export const ColordName = styled.div`
+  margin-right: 7%;
+  display: flex;
+  align-items: center;
+  border: 1px solid black;
+`;
+
+export const ColorInput = styled.div`
+  background-color: #d9d9d9;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin-left: 2%;
+  color: #806e56;
+`;
+// border: 1px solid black;

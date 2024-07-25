@@ -1,0 +1,36 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "SUITE", sans-serif;
+  font-weight: 550;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4열 */
+  gap: 5%; /* 버튼 사이 간격 */
+  margin-top: 20%;
+  justify-content: center;
+}
+.grid-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background-color: #dfd3c2;
+  color: black;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.grid-button.selected {
+  background-color: #d0e6f0; /* 선택된 버튼의 배경색 */
+  transform: scale(1.05);
+}
+
+.grid-button:hover {
+  background-color: #cfc1aa; /* 호버 시 버튼의 배경색 */
+}

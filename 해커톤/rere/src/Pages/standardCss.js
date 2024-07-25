@@ -26,6 +26,8 @@ const slideUp = keyframes`
 export const FullScreen = styled.div`
   background-color: white;
   height: 880px;
+  width: 100%;
+  max-width: 500px;
 `;
 
 export const Header = styled.header`
@@ -37,10 +39,14 @@ export const Header = styled.header`
   color: black;
   display: flex;
   justify-content: space-between;
+  height: 50px;
+  position: fixed;
+  width: 95%;
+  max-width: 475px;
 `;
 
 export const HeaderLeft = styled.div`
-  padding: 1px;
+  margin-top: -8px;
   font-style: italic;
 `;
 
@@ -56,26 +62,40 @@ export const HeaderCenter = styled.div`
   line-height: 60px;
   display: flex;
   align-items: center;
+  margin-right: 20px;
+  margin-bottom: -5px;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s;
+  }
 `;
 
-export const HeaderCenter1 = styled.div``;
+export const HeaderCenter1 = styled.div`
+  font-size: 18px;
+`;
+
+export const ChevronImg = styled.div`
+  color: #806e56;
+  margin-left: 5px;
+`;
 
 export const HeaderRight = styled.div`
   display: flex;
   align-items: center;
-`;
-
-export const ChevronImg = styled.img`
-  width: 40px;
-  height: 30px;
+  font-size: 30px;
+  color: #806e56;
+  padding-top: 2px;
 `;
 
 export const Keywords = styled.div`
+  margin-top: 75px;
   border-bottom: 2px solid #c6b597;
   height: 60px;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: space-around;
 `;
 
 export const Distance = styled.div`
@@ -83,9 +103,15 @@ export const Distance = styled.div`
   border: 1px solid #eeeeee;
   border-radius: 30px;
   width: fit-content;
-  padding: 5px 10px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  font-size: 10px;
+  font-weight: 100;
+  margin-left: 10px;
+  margin-right: 5px;
+
+  display: flex;
 
   &:hover {
     transform: scale(1.1);
@@ -97,9 +123,35 @@ export const Price = styled.div`
   border: 1px solid #eeeeee;
   border-radius: 30px;
   width: fit-content;
-  padding: 5px 10px;
+  padding: 10px 20px;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+  font-size: 10px;
+  font-weight: 100;
+  display: flex;
+  margin-right: 5px;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+export const InnerChevron = styled.div`
+  margin-left: 4px;
+`;
+
+export const Words = styled.div`
+  background-color: #806e56;
+  border: 1px solid #eeeeee;
+  border-radius: 30px;
+  width: fit-content;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  color: white;
+  font-size: 10px;
+  font-weight: 100;
+  margin-right: 5px;
 
   &:hover {
     transform: scale(1.1);
@@ -114,6 +166,12 @@ export const Section = styled.div`
   display: flex;
   align-items: center;
   border-bottom: 2px solid #fcf4ec;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: 0.4s;
+  }
 `;
 
 export const LeftImg = styled.div`
@@ -134,18 +192,20 @@ export const RightDesc = styled.div`
 export const Tag = styled.div`
   color: #56805a;
   font-weight: 700;
-  width: 120px;
+  width: 150px;
 `;
 
 export const Title = styled.div`
   font-weight: 700;
   margin-top: 3px;
+  width: 130px;
 `;
 
 export const Place = styled.div`
   font-size: 12px;
   color: #56805a;
   margin-top: 5px;
+  width: 100px;
 `;
 
 export const PriceInfo = styled.div`
@@ -180,4 +240,14 @@ export const DropdownItem = styled.div`
   &:hover {
     background-color: #f0f0f0;
   }
+`;
+
+export const Write = styled.div`
+  position: fixed;
+  bottom: 80px;
+  right: 8%;
+  background-color: #c2dfc3;
+  border-radius: 20px;
+  padding: 10px 20px;
+  box-shadow: 1px 5px 7px gray;
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function TestBottomNav() {
+function TestBottomNav({ nextPath, onSubmit }) {
   const BottomNavContainer = styled.div`
     position: fixed;
     bottom: 0;
@@ -18,6 +18,7 @@ function TestBottomNav() {
     max-height: 40px;
     height: 100vh;
   `;
+
   const PrevButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -37,6 +38,7 @@ function TestBottomNav() {
       transition: color 0.3s;
     }
   `;
+
   const NextButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -57,22 +59,30 @@ function TestBottomNav() {
       transition: color 0.3s;
     }
   `;
+
   const navigate = useNavigate();
+  const location = useLocation();
 
   const goBack = () => {
     navigate(-1);
   };
-  const handleNavigation = (path) => {
-    navigate(path);
+
+  const handleNext = () => {
+    if (location.pathname === "/psytest/stress") {
+      onSubmit(); // 최종 제출 함수 호출
+    } else {
+      navigate(nextPath);
+    }
   };
 
   return (
     <BottomNavContainer>
       <PrevButton onClick={goBack}>이전</PrevButton>
-      <NextButton onClick={() => handleNavigation("/psytest/fireinside")}>
-        다음
+      <NextButton onClick={handleNext}>
+        {location.pathname === "/psytest/stress" ? "완료" : "다음"}
       </NextButton>
     </BottomNavContainer>
   );
 }
+
 export default TestBottomNav;

@@ -22,7 +22,7 @@ import {
   PriceInfo,
   Dropdown,
   DropdownItem,
-} from "./searchWall";
+} from "./standardCss";
 
 const sections = [
   {
@@ -76,7 +76,7 @@ const sections = [
   // 더 많은 데이터를 추가할 수 있음
 ];
 
-function Wall() {
+function Standard() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
 
@@ -161,4 +161,4 @@ function Wall() {
   );
 }
 
-export default Wall;
+export default Standard;

@@ -7,7 +7,7 @@ p {
 }
 
 .PrevPage {
-  margin-right: 32%;
   font-size: large;
+  margin-right: 32%;
   cursor: pointer;
 }
