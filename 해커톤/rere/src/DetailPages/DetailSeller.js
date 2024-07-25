@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faListSquares,
-  faHeart,
+  faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
   FullScreen,
@@ -15,17 +15,18 @@ import {
   Keywords,
   Title,
   Description,
-  UserInfo,
-  Profile,
-  UserName,
-  Place,
-  ProductInfo,
-  Price,
-  Heart,
-  Count,
-  HeartEmogi,
   Footer,
 } from "./DetailCss";
+
+import { IconHeader } from "./DetailConsumerCss";
+
+import {
+  TypeButton,
+  UserList,
+  UserProfile,
+  Nickname,
+  UserTime,
+} from "./DetailSellerCss";
 
 function DetailsSeller() {
   return (
@@ -43,22 +44,26 @@ function DetailsSeller() {
         <ImgSection></ImgSection>
         <Keywords>&#35;따뜻한</Keywords>
         <Title>인테리어 조명 처리합니다.</Title>
-        <Description>제품 설명란</Description>
-        <UserInfo>
-          <Profile></Profile>
-          <UserName>라임색 머리</UserName>
-          <Place>항동 &#45; 16시간 전</Place>
-        </UserInfo>
-        <ProductInfo>
-          <Price>20,000₩</Price>
-          <Heart>
-            <Count>18</Count>
-            <HeartEmogi>
-              <FontAwesomeIcon icon={faHeart} />
-            </HeartEmogi>
-          </Heart>
-        </ProductInfo>
-        <Footer>거래 신청</Footer>
+        <Description>
+          <IconHeader>
+            <FontAwesomeIcon icon={faChevronDown} />
+          </IconHeader>
+          <TypeButton>
+            신청순
+            <FontAwesomeIcon icon={faChevronDown} />
+          </TypeButton>
+          <UserList>
+            <UserProfile></UserProfile>
+            <Nickname>라임색머리</Nickname>
+            <UserTime>항동 &#45; 15시간 전 </UserTime>
+          </UserList>
+          <UserList>
+            <UserProfile></UserProfile>
+            <Nickname>라임색머리</Nickname>
+            <UserTime>항동 &#45; 15시간 전 </UserTime>
+          </UserList>
+        </Description>
+        <Footer>거래 수락</Footer>
       </FullScreen>
     </div>
   );

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
   faListSquares,
-  faHeart,
   faChevronDown,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -16,15 +15,6 @@ import {
   Keywords,
   Title,
   Description,
-  UserInfo,
-  Profile,
-  UserName,
-  Place,
-  ProductInfo,
-  Price,
-  Heart,
-  Count,
-  HeartEmogi,
   Footer,
 } from "./DetailCss";
 

@@ -17,7 +17,7 @@ import PsyTest from "./Pages/psyTest";
 import Interior from "./CategoryPages/Interior";
 import Fabric from "./CategoryPages/Fabric";
 import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
-import DetailsConsumer from "./DetailPages/DetailConsumer";
+import DetailsSeller from "./DetailPages/DetailSeller";
 function App() {
   return (
     <Router>
@@ -41,7 +41,7 @@ function App() {
           element={<HouseHoldGoods />}
         />
         <Route path="/psytest" element={<PsyTest />} />
-        <Route path="/details/:id" element={<DetailsConsumer />} />
+        <Route path="/details/:id" element={<DetailsSeller />} />
       </Routes>
     </Router>
   );
