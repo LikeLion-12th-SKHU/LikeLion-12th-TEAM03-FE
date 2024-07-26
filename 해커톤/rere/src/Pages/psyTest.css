@@ -17,7 +17,7 @@ html {
   width: 5rem; /* 버튼의 너비 */
   height: 3rem; /* 버튼의 높이 */
   margin-top: 13%; /* 버튼 사이의 간격 */
-  border: 1px solid #ccc !important;
+  border: 1px solid #ccc;
   cursor: pointer;
   font-size: 0.9rem;
   text-align: center;

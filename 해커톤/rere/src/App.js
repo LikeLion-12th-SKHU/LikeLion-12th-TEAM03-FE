@@ -21,6 +21,7 @@ import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
 import DetailsSeller from "./DetailPages/DetailSeller";
 import UserWrite from "./Pages/userWrite";
 import Stress from "./Pages/stress";
+import ResultPage from "./Pages/resultPage";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
         <Route path="/psytest/fireinside" element={<FireInside />} />
         <Route path="/details/:id" element={<DetailsSeller />} />
         <Route path="/psytest/stress" element={<Stress />} />
+        <Route path="/psytest/resultPage" element={<ResultPage />} />
       </Routes>
     </Router>
   );

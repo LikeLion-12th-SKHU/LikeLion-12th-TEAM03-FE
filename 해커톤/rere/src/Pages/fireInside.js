@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import "./fireInside.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
+import { useNavigate } from "react-router-dom";
 
 function FireInside() {
   const numRows = 1; // 1열
-  const numCols = 3; // 3행
+  const numCols = 3; // 3열
   const maxSelections = 1; // 최대 선택 가능 개수
+  const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
   );
+  const [isNextEnabled, setIsNextEnabled] = useState(false); // '다음' 버튼 활성화 여부 상태
 
   const emotions = [
     { id: 1, name: "꽉 차 있다" },
@@ -18,8 +21,8 @@ function FireInside() {
   ];
 
   const handleButtonClick = (index) => {
-    const currentSelectionCount = selectedButtons.filter(Boolean).length;
     const newSelectedButtons = [...selectedButtons];
+    const currentSelectionCount = selectedButtons.filter(Boolean).length;
 
     if (newSelectedButtons[index]) {
       // 이미 선택된 버튼을 클릭한 경우 선택 해제
@@ -34,6 +37,11 @@ function FireInside() {
     }
 
     setSelectedButtons(newSelectedButtons);
+
+    // Check if exactly 1 button is selected
+    setIsNextEnabled(
+      newSelectedButtons.filter(Boolean).length === maxSelections
+    );
 
     // 감정 데이터 전송
     const emotionData = emotions[index];
@@ -57,6 +65,14 @@ function FireInside() {
       console.log("Emotion data sent successfully");
     } catch (error) {
       console.error("Error sending emotion data:", error);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (isNextEnabled) {
+      navigate("/psytest/stress"); // 페이지 이동 처리
+    } else {
+      alert("1개의 항목을 선택해 주세요.");
     }
   };
 
@@ -86,7 +102,11 @@ function FireInside() {
           </button>
         ))}
       </div>
-      <TestBottomNav nextPath="/psytest/stress" />
+      <TestBottomNav
+        nextPath="/psytest/stress"
+        onNext={handleNextClick}
+        isNextEnabled={isNextEnabled}
+      />
     </div>
   );
 }

@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import "./stress.css"; // CSS 파일
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
+import { useNavigate } from "react-router-dom";
 
 function Stress() {
   const numRows = 4; // 4행으로 감정 버튼 배치
   const numCols = 4; // 4열로 감정 버튼 배치
   const maxSelections = 1; // 최대 선택 가능 개수
+  const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
   );
+  const [isNextEnabled, setIsNextEnabled] = useState(false); // '다음' 버튼 활성화 여부 상태
 
   const emotions = [
     { id: 1, name: "행복한" },
@@ -31,8 +34,8 @@ function Stress() {
   ];
 
   const handleButtonClick = (index) => {
-    const currentSelectionCount = selectedButtons.filter(Boolean).length;
     const newSelectedButtons = [...selectedButtons];
+    const currentSelectionCount = selectedButtons.filter(Boolean).length;
 
     if (newSelectedButtons[index]) {
       // 이미 선택된 버튼을 클릭한 경우 선택 해제
@@ -47,6 +50,11 @@ function Stress() {
     }
 
     setSelectedButtons(newSelectedButtons);
+
+    // Check if exactly 1 button is selected
+    setIsNextEnabled(
+      newSelectedButtons.filter(Boolean).length === maxSelections
+    );
 
     // 감정 데이터 전송
     const emotionData = emotions[index];
@@ -70,6 +78,14 @@ function Stress() {
       console.log("Emotion data sent successfully");
     } catch (error) {
       console.error("Error sending emotion data:", error);
+    }
+  };
+
+  const handleNextClick = () => {
+    if (isNextEnabled) {
+      navigate("/psytest/resultPage"); // 페이지 이동 처리
+    } else {
+      alert("1개의 항목을 선택해 주세요.");
     }
   };
 
@@ -97,7 +113,11 @@ function Stress() {
           </button>
         ))}
       </div>
-      <TestBottomNav nextPath="/psytest/nextPage" />
+      <TestBottomNav
+        nextPath="/psytest/resultPage"
+        onNext={handleNextClick}
+        isNextEnabled={isNextEnabled}
+      />
     </div>
   );
 }

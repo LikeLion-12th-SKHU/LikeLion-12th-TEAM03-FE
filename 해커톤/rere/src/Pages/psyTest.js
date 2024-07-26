@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import "./psyTest.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
+import { useNavigate } from "react-router-dom";
 
 function PsyTest() {
   const numRows = 5;
   const numCols = 4;
-  const maxSelections = 3; // 최대 선택 가능 개수
+  const maxSelections = 4; // 최대 선택 가능 개수
+  const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
   );
+  const [isNextEnabled, setIsNextEnabled] = useState(false);
 
   const colors = [
     { id: 1, left: "yellow", right: "yellow" },
@@ -55,6 +58,11 @@ function PsyTest() {
     // 색상 데이터 전송
     const colorData = colors[index];
     sendColorData(colorData.id);
+
+    // Check if exactly maxSelections buttons are selected
+    setIsNextEnabled(
+      newSelectedButtons.filter(Boolean).length === maxSelections
+    );
   };
 
   const sendColorData = async (colorId) => {
@@ -104,6 +112,14 @@ function PsyTest() {
     }
   };
 
+  const handleNextClick = () => {
+    // 3개가 선택되었을 때만 데이터를 제출하고 다음 페이지로 이동
+    if (isNextEnabled) {
+      handleSubmit();
+      navigate("/psytest/fireinside"); // 페이지 이동
+    }
+  };
+
   return (
     <div className="main-container">
       <TestTopNav text="우울 체크" />
@@ -133,7 +149,11 @@ function PsyTest() {
           </button>
         ))}
       </div>
-      <TestBottomNav nextPath="/psytest/fireinside" onSubmit={handleSubmit} />
+      <TestBottomNav
+        nextPath="/psytest/fireinside"
+        onNext={handleNextClick}
+        isNextEnabled={isNextEnabled}
+      />
     </div>
   );
 }

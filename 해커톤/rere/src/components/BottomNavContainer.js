@@ -1,7 +1,8 @@
+import React from "react";
 import styled from "styled-components";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function TestBottomNav({ nextPath, onSubmit }) {
+function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
   const BottomNavContainer = styled.div`
     position: fixed;
     bottom: 0;
@@ -18,7 +19,6 @@ function TestBottomNav({ nextPath, onSubmit }) {
     max-height: 40px;
     height: 100vh;
   `;
-
   const PrevButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -38,7 +38,6 @@ function TestBottomNav({ nextPath, onSubmit }) {
       transition: color 0.3s;
     }
   `;
-
   const NextButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -52,34 +51,25 @@ function TestBottomNav({ nextPath, onSubmit }) {
     font-family: "SUITE", sans-serif;
     border-radius: 30rem;
     font-weight: bold;
-    background-color: #fcf4ec;
-    color: #806e56;
+    background-color: ${isNextEnabled ? "#fcf4ec" : "#e0e0e0"};
+    color: ${isNextEnabled ? "#806e56" : "#999999"};
+    pointer-events: ${isNextEnabled ? "auto" : "none"};
     &:hover {
-      color: #29351a;
+      color: ${isNextEnabled ? "#29351a" : "#999999"};
       transition: color 0.3s;
     }
   `;
-
   const navigate = useNavigate();
-  const location = useLocation();
 
   const goBack = () => {
     navigate(-1);
   };
 
-  const handleNext = () => {
-    if (location.pathname === "/psytest/stress") {
-      onSubmit(); // 최종 제출 함수 호출
-    } else {
-      navigate(nextPath);
-    }
-  };
-
   return (
     <BottomNavContainer>
       <PrevButton onClick={goBack}>이전</PrevButton>
-      <NextButton onClick={handleNext}>
-        {location.pathname === "/psytest/stress" ? "완료" : "다음"}
+      <NextButton onClick={onNext} disabled={!isNextEnabled}>
+        다음
       </NextButton>
     </BottomNavContainer>
   );
