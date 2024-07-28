@@ -43,15 +43,17 @@ export const Header = styled.header`
   position: fixed;
   width: 95%;
   max-width: 475px;
+  border: 1px solid black;
 `;
 
 export const HeaderLeft = styled.div`
   margin-top: -8px;
-  font-style: italic;
+  width: 20%;
 `;
 
 export const HeaderLeft1 = styled.div`
   font-size: 30px;
+  border: 1px solid black;
 `;
 
 export const HeaderLeft2 = styled.div`
@@ -74,6 +76,7 @@ export const HeaderCenter = styled.div`
 
 export const HeaderCenter1 = styled.div`
   font-size: 18px;
+  font-weight: 800;
 `;
 
 export const ChevronImg = styled.div`

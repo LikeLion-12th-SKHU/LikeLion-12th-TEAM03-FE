@@ -2,6 +2,7 @@ import React, { useState, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import BottomNav from "../components/BottomNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./category.css";
 import {
   faChevronDown,
   faBars,
@@ -12,8 +13,7 @@ import {
   Header,
   HeaderLeft,
   HeaderCenter,
-  HeaderLeft1,
-  HeaderLeft2,
+  HeaderLeftLogo,
   HeaderCenter1,
   HeaderRight,
   Keywords,
@@ -78,12 +78,12 @@ function Candle() {
   const navigate = useNavigate();
 
   const toggleDropdown = useCallback(
-    (content, ref) => {
+    (content, ref) => () => {
       if (dropdownOpen === content) {
         setDropdownOpen(null);
       } else {
         setDropdownOpen(content);
-        if (ref.current) {
+        if (ref?.current) {
           const { top, left, height } = ref.current.getBoundingClientRect();
           setDropdownPosition({ top: top + height, left });
         }
@@ -105,12 +105,11 @@ function Candle() {
       <FullScreen>
         <Header>
           <HeaderLeft>
-            <HeaderLeft1>RERE</HeaderLeft1>
-            <HeaderLeft2>&#45; be happy &#45;</HeaderLeft2>
+            <img src="/logo2.png" alt="advertisement" />
           </HeaderLeft>
           <HeaderCenter
             ref={headerCenterRef}
-            onClick={() => toggleDropdown("HeaderCenter", headerCenterRef)}
+            onClick={toggleDropdown("HeaderCenter", headerCenterRef)}
           >
             <HeaderCenter1>인테리어 소품</HeaderCenter1>
             <ChevronImg>
@@ -124,17 +123,14 @@ function Candle() {
         <Keywords>
           <Distance
             ref={distanceRef}
-            onClick={() => toggleDropdown("거리순", distanceRef)}
+            onClick={toggleDropdown("거리순", distanceRef)}
           >
             거리순
             <InnerChevron>
               <FontAwesomeIcon icon={faChevronDown} />
             </InnerChevron>
           </Distance>
-          <Price
-            ref={priceRef}
-            onClick={() => toggleDropdown("가격", priceRef)}
-          >
+          <Price ref={priceRef} onClick={toggleDropdown("가격", priceRef)}>
             가격
             <InnerChevron>
               <FontAwesomeIcon icon={faChevronDown} />
