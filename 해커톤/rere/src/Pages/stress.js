@@ -92,9 +92,9 @@ function Stress() {
   return (
     <div className="main-container">
       <TestTopNav text="감정 체크" />
-      <div>
+      <div className="guide-container">
         <p className="guide">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최근 일주일,
+          최근 일주일,
           <br />
           가장 크게 느끼고 있는 <br />
           <span>감정을 알려주세요.</span>

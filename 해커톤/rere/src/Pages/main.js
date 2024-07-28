@@ -32,12 +32,16 @@ const Main = () => {
     <div className="real-main-container">
       <div className="top-half">
         <TopNav />
-        <div>
-          <img src="/img/main.png" alt="advertisement" className="ad" />
+        <div className="main-img-container">
+          <img
+            src="/img/real-main-img.png"
+            alt="advertisement"
+            className="ad"
+          />
         </div>
         <div className="main-text">
           <p>
-            <span>다양한 상품</span>을 만나보세요!
+            <span className="various-product">다양한 상품</span>을 만나보세요!
           </p>
         </div>
         <div className="category">
@@ -83,7 +87,10 @@ const Main = () => {
         <div className="description">
           <div className="tired">피곤한</div>
           <Today />
-          <div className="comment">이런 분위기는 어떠세요?</div>
+          <div className="comment">
+            이런 분위기는
+            <br /> 어떠세요?
+          </div>
           <div className="keywords">
             <div className="keyword1">
               <div className="keyCircle1"></div>
