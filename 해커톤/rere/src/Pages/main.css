@@ -41,6 +41,7 @@ html {
   width: 100%;
   margin-top: 60%;
   max-width: 400px; /* 적절한 최대 너비 설정 */
+
   margin-bottom: 0;
   object-fit: contain;
 }
@@ -213,7 +214,7 @@ span {
   padding: 5px;
   background-color: #fcf4ec;
   border: 1px solid #29351a;
-  box-shadow: 2px 2px 2px grey;
+  box-shadow: 1px 1px 1px grey;
   border-radius: 18px;
   color: #29351a;
   font-size: 14px;
@@ -222,6 +223,7 @@ span {
   transition: background-color 0.3s;
   text-align: center;
   white-space: nowrap; /* 텍스트가 길어도 줄 바꿈 없이 표시 */
+  font-family: "SUITE", sans-serif;
 }
 
 .category button:hover {
@@ -244,4 +246,10 @@ span {
       1fr
     ); /* 화면 너비가 600px 이상일 때 3열로 고정 */
   }
+}
+
+.bottom-img {
+  max-width: 500px;
+  width: 100%;
+  height: 86%;
 }

@@ -6,6 +6,7 @@ import { faComment } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faHouse,
@@ -14,5 +15,6 @@ library.add(
   faComment,
   faUser,
   faHeart,
-  faShare
+  faShare,
+  faChevronLeft
 );

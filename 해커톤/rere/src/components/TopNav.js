@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../icons";
+import "./TopNav.css";
 
 const TopNavContainer = styled.div`
   position: fixed;
@@ -16,10 +17,8 @@ const TopNavContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
   margin-top: 20px;
-  background-color: rgb(252, 244, 236);
+  background-color: #dfd3c2;
 `;
 
 const MainLogoImg = styled.img`
@@ -30,11 +29,11 @@ const MainLogoImg = styled.img`
   margin-left: 40%;
 `;
 const Heart = styled.div`
-  color: brown;
+  color: #806e56;
   font-size: 25px;
-  margin-left: 23%;
+  margin-left: 27%;
   cursor: pointer;
-  margin-right: 10%;
+  margin-right: 6%;
 `;
 const TopNav = () => {
   const navigate = useNavigate();
@@ -45,7 +44,10 @@ const TopNav = () => {
 
   return (
     <TopNavContainer>
-      <MainLogoImg onClick={() => handleNavigation("/main")} src="/logo.png" />
+      <MainLogoImg
+        onClick={() => handleNavigation("/main")}
+        src="/img/image.png"
+      />
       <Heart>
         <FontAwesomeIcon
           onClick={() => handleNavigation("/like")}

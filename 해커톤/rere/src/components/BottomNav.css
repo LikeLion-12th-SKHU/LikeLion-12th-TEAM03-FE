@@ -6,3 +6,15 @@
 .nav-item.active {
   color: #3c4e26; /* 활성화된 항목의 색상 */
 }
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: "SUITE", sans-serif;
+  font-weight: 550;
+}
+.iconFont {
+  font-family: "SUITE", sans-serif;
+  font-size: 0.6rem;
+}
