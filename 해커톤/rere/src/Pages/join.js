@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Join.css"; // CSS 파일 임포트
+import "./css/join.css"; // CSS 파일 임포트
 
 function Join() {
   const [loginId, setLoginId] = useState("");

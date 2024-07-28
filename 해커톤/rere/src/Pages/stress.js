@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./fireInside.css";
+import "./stress.css"; // CSS 파일
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
 
-function FireInside() {
-  const numRows = 1; // 1열
-  const numCols = 3; // 3열
+function Stress() {
+  const numRows = 4; // 4행으로 감정 버튼 배치
+  const numCols = 4; // 4열로 감정 버튼 배치
   const maxSelections = 1; // 최대 선택 가능 개수
   const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
@@ -15,9 +15,22 @@ function FireInside() {
   const [isNextEnabled, setIsNextEnabled] = useState(false); // '다음' 버튼 활성화 여부 상태
 
   const emotions = [
-    { id: 1, name: "꽉 차 있다" },
-    { id: 2, name: "적당하다" },
-    { id: 3, name: "부족한 것 같다" },
+    { id: 1, name: "행복한" },
+    { id: 2, name: "괴로운" },
+    { id: 3, name: "암울한" },
+    { id: 4, name: "감동적인" },
+    { id: 5, name: "신나는" },
+    { id: 6, name: "편안한" },
+    { id: 7, name: "두려운" },
+    { id: 8, name: "흥미로운" },
+    { id: 9, name: "초조한" },
+    { id: 10, name: "불안한" },
+    { id: 11, name: "기쁜" },
+    { id: 12, name: "걱정되는" },
+    { id: 13, name: "설레는" },
+    { id: 14, name: "무기력한" },
+    { id: 15, name: "답답한" },
+    { id: 16, name: "상쾌한" },
   ];
 
   const handleButtonClick = (index) => {
@@ -70,7 +83,7 @@ function FireInside() {
 
   const handleNextClick = () => {
     if (isNextEnabled) {
-      navigate("/psytest/stress"); // 페이지 이동 처리
+      navigate("/psytest/resultPage"); // 페이지 이동 처리
     } else {
       alert("1개의 항목을 선택해 주세요.");
     }
@@ -78,22 +91,20 @@ function FireInside() {
 
   return (
     <div className="main-container">
-      <TestTopNav text="불안 체크" />
+      <TestTopNav text="감정 체크" />
       <div>
         <p className="guide">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;물잔의{" "}
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최근 일주일,
           <br />
-          <span>상태는 어떠한가요?</span>
+          가장 크게 느끼고 있는 <br />
+          <span>감정을 알려주세요.</span>
         </p>
       </div>
-      <div className="bottle">
-        <div className="bottle-half"></div>
-      </div>
-      <div className="button-container">
-        {emotions.slice(0, numCols).map((emotion, index) => (
+      <div className="grid-container">
+        {emotions.map((emotion, index) => (
           <button
             key={emotion.id}
-            className={`button-item ${
+            className={`grid-button ${
               selectedButtons[index] ? "selected" : ""
             }`}
             onClick={() => handleButtonClick(index)}
@@ -103,7 +114,7 @@ function FireInside() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/stress"
+        nextPath="/psytest/resultPage"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
       />
@@ -111,4 +122,4 @@ function FireInside() {
   );
 }
 
-export default FireInside;
+export default Stress;

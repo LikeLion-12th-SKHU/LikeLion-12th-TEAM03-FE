@@ -1,7 +1,8 @@
+import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-function TestBottomNav() {
+function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
   const BottomNavContainer = styled.div`
     position: fixed;
     bottom: 0;
@@ -50,10 +51,11 @@ function TestBottomNav() {
     font-family: "SUITE", sans-serif;
     border-radius: 30rem;
     font-weight: bold;
-    background-color: #fcf4ec;
-    color: #806e56;
+    background-color: ${isNextEnabled ? "#fcf4ec" : "#e0e0e0"};
+    color: ${isNextEnabled ? "#806e56" : "#999999"};
+    pointer-events: ${isNextEnabled ? "auto" : "none"};
     &:hover {
-      color: #29351a;
+      color: ${isNextEnabled ? "#29351a" : "#999999"};
       transition: color 0.3s;
     }
   `;
@@ -62,17 +64,15 @@ function TestBottomNav() {
   const goBack = () => {
     navigate(-1);
   };
-  const handleNavigation = (path) => {
-    navigate(path);
-  };
 
   return (
     <BottomNavContainer>
       <PrevButton onClick={goBack}>이전</PrevButton>
-      <NextButton onClick={() => handleNavigation("/psytest/fireinside")}>
+      <NextButton onClick={onNext} disabled={!isNextEnabled}>
         다음
       </NextButton>
     </BottomNavContainer>
   );
 }
+
 export default TestBottomNav;
