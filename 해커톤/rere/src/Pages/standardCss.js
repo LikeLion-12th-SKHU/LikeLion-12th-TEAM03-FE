@@ -43,7 +43,6 @@ export const Header = styled.header`
   position: fixed;
   width: 95%;
   max-width: 475px;
-  border: 1px solid black;
 `;
 
 export const HeaderLeft = styled.div`
