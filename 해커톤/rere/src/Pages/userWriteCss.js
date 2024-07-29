@@ -76,31 +76,35 @@ export const ContentInput = styled.textarea`
 export const Photo = styled.div`
   margin-top: 4%;
   display: flex;
+  margin-left: -8%;
+  overflow-x: auto;
+  white-space: nowrap;
 `;
 
 export const PhotoName = styled.div`
-  margin-right: 7%;
+  margin-right: 3%;
   display: flex;
   flex-direction: column;
   margin-top: 2%;
-  margin-left: -5%;
+  width: 50px;
+  margin-left: 2%;
+  text-align: center;
 `;
 
 export const PhotoInput = styled.div`
   background-color: #fcf4ec;
-  width: 50%;
-  height: 15%;
-  padding: 5%;
+  width: 20px;
+  height: 15px;
+  padding: 5px;
   border-radius: 15px;
   color: #806e56;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5% auto;
+  margin: 5px auto auto;
 `;
 
 export const PhotoResult = styled.div`
-  width: 73%;
   height: 10%;
   padding: 3% 2%;
   border: none;
