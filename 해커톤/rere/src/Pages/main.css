@@ -142,25 +142,27 @@ span {
 
 .tired {
   padding-top: 0px;
-  margin-right: 3%;
+  margin-right: 0.5em;
   font-size: 150%;
   margin-left: 6%;
   font-weight: 800;
   margin-bottom: 3%;
   color: #29351a;
+  display: flex;
+  justify-content: flex-end;
+  white-space: nowrap;
 }
 
 .today {
-  font-size: 150%;
   font-weight: 800;
-  margin-right: 3%;
+  margin-right: 0.2em;
   color: #29351a;
 }
 .comment {
   font-size: 120%;
   white-space: nowrap;
   text-align: right;
-  margin-right: 5%;
+  margin-right: 0.6rem;
   width: 100%;
   margin-left: 20%;
 }
@@ -177,7 +179,7 @@ span {
 .keyword1 {
   width: 50%;
   font-size: 120%;
-  margin-right: 1%;
+  margin-right: 0.5rem;
   margin-bottom: 10px;
 }
 
@@ -193,7 +195,7 @@ span {
   width: 50%;
   font-size: 120%;
   margin-left: 30%;
-  margin-right: 7%;
+  margin-right: 0.5rem;
 }
 .keyCircle1 {
   position: relative;

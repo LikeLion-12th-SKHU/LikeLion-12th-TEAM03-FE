@@ -85,8 +85,11 @@ const Main = () => {
           <img src="/img/furniture.jpg" className="circle4"></img>
         </div>
         <div className="description">
-          <div className="tired">피곤한</div>
-          <Today />
+          <div className="tired">
+            피곤한&nbsp;
+            <Today />
+          </div>
+
           <div className="comment">
             이런 분위기는
             <br /> 어떠세요?
