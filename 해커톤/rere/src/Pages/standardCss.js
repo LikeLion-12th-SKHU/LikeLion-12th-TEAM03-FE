@@ -43,7 +43,6 @@ export const Header = styled.header`
   position: fixed;
   width: 95%;
   max-width: 475px;
-  border: 1px solid black;
 `;
 
 export const HeaderLeft = styled.div`
@@ -53,7 +52,6 @@ export const HeaderLeft = styled.div`
 
 export const HeaderLeft1 = styled.div`
   font-size: 30px;
-  border: 1px solid black;
 `;
 
 export const HeaderLeft2 = styled.div`
