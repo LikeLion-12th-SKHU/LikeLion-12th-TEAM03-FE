@@ -94,7 +94,7 @@ function Depressive() {
 
       // Send data to the server
       try {
-        const response = await fetch("#", {
+        const response = await fetch("https://cinining.store/psy-test", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

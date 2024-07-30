@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/join.css"; // CSS 파일 임포트
 
@@ -9,6 +9,15 @@ function Join() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰을 확인
+    const token = localStorage.getItem("token");
+    if (token) {
+      // 토큰이 존재하면 자동으로 로그인 후 메인 페이지로 이동
+      navigate("/main");
+    }
+  }, [navigate]);
 
   const handleJoin = async (event) => {
     event.preventDefault();
@@ -21,7 +30,7 @@ function Join() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("#", {
+      const response = await fetch("https://cinining.store/users/join", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,12 +38,14 @@ function Join() {
         body: JSON.stringify({ loginId, password, nickname }),
       });
 
+      const data = await response.json();
       setIsLoading(false);
 
       if (response.ok) {
-        navigate("/login");
+        // 회원가입 성공 시 받은 토큰을 로컬 스토리지에 저장
+        localStorage.setItem("token", data.token);
+        navigate("/main"); // 메인 페이지로 이동
       } else {
-        const data = await response.json();
         setError(data.message || "회원가입 실패");
       }
     } catch (error) {
