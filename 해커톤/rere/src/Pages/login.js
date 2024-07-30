@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/login.css"; // CSS 파일 임포트
 
@@ -13,23 +13,30 @@ function Login() {
     event.preventDefault();
 
     setIsLoading(true);
-    const token = localStorage.getItem("token"); // 로컬 스토리지에 저장된 토큰
-    const response = await fetch("https://cinining.store/users/join", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // JWT 토큰을 인증 헤더에 추가
-      },
-      body: JSON.stringify({ loginId, password }),
-    });
 
-    setIsLoading(false);
+    try {
+      const response = await fetch("https://cinining.store/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ loginId, password }),
+      });
 
-    if (response.ok) {
-      navigate("/psytest");
-    } else {
       const data = await response.json();
-      setError(data.message);
+      setIsLoading(false);
+
+      if (response.ok) {
+        // 로그인 성공 시 토큰을 로컬 스토리지에 저장
+        localStorage.setItem("token", data.token);
+        navigate("/psytest");
+      } else {
+        setError(data.message);
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError("An error occurred. Please try again.");
+      console.error("Login error:", error);
     }
   };
 

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function Depressive() {
   const numRows = 5;
   const numCols = 4;
-  const maxSelections = 4; // 최대 선택 가능 개수
+  const maxSelections = 2; // 최대 선택 가능 개수
   const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
@@ -95,7 +95,7 @@ function Depressive() {
       handleSubmit(); // 선택된 데이터 전송
       navigate("/psytest/resultPage"); // 페이지 이동
     } else {
-      alert("4개의 색상을 선택해 주세요.");
+      alert("2개의 색상을 선택해 주세요.");
     }
   };
 
@@ -105,7 +105,7 @@ function Depressive() {
       <div className="guide-container">
         <p className="guide">
           가장 눈에 띄는 <br />
-          <span>색상을 4개 골라주세요</span>
+          <span>색상을 2개 골라주세요</span>
         </p>
       </div>
       <div className="grid-container">
