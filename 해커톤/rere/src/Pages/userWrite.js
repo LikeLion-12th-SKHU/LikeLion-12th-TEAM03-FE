@@ -101,18 +101,32 @@ function UserWrite() {
             />
             <PhotoResult>
               {selectedImages.map((image, index) => (
-                <img
+                <div
                   key={index}
-                  src={image}
-                  alt={`Selected ${index}`}
                   style={{
-                    width: "130px",
-                    height: "130px",
-                    objectFit: "cover",
-                    borderRadius: "20px",
-                    marginRight: "10px", // 이미지 사이에 간격 추가
+                    width: "120px",
+                    marginRight: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#fcf4ec",
+                    padding: "40px auto",
+                    borderRadius: "30px",
                   }}
-                />
+                >
+                  <img
+                    src={image}
+                    alt={`Selected ${index}`}
+                    style={{
+                      display: "block",
+                      width: "80px",
+                      height: "fit-content",
+                      objectFit: "contain", // 이미지가 컨테이너 내에 맞게 조정되도록 함
+                      borderRadius: "30px",
+                      margin: "10px 5px",
+                    }}
+                  />
+                </div>
               ))}
             </PhotoResult>
           </Photo>

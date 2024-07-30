@@ -23,15 +23,25 @@ function Login() {
         body: JSON.stringify({ loginId, password }),
       });
 
-      const data = await response.json();
+      const result = await response.json();
+      console.log("Response Data:", result); // 응답 데이터 콘솔 출력
       setIsLoading(false);
 
       if (response.ok) {
-        // 로그인 성공 시 토큰을 로컬 스토리지에 저장
-        localStorage.setItem("token", data.token);
-        navigate("/psytest");
+        // 데이터 구조에 따라 접근
+        const token = result.data?.token;
+        console.log("Token:", token); // 토큰 값 출력
+
+        if (token) {
+          localStorage.setItem("token", token);
+          console.log("Stored Token:", localStorage.getItem("token")); // 토큰 저장 여부 콘솔 출력
+          navigate("/psytest");
+        } else {
+          console.error("Token is missing in the response.");
+          setError("Token is missing in the response.");
+        }
       } else {
-        setError(data.message);
+        setError(result.message || "Login failed.");
       }
     } catch (error) {
       setIsLoading(false);

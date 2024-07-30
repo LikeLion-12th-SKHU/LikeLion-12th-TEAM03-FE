@@ -25,7 +25,6 @@ export const HeaderRightIcon = styled.div`
 `;
 
 export const Main = styled.div`
-  border: 1px solid black;
   margin-top: 76px;
   padding-top: 3%;
   padding-left: 8%;
@@ -35,7 +34,6 @@ export const Main = styled.div`
 `;
 
 export const Title = styled.div`
-  border: 1px solid black;
   display: flex;
 `;
 
@@ -54,14 +52,12 @@ export const TitleInput = styled.input`
 `;
 
 export const Content = styled.div`
-  border: 1px solid black;
   margin-top: 4%;
   display: flex;
   height: 20%;
 `;
 
 export const ContentName = styled.div`
-  border: 1px solid black;
   margin-right: 7%;
   display: flex;
   margin-top: 2%;
@@ -78,34 +74,37 @@ export const ContentInput = styled.textarea`
 `;
 
 export const Photo = styled.div`
-  border: 1px solid black;
   margin-top: 4%;
   display: flex;
+  margin-left: -8%;
+  overflow-x: auto;
+  white-space: nowrap;
 `;
 
 export const PhotoName = styled.div`
-  margin-right: 7%;
+  margin-right: 3%;
   display: flex;
   flex-direction: column;
   margin-top: 2%;
-  margin-left: -5%;
+  width: 50px;
+  margin-left: 2%;
+  text-align: center;
 `;
 
 export const PhotoInput = styled.div`
   background-color: #fcf4ec;
-  width: 50%;
-  height: 15%;
-  padding: 5%;
+  width: 20px;
+  height: 15px;
+  padding: 5px;
   border-radius: 15px;
   color: #806e56;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 5% auto;
+  margin: 5px auto auto;
 `;
 
 export const PhotoResult = styled.div`
-  width: 73%;
   height: 10%;
   padding: 3% 2%;
   border: none;
@@ -116,7 +115,6 @@ export const PhotoResult = styled.div`
 `;
 
 export const Place = styled.div`
-  border: 1px solid black;
   margin-top: 4%;
   display: flex;
 `;
@@ -124,7 +122,6 @@ export const Place = styled.div`
 export const PlaceName = styled.div`
   margin-right: 7%;
   margin-left: -5%;
-  border: 1px solid black;
   display: flex;
   align-items: center;
 `;
@@ -161,7 +158,6 @@ export const PriceInput = styled.textarea`
 `;
 
 export const Keyword = styled.div`
-  border: 1px solid black;
   margin-top: 4%;
   display: flex;
 `;
@@ -170,7 +166,6 @@ export const KeywordName = styled.div`
   margin-right: 7%;
   display: flex;
   align-items: center;
-  border: 1px solid black;
 `;
 
 export const KeywordInput = styled.div`
@@ -184,7 +179,6 @@ export const KeywordInput = styled.div`
 `;
 
 export const Color = styled.div`
-  border: 1px solid black;
   margin-top: 4%;
   display: flex;
 `;
@@ -193,7 +187,6 @@ export const ColordName = styled.div`
   margin-right: 7%;
   display: flex;
   align-items: center;
-  border: 1px solid black;
 `;
 
 export const ColorInput = styled.div`
