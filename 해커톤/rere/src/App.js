@@ -13,7 +13,6 @@ import Pet from "./CategoryPages/Pet";
 import Chat from "./Pages/chat";
 import Community from "./Pages/community";
 import MyPage from "./Pages/myPage";
-import PsyTest from "./Pages/psyTest";
 import FireInside from "./Pages/fireInside";
 import Interior from "./CategoryPages/Interior";
 import Fabric from "./CategoryPages/Fabric";
@@ -22,6 +21,7 @@ import DetailsSeller from "./DetailPages/DetailSeller";
 import UserWrite from "./Pages/userWrite";
 import Stress from "./Pages/stress";
 import ResultPage from "./Pages/resultPage";
+import Depressive from "./Pages/depressive";
 
 function App() {
   return (
@@ -47,10 +47,10 @@ function App() {
           element={<HouseHoldGoods />}
         />
         <Route path="/write" element={<UserWrite />} />
-        <Route path="/psytest" element={<PsyTest />} />
+        <Route path="/psytest/depressive" element={<Depressive />} />
         <Route path="/psytest/fireinside" element={<FireInside />} />
         <Route path="/details/:id" element={<DetailsSeller />} />
-        <Route path="/psytest/stress" element={<Stress />} />
+        <Route path="/psytest" element={<Stress />} />
         <Route path="/psytest/resultPage" element={<ResultPage />} />
       </Routes>
     </Router>

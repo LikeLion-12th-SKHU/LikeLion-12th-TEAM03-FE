@@ -11,12 +11,8 @@ function ResultPage() {
         </div>
         <div className="result-animal-detail">
           <p className="personal-type">재치형</p>
-          <br />
-          센스 있는 당신,
-          <br />
-          그에 걸맞는 가구가
-          <br />
-          더욱 빛나게 해줄거에요.
+          <br />이 색깔을 선택한 당신은 많은 돈 또는 비싼 상품이 꼭 필요한
+          상황에 놓였어요.
         </div>
       </div>
     </div>

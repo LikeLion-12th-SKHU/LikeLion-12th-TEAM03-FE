@@ -17,7 +17,7 @@ const TopNavContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  margin-top: 33px;
+  margin-top: 5%;
   background-color: #dfd3c2;
 `;
 

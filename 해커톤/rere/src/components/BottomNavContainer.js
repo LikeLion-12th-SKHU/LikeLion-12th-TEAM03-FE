@@ -67,8 +67,14 @@ function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
 
   return (
     <BottomNavContainer>
-      <PrevButton onClick={goBack}>이전</PrevButton>
-      <NextButton onClick={onNext} disabled={!isNextEnabled}>
+      <PrevButton className="PrevButton" onClick={goBack}>
+        이전
+      </PrevButton>
+      <NextButton
+        className="NextButton"
+        onClick={onNext}
+        disabled={!isNextEnabled}
+      >
         다음
       </NextButton>
     </BottomNavContainer>

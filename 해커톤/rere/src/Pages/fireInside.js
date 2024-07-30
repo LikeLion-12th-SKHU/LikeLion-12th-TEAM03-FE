@@ -1,9 +1,10 @@
+// 불안 페이지
 import React, { useState } from "react";
 import "./fireInside.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-
+//
 function FireInside() {
   const numRows = 1; // 1열
   const numCols = 3; // 3열
@@ -42,10 +43,6 @@ function FireInside() {
     setIsNextEnabled(
       newSelectedButtons.filter(Boolean).length === maxSelections
     );
-
-    // 감정 데이터 전송
-    const emotionData = emotions[index];
-    sendEmotionData(emotionData.id);
   };
 
   const sendEmotionData = async (emotionId) => {
@@ -70,7 +67,14 @@ function FireInside() {
 
   const handleNextClick = () => {
     if (isNextEnabled) {
-      navigate("/psytest/stress"); // 페이지 이동 처리
+      // 최종 선택된 버튼의 id를 찾고 데이터 전송
+      const selectedIndex = selectedButtons.findIndex(Boolean);
+      if (selectedIndex !== -1) {
+        const emotionData = emotions[selectedIndex];
+        sendEmotionData(emotionData.id);
+      }
+
+      navigate("/psytest/depressive"); // 페이지 이동 처리
     } else {
       alert("1개의 항목을 선택해 주세요.");
     }
@@ -102,7 +106,7 @@ function FireInside() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/stress"
+        nextPath="/psytest/depressive"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
       />

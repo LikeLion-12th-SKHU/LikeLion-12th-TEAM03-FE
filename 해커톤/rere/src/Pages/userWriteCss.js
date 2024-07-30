@@ -134,6 +134,14 @@ export const PlaceInput = styled.textarea`
   border: none;
 `;
 
+export const CategoryInput = styled.textarea`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 1% 2%;
+  border: none;
+`;
+
 export const DealInput = styled.textarea`
   background-color: #fcf4ec;
   border-radius: 20px;
@@ -168,7 +176,7 @@ export const KeywordName = styled.div`
   align-items: center;
 `;
 
-export const KeywordInput = styled.div`
+export const KeywordInput = styled.input`
   background-color: #fcf4ec;
   border-radius: 20px;
   width: fit-content;
@@ -189,7 +197,7 @@ export const ColordName = styled.div`
   align-items: center;
 `;
 
-export const ColorInput = styled.div`
+export const ColorInput = styled.input`
   background-color: #d9d9d9;
   border-radius: 50%;
   width: 50px;
