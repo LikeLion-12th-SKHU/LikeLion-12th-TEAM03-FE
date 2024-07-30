@@ -21,7 +21,7 @@ function Join() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://cinining.store/users/join", {
+      const response = await fetch("#", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

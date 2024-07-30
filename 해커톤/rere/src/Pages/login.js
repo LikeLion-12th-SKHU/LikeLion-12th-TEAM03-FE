@@ -15,7 +15,7 @@ function Login() {
     setIsLoading(true);
 
     try {
-      const response = await fetch("https://cinining.store/users/login", {
+      const response = await fetch("#", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

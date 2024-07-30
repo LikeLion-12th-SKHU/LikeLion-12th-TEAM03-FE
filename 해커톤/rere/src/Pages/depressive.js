@@ -94,7 +94,7 @@ function Depressive() {
 
       // Send data to the server
       try {
-        const response = await fetch("YOUR_SERVER_SUBMIT_ENDPOINT", {
+        const response = await fetch("#", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
