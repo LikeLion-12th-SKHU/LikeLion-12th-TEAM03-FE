@@ -1,10 +1,9 @@
-// 불안 페이지
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./fireInside.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-//
+
 function FireInside() {
   const numRows = 1; // 1열
   const numCols = 3; // 3열
@@ -14,12 +13,20 @@ function FireInside() {
     Array(numRows * numCols).fill(false)
   );
   const [isNextEnabled, setIsNextEnabled] = useState(false); // '다음' 버튼 활성화 여부 상태
+  const [score, setScore] = useState(0); // State to hold the current score
 
   const emotions = [
-    { id: 1, name: "꽉 차 있다" },
-    { id: 2, name: "적당하다" },
-    { id: 3, name: "부족한 것 같다" },
+    { id: 1, name: "꽉 차 있다", score: -5 },
+    { id: 2, name: "적당하다", score: +5 },
+    { id: 3, name: "부족한 것 같다", score: -5 },
   ];
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+    if (savedData.score) {
+      setScore(savedData.score);
+    }
+  }, []);
 
   const handleButtonClick = (index) => {
     const newSelectedButtons = [...selectedButtons];
@@ -45,36 +52,26 @@ function FireInside() {
     );
   };
 
-  const sendEmotionData = async (emotionId) => {
-    try {
-      const formData = new FormData();
-      formData.append("emotionId", emotionId);
-
-      const response = await fetch("YOUR_SERVER_ENDPOINT", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send emotion data");
-      }
-
-      console.log("Emotion data sent successfully");
-    } catch (error) {
-      console.error("Error sending emotion data:", error);
-    }
-  };
-
   const handleNextClick = () => {
     if (isNextEnabled) {
       // 최종 선택된 버튼의 id를 찾고 데이터 전송
       const selectedIndex = selectedButtons.findIndex(Boolean);
       if (selectedIndex !== -1) {
         const emotionData = emotions[selectedIndex];
-        sendEmotionData(emotionData.id);
-      }
 
-      navigate("/psytest/depressive"); // 페이지 이동 처리
+        const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+        const newScore = (savedData.score || 0) + emotionData.score;
+
+        const updatedData = {
+          ...savedData,
+          emotionId: emotionData.id,
+          score: newScore,
+        };
+
+        localStorage.setItem("testResults", JSON.stringify(updatedData));
+
+        navigate("/psytest/depressive"); // 페이지 이동 처리
+      }
     } else {
       alert("1개의 항목을 선택해 주세요.");
     }
@@ -109,6 +106,7 @@ function FireInside() {
         nextPath="/psytest/depressive"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
+        buttonText="완료"
       />
     </div>
   );

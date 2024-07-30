@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
+function TestBottomNav({ nextPath, onNext, isNextEnabled, buttonText }) {
   const BottomNavContainer = styled.div`
     position: fixed;
     bottom: 0;
@@ -17,8 +17,9 @@ function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
     padding: 10px 0;
     border-top: 1px solid #ccc;
     max-height: 40px;
-    height: 100vh;
+    height: 100px; /* Adjusted to fit content */
   `;
+
   const PrevButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -38,6 +39,7 @@ function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
       transition: color 0.3s;
     }
   `;
+
   const NextButton = styled.button`
     flex: 1;
     padding: 10px;
@@ -59,6 +61,7 @@ function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
       transition: color 0.3s;
     }
   `;
+
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -75,7 +78,7 @@ function TestBottomNav({ nextPath, onNext, isNextEnabled }) {
         onClick={onNext}
         disabled={!isNextEnabled}
       >
-        다음
+        {buttonText || "다음"}
       </NextButton>
     </BottomNavContainer>
   );
