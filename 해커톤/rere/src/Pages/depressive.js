@@ -1,13 +1,14 @@
+//우울 페이지
 import React, { useState } from "react";
 import "./psyTest.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-
-function PsyTest() {
+// color 4개 보내야함
+function Depressive() {
   const numRows = 5;
   const numCols = 4;
-  const maxSelections = 4; // 최대 선택 가능 개수
+  const maxSelections = 2; // 최대 선택 가능 개수
   const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
@@ -38,8 +39,8 @@ function PsyTest() {
   ];
 
   const handleButtonClick = (index) => {
-    const currentSelectionCount = selectedButtons.filter(Boolean).length;
     const newSelectedButtons = [...selectedButtons];
+    const currentSelectionCount = selectedButtons.filter(Boolean).length;
 
     if (newSelectedButtons[index]) {
       // 이미 선택된 버튼을 클릭한 경우 선택 해제
@@ -55,34 +56,10 @@ function PsyTest() {
 
     setSelectedButtons(newSelectedButtons);
 
-    // 색상 데이터 전송
-    const colorData = colors[index];
-    sendColorData(colorData.id);
-
     // Check if exactly maxSelections buttons are selected
     setIsNextEnabled(
       newSelectedButtons.filter(Boolean).length === maxSelections
     );
-  };
-
-  const sendColorData = async (colorId) => {
-    try {
-      const formData = new FormData();
-      formData.append("colorId", colorId);
-
-      const response = await fetch("서버 엔드포인트!!!", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send color data");
-      }
-
-      console.log("Color data sent successfully");
-    } catch (error) {
-      console.error("Error sending color data:", error);
-    }
   };
 
   const handleSubmit = async () => {
@@ -113,20 +90,22 @@ function PsyTest() {
   };
 
   const handleNextClick = () => {
-    // 3개가 선택되었을 때만 데이터를 제출하고 다음 페이지로 이동
+    // 4개가 선택되었을 때만 데이터를 제출하고 다음 페이지로 이동
     if (isNextEnabled) {
-      handleSubmit();
-      navigate("/psytest/fireinside"); // 페이지 이동
+      handleSubmit(); // 선택된 데이터 전송
+      navigate("/psytest/resultPage"); // 페이지 이동
+    } else {
+      alert("2개의 색상을 선택해 주세요.");
     }
   };
 
   return (
     <div className="main-container">
       <TestTopNav text="우울 체크" />
-      <div>
+      <div className="guide-container">
         <p className="guide">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 가장 눈에 띄는 <br />
-          <span>색상을 골라주세요</span>
+          가장 눈에 띄는 <br />
+          <span>색상을 2개 골라주세요</span>
         </p>
       </div>
       <div className="grid-container">
@@ -158,4 +137,4 @@ function PsyTest() {
   );
 }
 
-export default PsyTest;
+export default Depressive;

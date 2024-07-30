@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/login.css"; // CSS 파일 임포트
 
@@ -14,21 +14,39 @@ function Login() {
 
     setIsLoading(true);
 
-    const response = await fetch("/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ loginId, password }),
-    });
+    try {
+      const response = await fetch("https://cinining.store/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ loginId, password }),
+      });
 
-    setIsLoading(false);
+      const result = await response.json();
+      console.log("Response Data:", result); // 응답 데이터 콘솔 출력
+      setIsLoading(false);
 
-    if (response.ok) {
-      navigate("/psytest");
-    } else {
-      const data = await response.json();
-      setError(data.message);
+      if (response.ok) {
+        // 데이터 구조에 따라 접근
+        const token = result.data?.token;
+        console.log("Token:", token); // 토큰 값 출력
+
+        if (token) {
+          localStorage.setItem("token", token);
+          console.log("Stored Token:", localStorage.getItem("token")); // 토큰 저장 여부 콘솔 출력
+          navigate("/psytest");
+        } else {
+          console.error("Token is missing in the response.");
+          setError("Token is missing in the response.");
+        }
+      } else {
+        setError(result.message || "Login failed.");
+      }
+    } catch (error) {
+      setIsLoading(false);
+      setError("An error occurred. Please try again.");
+      console.error("Login error:", error);
     }
   };
 

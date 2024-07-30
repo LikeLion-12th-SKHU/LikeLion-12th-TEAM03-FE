@@ -17,8 +17,10 @@ const TopNavContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding: 10px 0;
-  margin-top: 5%;
-  background-color: #dfd3c2;
+  margin-top: 33px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
 `;
 
 const MainLogoImg = styled.img`
@@ -28,14 +30,14 @@ const MainLogoImg = styled.img`
   margin-top: 0;
   margin-left: 40%;
 `;
-const Heart = styled.div`
-  color: #806e56;
+const Share = styled.div`
+  color: #29351a;
   font-size: 25px;
   margin-left: 27%;
   cursor: pointer;
   margin-right: 6%;
 `;
-const TopNav = () => {
+const ResultTopNav = () => {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
@@ -46,16 +48,16 @@ const TopNav = () => {
     <TopNavContainer>
       <MainLogoImg
         onClick={() => handleNavigation("/main")}
-        src="/img/image.png"
+        src="/img/result-logo.png"
       />
-      <Heart>
+      <Share>
         <FontAwesomeIcon
-          onClick={() => handleNavigation("/like")}
-          icon="fa-solid fa-heart"
+          onClick={() => handleNavigation("/#")} // 공유 기능 넣기
+          icon="fa-solid fa-arrow-up-from-bracket"
         />
-      </Heart>
+      </Share>
     </TopNavContainer>
   );
 };
 
-export default TopNav;
+export default ResultTopNav;

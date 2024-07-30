@@ -1,9 +1,10 @@
+// 감정 페이지
 import React, { useState } from "react";
 import "./stress.css"; // CSS 파일
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-
+//emotion 보내기
 function Stress() {
   const numRows = 4; // 4행으로 감정 버튼 배치
   const numCols = 4; // 4열로 감정 버튼 배치
@@ -55,10 +56,6 @@ function Stress() {
     setIsNextEnabled(
       newSelectedButtons.filter(Boolean).length === maxSelections
     );
-
-    // 감정 데이터 전송
-    const emotionData = emotions[index];
-    sendEmotionData(emotionData.id);
   };
 
   const sendEmotionData = async (emotionId) => {
@@ -83,7 +80,14 @@ function Stress() {
 
   const handleNextClick = () => {
     if (isNextEnabled) {
-      navigate("/psytest/resultPage"); // 페이지 이동 처리
+      // 선택된 감정의 ID를 찾아서 서버에 전송
+      const selectedIndex = selectedButtons.findIndex(Boolean);
+      if (selectedIndex !== -1) {
+        const emotionData = emotions[selectedIndex];
+        sendEmotionData(emotionData.id);
+      }
+
+      navigate("/psytest/fireinside"); // 페이지 이동 처리
     } else {
       alert("1개의 항목을 선택해 주세요.");
     }
@@ -92,9 +96,9 @@ function Stress() {
   return (
     <div className="main-container">
       <TestTopNav text="감정 체크" />
-      <div>
+      <div className="guide-container">
         <p className="guide">
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;최근 일주일,
+          최근 일주일,
           <br />
           가장 크게 느끼고 있는 <br />
           <span>감정을 알려주세요.</span>
@@ -114,7 +118,7 @@ function Stress() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/resultPage"
+        nextPath="/psytest/fireinside"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
       />
