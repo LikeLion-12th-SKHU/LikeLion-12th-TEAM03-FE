@@ -155,14 +155,14 @@ span {
 
 .today {
   font-weight: 800;
-  margin-right: 0.2em;
+  margin-right: 0.1rem;
   color: #29351a;
 }
 .comment {
   font-size: 120%;
   white-space: nowrap;
   text-align: right;
-  margin-right: 0.6rem;
+  margin-right: 1rem;
   width: 100%;
   margin-left: 20%;
 }
@@ -174,12 +174,13 @@ span {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  margin-right: 0.5rem;
 }
 
 .keyword1 {
   width: 50%;
   font-size: 120%;
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
   margin-bottom: 10px;
 }
 

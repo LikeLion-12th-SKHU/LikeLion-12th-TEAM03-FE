@@ -1,6 +1,8 @@
 .result-animal-container {
   width: 100%; /* 전체 너비 사용 */
-
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-top: 10%;
   overflow: hidden; /* 플로트된 요소 포함 */
   padding: 10px;
@@ -8,11 +10,11 @@
   height: 80%;
 }
 .animal-circle-div {
-  float: left; /* 왼쪽 정렬 */
   width: 50%; /* 이미지 컨테이너 너비 */
   height: 25%; /* 이미지 컨테이너 높이 */
   margin-right: 10px; /* 이미지와 텍스트 간의 간격 */
   margin-top: 10%;
+  border: 1px solid black;
 }
 .animal-img {
   width: 100%; /* 이미지 너비 */
@@ -21,10 +23,10 @@
   border-radius: 50%; /* 원형으로 만들기 */
 }
 .result-animal-detail {
-  overflow: hidden; /* 텍스트가 이미지 주위로 감싸지 않도록 */
   padding: 5%;
   text-align: center;
   box-sizing: border-box; /* 패딩 포함 너비 계산 */
+  border: 1px solid black;
 }
 .personal-type {
   font-weight: 800;

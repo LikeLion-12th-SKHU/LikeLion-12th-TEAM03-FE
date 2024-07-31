@@ -44,7 +44,7 @@ function Join() {
       if (response.ok) {
         // 회원가입 성공 시 받은 토큰을 로컬 스토리지에 저장
         localStorage.setItem("token", data.token);
-        navigate("/main"); // 메인 페이지로 이동
+        navigate("/login"); // 메인 페이지로 이동
       } else {
         setError(data.message || "회원가입 실패");
       }

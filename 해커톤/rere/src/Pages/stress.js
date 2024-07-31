@@ -68,7 +68,7 @@ function Stress() {
         // 로컬 스토리지에 emotionId와 score 저장
         const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
         savedData.emotionId = emotionId;
-        savedData.score = (savedData.score || 0) + score;
+        savedData.score = (savedData.score || 50) + score;
         localStorage.setItem("testResults", JSON.stringify(savedData));
 
         console.log("Emotion and score saved to localStorage:", savedData);
