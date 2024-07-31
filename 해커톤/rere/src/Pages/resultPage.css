@@ -36,3 +36,17 @@
   color: #29351a;
   margin-bottom: 10%;
 }
+.type-product-container {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  height: 3rem;
+  padding-left: 1.5rem;
+  padding-top: 1rem;
+}
+.type-contain-text {
+  font-weight: 800;
+  color: #56805a;
+}
+.type-product-text {
+  color: #c6b597;
+}

@@ -56,7 +56,11 @@ function ResultPage() {
         <div className="progress-div">
           <Example />
         </div>
-        <div className="type-product"></div>
+        <div className="type-product-container">
+          <div className="type-product-text">
+            <span className="type-contain-text">#{type}</span>을 포함한 상품
+          </div>
+        </div>
       </div>
     </div>
   );
