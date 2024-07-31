@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ResultTopNav from "../components/ResultTopNav";
 import "./resultPage.css";
+import Example from "../components/Example";
 
 function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
   const [comment, setComment] = useState("");
   const [score, setScore] = useState(0); // State to hold the score
-
   useEffect(() => {
     // 로컬 스토리지에서 점수를 불러와 상태에 설정
     const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
@@ -53,6 +53,10 @@ function ResultPage() {
           <br />
           <p>{comment}</p>
         </div>
+        <div className="progress-div">
+          <Example />
+        </div>
+        <div className="type-product"></div>
       </div>
     </div>
   );

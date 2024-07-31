@@ -27,6 +27,8 @@
   text-align: center;
   box-sizing: border-box; /* 패딩 포함 너비 계산 */
   border: 1px solid black;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 .personal-type {
   font-weight: 800;

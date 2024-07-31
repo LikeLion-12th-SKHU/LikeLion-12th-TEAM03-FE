@@ -1,0 +1,33 @@
+/* ProgressBar.css */
+.real-PB-container {
+  display: flex;
+}
+.level-text {
+  margin-top: 1.8rem;
+  margin-right: 0.7rem;
+  font-weight: 800;
+  color: #29351a;
+}
+
+.progress-bar-container {
+  width: 14rem; /* 전체 바의 너비 */
+  background-color: #fcf4ec; /* 배경색 */
+  border: none;
+  border-radius: 5rem; /* 바의 모서리 둥글기 */
+  height: 1rem; /* 바의 높이 */
+  overflow: hidden; /* 바가 넘치는 부분 숨김 */
+  margin-top: 2rem;
+}
+
+.progress-bar {
+  background-color: #c2ccdf; /* 완료된 부분의 배경색 */
+  height: 100%; /* 바의 높이와 맞추기 */
+  transition: width 0.3s ease; /* 너비 변화 시 애니메이션 */
+}
+
+.level-comment {
+  text-align: center;
+  color: #806e56;
+  padding: 1rem;
+  margin-top: -0.2rem;
+}
