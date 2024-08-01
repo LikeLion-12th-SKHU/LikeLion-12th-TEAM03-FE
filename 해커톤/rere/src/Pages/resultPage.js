@@ -7,7 +7,7 @@ function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
   const [comment, setComment] = useState("");
-  const [score, setScore] = useState(0); // State to hold the score
+  const [score, setScore] = useState(0); // 레벨 바 위에 표시하려고 추가함 아직 정의 X
   useEffect(() => {
     // 로컬 스토리지에서 점수를 불러와 상태에 설정
     const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
