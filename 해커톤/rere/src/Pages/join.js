@@ -33,6 +33,7 @@ function Join() {
 
       if (response.ok) {
         navigate("/login");
+        console.log("확인");
       } else {
         const data = await response.json();
         setError(data.message || "회원가입 실패");

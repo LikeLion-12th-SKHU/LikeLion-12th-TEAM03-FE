@@ -43,11 +43,20 @@ import {
   Color,
   ColordName,
   ColorInput,
+  CategoryInput,
 } from "./userWriteCss";
 
 function UserWrite() {
   const fileInputRef = useRef(null);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [place, setPlace] = useState("");
+  const [dealTime, setDealTime] = useState("");
+  const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
+  const [keyword, setKeyword] = useState("");
+  const [color, setColor] = useState("");
 
   const handlePhotoInputClick = () => {
     fileInputRef.current.click();
@@ -61,6 +70,56 @@ function UserWrite() {
     ); // 기존 이미지와 새 이미지 합쳐서 최대 10개
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("로그인이 필요합니다.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("locationId", parseInt(place, 10)); // Long으로 변환
+    formData.append("time", parseInt(dealTime, 10)); // Integer로 변환
+    formData.append("price", parseInt(price, 10)); // Integer로 변환
+    formData.append("categoryId", parseInt(category, 10)); // Long으로 변환
+    formData.append("moodId", parseInt(keyword, 10)); // Long으로 변환
+
+    // 이미지 파일 추가
+    selectedImages.forEach((image, index) => {
+      const file = fileInputRef.current.files[index];
+      if (file) {
+        formData.append(`imgUrl`, file); // 백엔드의 키에 맞추어 `imgUrl`로 설정
+      }
+    });
+
+    try {
+      const response = await fetch("https://cinining.store/posts", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          // 'Content-Type': 'multipart/form-data', // FormData는 Content-Type을 자동으로 설정하므로 주석 처리합니다.
+        },
+        body: formData,
+      });
+
+      const responseText = await response.text();
+
+      if (response.ok) {
+        alert("글이 성공적으로 작성되었습니다.");
+      } else {
+        console.error("Error response:", responseText);
+        alert(`글 작성에 실패했습니다: ${responseText}`);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("서버와 통신 중 오류가 발생했습니다.");
+    }
+  };
+
   return (
     <div className="main-container">
       <FullScreen>
@@ -72,17 +131,25 @@ function UserWrite() {
             <HeaderCenterWrite>글쓰기</HeaderCenterWrite>
           </HeaderCenter>
           <HeaderRightIcon>
-            <FontAwesomeIcon icon={faCheck} />
+            <FontAwesomeIcon icon={faCheck} onClick={handleSubmit} />
           </HeaderRightIcon>
         </Header>
         <Main>
           <Title>
             <TitleName>제목</TitleName>
-            <TitleInput placeholder="제목을 입력해주세요" />
+            <TitleInput
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              placeholder="제목을 입력해주세요"
+            />
           </Title>
           <Content>
             <ContentName>내용</ContentName>
-            <ContentInput placeholder="제품을 설명해주세요" />
+            <ContentInput
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              placeholder="제품을 설명해주세요"
+            />
           </Content>
           <Photo>
             <PhotoName>
@@ -132,27 +199,51 @@ function UserWrite() {
           </Photo>
           <Place>
             <PlaceName>거래 장소</PlaceName>
-            <PlaceInput placeholder="장소 추가"></PlaceInput>
+            <PlaceInput
+              value={place}
+              onChange={(e) => setPlace(e.target.value)}
+              placeholder="장소 추가"
+            />
           </Place>
           <Place>
             <PlaceName>거래 시간</PlaceName>
-            <DealInput placeholder="시간 선택"></DealInput>
+            <DealInput
+              value={dealTime}
+              onChange={(e) => setDealTime(e.target.value)}
+              placeholder="시간 선택"
+            />
           </Place>
           <Place>
             <PriceName>가격</PriceName>
-            <PriceInput placeholder="가격을 입력해주세요"></PriceInput>
+            <PriceInput
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              placeholder="가격을 입력해주세요"
+            />
           </Place>
           <Place>
             <PlaceName>카테고리</PlaceName>
-            <PlaceInput placeholder="카테고리 선택"></PlaceInput>
+            <CategoryInput
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              placeholder="카테고리 선택"
+            />
           </Place>
           <Keyword>
             <KeywordName>키워드</KeywordName>
-            <KeywordInput>&#35;따뜻한</KeywordInput>
+            <KeywordInput
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+              placeholder="#따뜻한"
+            />
           </Keyword>
           <Color>
             <ColordName>색상</ColordName>
-            <ColorInput></ColorInput>
+            <ColorInput
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+              placeholder="색상 입력"
+            />
           </Color>
         </Main>
       </FullScreen>

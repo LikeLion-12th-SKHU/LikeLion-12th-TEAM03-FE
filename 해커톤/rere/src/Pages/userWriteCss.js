@@ -134,6 +134,14 @@ export const PlaceInput = styled.textarea`
   border: none;
 `;
 
+export const CategoryInput = styled.textarea`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 1% 2%;
+  border: none;
+`;
+
 export const DealInput = styled.textarea`
   background-color: #fcf4ec;
   border-radius: 20px;
