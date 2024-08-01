@@ -176,34 +176,13 @@ export const KeywordName = styled.div`
   align-items: center;
 `;
 
-export const KeywordInput = styled.div`
+export const KeywordInput = styled.textarea`
   background-color: #fcf4ec;
   border-radius: 20px;
   width: fit-content;
   padding: 2% 3%;
   border: none;
   margin-left: -2%;
-  color: #806e56;
-`;
-
-export const Color = styled.div`
-  margin-top: 4%;
-  display: flex;
-`;
-
-export const ColordName = styled.div`
-  margin-right: 7%;
-  display: flex;
-  align-items: center;
-`;
-
-export const ColorInput = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  border: none;
-  margin-left: 2%;
   color: #806e56;
 `;
 // border: 1px solid black;

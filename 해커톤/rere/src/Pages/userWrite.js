@@ -237,14 +237,6 @@ function UserWrite() {
               placeholder="#따뜻한"
             />
           </Keyword>
-          <Color>
-            <ColordName>색상</ColordName>
-            <ColorInput
-              value={color}
-              onChange={(e) => setColor(e.target.value)}
-              placeholder="색상 입력"
-            />
-          </Color>
         </Main>
       </FullScreen>
     </div>
