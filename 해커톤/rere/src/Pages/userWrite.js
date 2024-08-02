@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import TopNav from "../components/TopNav";
-import BottomNav from "../components/BottomNav";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronDown,
@@ -40,9 +39,6 @@ import {
   Keyword,
   KeywordName,
   KeywordInput,
-  Color,
-  ColordName,
-  ColorInput,
   CategoryInput,
 } from "./userWriteCss";
 
@@ -56,7 +52,7 @@ function UserWrite() {
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [keyword, setKeyword] = useState("");
-  const [color, setColor] = useState("");
+  const navigate = useNavigate();
 
   const handlePhotoInputClick = () => {
     fileInputRef.current.click();
@@ -76,37 +72,73 @@ function UserWrite() {
     const token = localStorage.getItem("token");
     if (!token) {
       alert("로그인이 필요합니다.");
+      console.log("토큰이 없습니다.");
+      return;
+    }
+
+    console.log("토큰:", token);
+    console.log("title:", title);
+    console.log("content:", content);
+    console.log("locationId:", place);
+    console.log("time:", dealTime);
+    console.log("price:", price);
+    console.log("categoryId:", category);
+    console.log("moodId:", keyword);
+
+    if (
+      !title ||
+      !content ||
+      !place ||
+      !dealTime ||
+      !price ||
+      !category ||
+      !keyword
+    ) {
+      alert("모든 필드를 채워주세요.");
       return;
     }
 
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    formData.append("locationId", parseInt(place, 10)); // Long으로 변환
-    formData.append("time", parseInt(dealTime, 10)); // Integer로 변환
-    formData.append("price", parseInt(price, 10)); // Integer로 변환
-    formData.append("categoryId", parseInt(category, 10)); // Long으로 변환
-    formData.append("moodId", parseInt(keyword, 10)); // Long으로 변환
 
-    // 이미지 파일 추가
-    selectedImages.forEach((image, index) => {
-      const file = fileInputRef.current.files[index];
-      if (file) {
-        formData.append(`imgUrl`, file); // 백엔드의 키에 맞추어 `imgUrl`로 설정
-      }
+    // JSON 데이터 생성
+    const jsonData = JSON.stringify({
+      title: title,
+      content: content,
+      locationId: parseInt(place),
+      time: parseInt(dealTime),
+      price: parseInt(price),
+      categoryId: parseInt(category),
+      moodId: parseInt(keyword),
     });
+
+    // FormData에 JSON 데이터 추가
+    formData.append("post", new Blob([jsonData], { type: "application/json" }));
+
+    // FormData에 파일 추가
+    const files = fileInputRef.current.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append("imgUrl", files[i]);
+      console.log(`파일 ${i + 1}:`, files[i]);
+    }
+
+    // FormData의 모든 항목 로그 확인
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
+    }
 
     try {
       const response = await fetch("https://cinining.store/posts", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
-          // 'Content-Type': 'multipart/form-data', // FormData는 Content-Type을 자동으로 설정하므로 주석 처리합니다.
+          // 'Content-Type': 'multipart/form-data' // 브라우저가 자동으로 설정하게 합니다.
         },
         body: formData,
       });
 
       const responseText = await response.text();
+      console.log("응답 상태 코드:", response.status);
+      console.log("응답 본문:", responseText);
 
       if (response.ok) {
         alert("글이 성공적으로 작성되었습니다.");
