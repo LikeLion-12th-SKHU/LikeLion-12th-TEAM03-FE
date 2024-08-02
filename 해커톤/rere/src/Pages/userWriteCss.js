@@ -185,4 +185,20 @@ export const KeywordInput = styled.textarea`
   margin-left: -2%;
   color: #806e56;
 `;
+
+export const PlaceSelect = styled.select`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 3% 2%;
+  border: none;
+`;
+
+export const PlaceOption = styled.div`
+  padding: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: #f0f0f0;
+  }
+`;
 // border: 1px solid black;

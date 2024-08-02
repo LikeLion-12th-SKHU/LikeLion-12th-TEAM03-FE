@@ -7,13 +7,7 @@ import {
   faCheck,
   faCamera,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-  FullScreen,
-  Header,
-  HeaderCenter,
-  HeaderCenter1,
-  HeaderRight,
-} from "./standardCss";
+import { FullScreen, Header, HeaderCenter } from "./standardCss";
 
 import {
   HeaderLeftIcon,
@@ -32,7 +26,7 @@ import {
   PhotoResult,
   Place,
   PlaceName,
-  PlaceInput,
+  PlaceSelect,
   PriceName,
   PriceInput,
   DealInput,
@@ -47,12 +41,22 @@ function UserWrite() {
   const [selectedImages, setSelectedImages] = useState([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [place, setPlace] = useState("");
+  const [placeId, setPlaceId] = useState(""); // 거래 장소의 ID를 저장할 상태 변수
   const [dealTime, setDealTime] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
+
+  const places = [
+    { id: 1, name: "강남구 삼성동" },
+    { id: 2, name: "서초구 서초동" },
+    { id: 3, name: "송파구 잠실동" },
+    { id: 4, name: "마포구 서교동" },
+    { id: 5, name: "영등포구 여의도동" },
+    { id: 6, name: "성동구 성수동" },
+    { id: 7, name: "용산구 이태원동" },
+  ];
 
   const handlePhotoInputClick = () => {
     fileInputRef.current.click();
@@ -76,54 +80,27 @@ function UserWrite() {
       return;
     }
 
-    console.log("토큰:", token);
-    console.log("title:", title);
-    console.log("content:", content);
-    console.log("locationId:", place);
-    console.log("time:", dealTime);
-    console.log("price:", price);
-    console.log("categoryId:", category);
-    console.log("moodId:", keyword);
-
-    if (
-      !title ||
-      !content ||
-      !place ||
-      !dealTime ||
-      !price ||
-      !category ||
-      !keyword
-    ) {
-      alert("모든 필드를 채워주세요.");
-      return;
-    }
-
     const formData = new FormData();
 
     // JSON 데이터 생성
     const jsonData = JSON.stringify({
       title: title,
       content: content,
-      locationId: parseInt(place),
+      locationId: placeId,
       time: parseInt(dealTime),
       price: parseInt(price),
       categoryId: parseInt(category),
       moodId: parseInt(keyword),
     });
 
-    // FormData에 JSON 데이터 추가
     formData.append("post", new Blob([jsonData], { type: "application/json" }));
 
     // FormData에 파일 추가
     const files = fileInputRef.current.files;
     for (let i = 0; i < files.length; i++) {
-      formData.append("imgUrl", files[i]);
-      console.log(`파일 ${i + 1}:`, files[i]);
-    }
-
-    // FormData의 모든 항목 로그 확인
-    for (let [key, value] of formData.entries()) {
-      console.log(`${key}:`, value);
+      // 파일을 Blob 객체로 변환
+      const fileBlob = new Blob([files[i]], { type: files[i].type });
+      formData.append("imgUrl", fileBlob, files[i].name);
     }
 
     try {
@@ -135,6 +112,20 @@ function UserWrite() {
         },
         body: formData,
       });
+
+      console.log("토큰:", token);
+      console.log("title:", title);
+      console.log("content:", content);
+      console.log("locationId:", placeId);
+      console.log("time:", dealTime);
+      console.log("price:", price);
+      console.log("categoryId:", category);
+      console.log("moodId:", keyword);
+
+      // FormData의 모든 항목 로그 확인
+      for (let [key, value] of formData.entries()) {
+        console.log(`확인 :::: ${key}:`, value);
+      }
 
       const responseText = await response.text();
       console.log("응답 상태 코드:", response.status);
@@ -231,11 +222,17 @@ function UserWrite() {
           </Photo>
           <Place>
             <PlaceName>거래 장소</PlaceName>
-            <PlaceInput
-              value={place}
-              onChange={(e) => setPlace(e.target.value)}
-              placeholder="장소 추가"
-            />
+            <PlaceSelect
+              value={placeId}
+              onChange={(e) => setPlaceId(e.target.value)}
+            >
+              <option value="">거래 장소를 선택하세요</option>
+              {places.map((place) => (
+                <option key={place.id} value={place.id}>
+                  {place.name}
+                </option>
+              ))}
+            </PlaceSelect>
           </Place>
           <Place>
             <PlaceName>거래 시간</PlaceName>
