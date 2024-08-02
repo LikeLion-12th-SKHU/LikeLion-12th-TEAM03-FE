@@ -48,6 +48,7 @@ function UserWrite() {
   const [keyword, setKeyword] = useState("");
   const navigate = useNavigate();
 
+  // 거래 장소 목록
   const places = [
     { id: 1, name: "강남구 삼성동" },
     { id: 2, name: "서초구 서초동" },
@@ -56,6 +57,34 @@ function UserWrite() {
     { id: 5, name: "영등포구 여의도동" },
     { id: 6, name: "성동구 성수동" },
     { id: 7, name: "용산구 이태원동" },
+  ];
+
+  // 카테고리 목록
+  const categories = [
+    { id: 1, name: "벽지/바닥재" },
+    { id: 2, name: "가구/수납" },
+    { id: 3, name: "캔들/디퓨저" },
+    { id: 4, name: "인테리어 소품" },
+    { id: 5, name: "패브릭" },
+    { id: 6, name: "생활용품" },
+    { id: 7, name: "조명" },
+    { id: 8, name: "식물/꽃" },
+    { id: 9, name: "반려동물용품" },
+  ];
+
+  const keywords = [
+    { id: 1, name: "#아늑한" },
+    { id: 2, name: "#미니멀한" },
+    { id: 3, name: "#고급스러운" },
+    { id: 4, name: "#실용적인" },
+    { id: 5, name: "#편안한" },
+    { id: 6, name: "#감성적인" },
+    { id: 7, name: "#세련된" },
+    { id: 8, name: "#깔끔한" },
+    { id: 9, name: "#모던한" },
+    { id: 10, name: "#따뜻한" },
+    { id: 11, name: "#휴식" },
+    { id: 12, name: "#디자인" },
   ];
 
   const handlePhotoInputClick = () => {
@@ -239,7 +268,7 @@ function UserWrite() {
             <DealInput
               value={dealTime}
               onChange={(e) => setDealTime(e.target.value)}
-              placeholder="시간 선택"
+              placeholder="시간을 입력하세요."
             />
           </Place>
           <Place>
@@ -255,16 +284,28 @@ function UserWrite() {
             <CategoryInput
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              placeholder="카테고리 선택"
-            />
+            >
+              <option value="">카테고리를 선택하세요</option>
+              {categories.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
+            </CategoryInput>
           </Place>
           <Keyword>
             <KeywordName>키워드</KeywordName>
             <KeywordInput
               value={keyword}
               onChange={(e) => setKeyword(e.target.value)}
-              placeholder="#따뜻한"
-            />
+            >
+              <option value="">키워드를 선택하세요</option>
+              {keywords.map((keyword) => (
+                <option key={keyword.id} value={keyword.id}>
+                  {keyword.name}
+                </option>
+              ))}
+            </KeywordInput>
           </Keyword>
         </Main>
       </FullScreen>
