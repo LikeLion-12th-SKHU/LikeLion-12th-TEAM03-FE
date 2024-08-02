@@ -1,11 +1,11 @@
 import React from "react";
-import TopNav from "../components/TopNav";
+import "./myPage.css";
 import BottomNav from "../components/BottomNav";
+import styled from "styled-components";
 
 function MyPage() {
   return (
-    <div className="main-container">
-      <TopNav />
+    <div className="myPage-main-container">
       <div></div>
       <BottomNav />
     </div>

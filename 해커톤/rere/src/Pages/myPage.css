@@ -1,0 +1,10 @@
+.myPage-main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 세로 중앙 정렬 */
+  align-items: center; /* 가로 중앙 정렬 */
+  height: 100vh;
+  box-sizing: border-box;
+  max-width: 500px;
+  margin: 0 auto;
+}

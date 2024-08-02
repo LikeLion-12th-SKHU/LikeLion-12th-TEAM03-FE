@@ -9,6 +9,7 @@ function ResultPage() {
   const [comment, setComment] = useState("");
   const [score, setScore] = useState(0);
   const [products, setProducts] = useState([]); // Array 타입의 제품 리스트 상태
+  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
@@ -38,13 +39,34 @@ function ResultPage() {
   }, []);
 
   useEffect(() => {
-    // 임의의 데이터로 제품 리스트 설정
-    const mockProducts = Array.from({ length: 10 }, (_, index) => ({
-      imageUrl: `https://via.placeholder.com/150?text=Product+${index + 1}`,
-      title: `Product ${index + 1}`,
-    }));
-    setProducts(mockProducts);
-  }, []);
+    const fetchProducts = async () => {
+      setIsLoading(true); // 데이터를 가져오기 전에 로딩 상태로 설정
+      try {
+        const response = await fetch(
+          "https://cinining.store/psy-test/products",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ score }), // 보내야 하는 데이터가 있다면 여기에 추가
+          }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setProducts(data.postList); // 서버로부터 받은 데이터로 제품 리스트 설정
+        } else {
+          console.error("Failed to fetch products");
+        }
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      } finally {
+        setIsLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
+      }
+    };
+
+    fetchProducts();
+  }, [score]);
 
   return (
     <div className="main-container">
@@ -72,15 +94,17 @@ function ResultPage() {
         </div>
         <div className="row-container">
           <div className="row-product">
-            {products.length > 0 ? (
+            {isLoading ? (
+              <p>Loading products...</p>
+            ) : products.length > 0 ? (
               products.map((product, index) => (
                 <div key={index} className="product-item">
-                  <img src={product.imageUrl} alt={product.title} />
-                  <p>{product.title}</p>
+                  <img src={product.postImg} alt={product.postTitle} />
+                  <p>{product.postTitle}</p>
                 </div>
               ))
             ) : (
-              <p>Loading products...</p>
+              <p>아직 해당 유형과 관련된 상품이 없습니다.</p>
             )}
           </div>
         </div>
