@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<Join />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={<Main />} />
-        <Route path="/recommended" element={<Recommended />} />
+        <Route path="/recommended" element={<Candle />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/community" element={<Community />} />
         <Route path="/mypage" element={<MyPage />} />

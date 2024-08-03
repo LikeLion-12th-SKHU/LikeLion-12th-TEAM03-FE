@@ -74,7 +74,7 @@ const BottomNav = () => {
           className={activeNav === 2 ? "nav-item active" : "nav-item"}
         />
         <br />
-        <div className="iconFont">추천</div>
+        <div className="iconFont">탐색</div>
       </NavIcon>
       <NavIcon>
         <FontAwesomeIcon

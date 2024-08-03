@@ -25,9 +25,10 @@ const slideUp = keyframes`
 
 export const FullScreen = styled.div`
   background-color: white;
-  height: 880px;
+  height: fit-content;
   width: 100%;
   max-width: 500px;
+  overflow-y: scroll;
 `;
 
 export const Header = styled.header`
@@ -161,7 +162,8 @@ export const Words = styled.div`
 `;
 
 export const Main = styled.div`
-  margin: 5px auto;
+  margin-top: 5px;
+  margin-bottom: 16%;
 `;
 
 export const Section = styled.div`
@@ -176,7 +178,7 @@ export const Section = styled.div`
   }
 `;
 
-export const LeftImg = styled.div`
+export const LeftImg = styled.img`
   border: 2px solid #dfd3c2;
   border-radius: 20px;
   width: 45%;
@@ -207,7 +209,7 @@ export const Place = styled.div`
   font-size: 12px;
   color: #56805a;
   margin-top: 5px;
-  width: 100px;
+  width: 160px;
 `;
 
 export const PriceInfo = styled.div`
