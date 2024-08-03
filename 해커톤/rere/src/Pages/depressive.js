@@ -99,7 +99,11 @@ function Depressive() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(updatedData),
+          body: JSON.stringify({
+            emotionId: updatedData.emotionId,
+            colorIds: updatedData.colorIds,
+            score: updatedData.score, // score 추가
+          }),
         });
 
         if (!response.ok) {
