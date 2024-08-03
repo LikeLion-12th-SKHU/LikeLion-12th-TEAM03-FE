@@ -162,10 +162,9 @@ function UserWrite() {
 
       if (response.ok) {
         alert("글이 성공적으로 작성되었습니다.");
-        navigate(-1);
       } else {
         console.error("Error response:", responseText);
-        alert(`모든 값을 채워주세요!`);
+        alert(`글 작성에 실패했습니다: ${responseText}`);
       }
     } catch (error) {
       console.error("Error:", error);
