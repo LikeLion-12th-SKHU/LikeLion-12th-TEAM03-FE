@@ -1,0 +1,19 @@
+p {
+  font-family: "SUITE", sans-serif;
+}
+.PrevPage2 {
+  font-size: larger;
+  margin-left: 1rem;
+  cursor: pointer;
+  color: #806e56;
+}
+.test-title2 {
+  display: flex;
+  cursor: pointer;
+  margin-left: 18rem;
+}
+.bell,
+.gear {
+  color: #806e56;
+  font-size: larger;
+}

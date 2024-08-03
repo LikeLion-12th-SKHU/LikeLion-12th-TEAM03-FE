@@ -8,6 +8,8 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faShare } from "@fortawesome/free-solid-svg-icons";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { faArrowUpFromBracket } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
   faHouse,
@@ -18,5 +20,7 @@ library.add(
   faHeart,
   faShare,
   faChevronLeft,
-  faArrowUpFromBracket
+  faArrowUpFromBracket,
+  faBell,
+  faGear
 );
