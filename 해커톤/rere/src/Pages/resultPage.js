@@ -7,66 +7,38 @@ function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
   const [comment, setComment] = useState("");
-  const [score, setScore] = useState(0);
   const [products, setProducts] = useState([]); // Array 타입의 제품 리스트 상태
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
-    if (savedData.score) {
-      setScore(savedData.score);
-    }
-  }, []);
-
-  useEffect(() => {
-    const fetchAnimalPic = async () => {
+    const fetchData = async () => {
+      setIsLoading(true); // 데이터를 가져오기 전에 로딩 상태로 설정
       try {
-        const response = await fetch("https://cinining.store/psy-test");
+        const response = await fetch("https://cinining.store/psy-test", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({}), // 빈 객체를 보냄
+        });
         if (response.ok) {
           const data = await response.json();
           setAnimalPic(data.animalPic);
           setType(data.type);
           setComment(data.comment);
+          setProducts(data.postList); // 서버로부터 받은 데이터로 제품 리스트 설정
         } else {
           console.error("Failed to fetch data");
         }
       } catch (error) {
         console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchAnimalPic();
-  }, []);
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true); // 데이터를 가져오기 전에 로딩 상태로 설정
-      try {
-        const response = await fetch(
-          "https://cinining.store/psy-test/products",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ score }), // 보내야 하는 데이터가 있다면 여기에 추가
-          }
-        );
-        if (response.ok) {
-          const data = await response.json();
-          setProducts(data.postList); // 서버로부터 받은 데이터로 제품 리스트 설정
-        } else {
-          console.error("Failed to fetch products");
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
       } finally {
         setIsLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
       }
     };
 
-    fetchProducts();
-  }, [score]);
+    fetchData();
+  }, []);
 
   return (
     <div className="main-container">
