@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 function FireInside() {
   const numRows = 1; // 1열
   const numCols = 3; // 3열
-  const maxSelections = 1; // 최대 선택 가능 개수..
+  const maxSelections = 1; // 최대 선택 가능 개수
   const navigate = useNavigate();
   const [selectedButtons, setSelectedButtons] = useState(
     Array(numRows * numCols).fill(false)
@@ -64,7 +64,7 @@ function FireInside() {
 
         const updatedData = {
           ...savedData,
-          emotionId: emotionData.id,
+          // emotionId는 유지하고 score만 업데이트
           score: newScore,
         };
 
