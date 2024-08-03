@@ -102,8 +102,8 @@ function Depressive() {
           body: JSON.stringify({
             emotionId: updatedData.emotionId,
             colorIds: updatedData.colorIds,
-            score: updatedData.score,
-          }), // emotionId, colorIds 만 보냄
+            score: updatedData.score, // score 추가
+          }),
         });
 
         if (!response.ok) {

@@ -6,7 +6,7 @@ import Example from "../components/Example";
 function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
-  const [comment, setComment] = useState("");
+  const [colorComments, setColorComments] = useState(""); // 변경된 상태 변수
   const [products, setProducts] = useState([]); // Array 타입의 제품 리스트 상태
   const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
 
@@ -25,7 +25,7 @@ function ResultPage() {
           const data = await response.json();
           setAnimalPic(data.animalPic);
           setType(data.type);
-          setComment(data.comment);
+          setColorComments(data.colorComments); // 변경된 데이터 필드
           setProducts(data.postList); // 서버로부터 받은 데이터로 제품 리스트 설정
         } else {
           console.error("Failed to fetch data");
@@ -54,7 +54,7 @@ function ResultPage() {
         <div className="result-animal-detail">
           <p className="personal-type">{type}</p>
           <br />
-          <p>{comment}</p>
+          <p>{colorComments}</p> {/* 변경된 변수 사용 */}
         </div>
         <div className="progress-div">
           <Example />
