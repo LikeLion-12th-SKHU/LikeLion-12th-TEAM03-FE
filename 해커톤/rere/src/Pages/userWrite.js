@@ -45,7 +45,7 @@ function UserWrite() {
   const [dealTime, setDealTime] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [keywords, setKeywords] = useState([]); // 키워드를 배열로 저장
+  const [keyword, setKeyword] = useState(""); // 키워드를 단일 값으로 저장
   const navigate = useNavigate();
 
   // 거래 장소 목록
@@ -100,16 +100,7 @@ function UserWrite() {
   };
 
   const handleKeywordChange = (event) => {
-    const selectedKeyword = parseInt(event.target.value);
-    setKeywords((prevKeywords) => {
-      if (prevKeywords.includes(selectedKeyword)) {
-        // 이미 선택된 키워드이면 제거
-        return prevKeywords.filter((keyword) => keyword !== selectedKeyword);
-      } else {
-        // 선택되지 않은 키워드이면 추가
-        return [...prevKeywords, selectedKeyword];
-      }
-    });
+    setKeyword(event.target.value); // 단일 값으로 설정
   };
 
   const handleSubmit = async (event) => {
@@ -128,11 +119,11 @@ function UserWrite() {
     const jsonData = JSON.stringify({
       title: title,
       content: content,
-      locationId: placeId,
+      locationId: parseInt(placeId),
       time: parseInt(dealTime),
       price: parseInt(price),
       categoryId: parseInt(category),
-      moodIds: keywords, // 키워드 리스트를 포함
+      moodId: parseInt(keyword), // 단일 값으로 설정
     });
 
     formData.append("post", new Blob([jsonData], { type: "application/json" }));
@@ -140,9 +131,13 @@ function UserWrite() {
     // FormData에 파일 추가
     const files = fileInputRef.current.files;
     for (let i = 0; i < files.length; i++) {
-      // 파일을 Blob 객체로 변환
-      const fileBlob = new Blob([files[i]], { type: files[i].type });
-      formData.append("imgUrl", fileBlob, files[i].name);
+      formData.append("imgUrl", files[i]);
+      console.log(`파일 ${i + 1}:`, files[i]);
+    }
+
+    // FormData의 모든 항목 로그 확인
+    for (let [key, value] of formData.entries()) {
+      console.log(`${key}:`, value);
     }
 
     try {
@@ -161,7 +156,7 @@ function UserWrite() {
       console.log("time:", dealTime);
       console.log("price:", price);
       console.log("categoryId:", category);
-      console.log("moodIds:", keywords);
+      console.log("moodId:", keyword);
 
       // FormData의 모든 항목 로그 확인
       for (let [key, value] of formData.entries()) {
@@ -174,7 +169,7 @@ function UserWrite() {
 
       if (response.ok) {
         alert("글이 성공적으로 작성되었습니다.");
-        navigate("/"); // 글 작성 후 메인 페이지로 이동
+        navigate("/main"); // 글 작성 후 메인 페이지로 이동
       } else {
         console.error("Error response:", responseText);
         alert(`글 작성에 실패했습니다: ${responseText}`);
@@ -308,14 +303,8 @@ function UserWrite() {
           </Place>
           <Keyword>
             <KeywordName>키워드</KeywordName>
-            <KeywordInput
-              multiple // 다중 선택 가능하도록 추가
-              value={keywords}
-              onChange={handleKeywordChange}
-            >
-              <option value="" disabled>
-                키워드를 선택하세요
-              </option>
+            <KeywordInput value={keyword} onChange={handleKeywordChange}>
+              <option value="">키워드를 선택하세요</option>
               {keywordOptions.map((keyword) => (
                 <option key={keyword.id} value={keyword.id}>
                   {keyword.name}

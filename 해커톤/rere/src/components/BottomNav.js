@@ -20,6 +20,7 @@ const BottomNavContainer = styled.div`
   border-top: 1px solid #ccc;
   max-height: 45px;
   height: 100%;
+  z-index: 10;
 `;
 
 const NavIcon = styled.div`

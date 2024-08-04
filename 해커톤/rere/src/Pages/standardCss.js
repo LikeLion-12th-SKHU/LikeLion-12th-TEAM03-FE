@@ -29,6 +29,7 @@ export const FullScreen = styled.div`
   width: 100%;
   max-width: 500px;
   overflow-y: scroll;
+  overflow-x: hidden; /* 전체 화면에서 X축 스크롤 제거 */
 `;
 
 export const Header = styled.header`
@@ -44,6 +45,7 @@ export const Header = styled.header`
   position: fixed;
   width: 95%;
   max-width: 475px;
+  z-index: 10;
 `;
 
 export const HeaderLeft = styled.div`
@@ -99,6 +101,9 @@ export const Keywords = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  position: relative;
+  z-index: 7;
+  background-color: white;
 `;
 
 export const Distance = styled.div`

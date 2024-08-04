@@ -1,6 +1,7 @@
 .nav-item {
   font-size: 1.5rem;
   color: #9b9a9a;
+  z-index: 10;
 }
 
 .nav-item.active {
