@@ -20,19 +20,12 @@ function ResultPage() {
           throw new Error("No token found");
         }
 
-        // 로컬 스토리지에서 testResults 값 가져오기
-        const testResults = JSON.parse(localStorage.getItem("testResults"));
-        if (!testResults) {
-          throw new Error("No test results found");
-        }
-
         const response = await fetch("https://cinining.store/psy-test", {
-          method: "POST",
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(testResults), // testResults 데이터를 요청 본문에 포함
         });
 
         if (response.ok) {

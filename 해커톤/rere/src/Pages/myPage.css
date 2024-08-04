@@ -130,6 +130,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-end-start-radius: 20%;
 }
 .left-container {
   width: 11rem;
@@ -241,6 +242,7 @@
   z-index: 1;
   color: #29351a;
   margin-left: 1rem;
+  border-bottom: 1px solid #fcf4ec;
 }
 
 .myPage-circle {
