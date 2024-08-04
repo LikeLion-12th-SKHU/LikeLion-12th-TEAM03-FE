@@ -45,7 +45,7 @@ function UserWrite() {
   const [dealTime, setDealTime] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
-  const [keyword, setKeyword] = useState("");
+  const [keywords, setKeywords] = useState([]); // 키워드를 배열로 저장
   const navigate = useNavigate();
 
   // 거래 장소 목록
@@ -72,7 +72,7 @@ function UserWrite() {
     { id: 9, name: "반려동물용품" },
   ];
 
-  const keywords = [
+  const keywordOptions = [
     { id: 1, name: "#아늑한" },
     { id: 2, name: "#미니멀한" },
     { id: 3, name: "#고급스러운" },
@@ -99,6 +99,19 @@ function UserWrite() {
     ); // 기존 이미지와 새 이미지 합쳐서 최대 10개
   };
 
+  const handleKeywordChange = (event) => {
+    const selectedKeyword = parseInt(event.target.value);
+    setKeywords((prevKeywords) => {
+      if (prevKeywords.includes(selectedKeyword)) {
+        // 이미 선택된 키워드이면 제거
+        return prevKeywords.filter((keyword) => keyword !== selectedKeyword);
+      } else {
+        // 선택되지 않은 키워드이면 추가
+        return [...prevKeywords, selectedKeyword];
+      }
+    });
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -119,7 +132,7 @@ function UserWrite() {
       time: parseInt(dealTime),
       price: parseInt(price),
       categoryId: parseInt(category),
-      moodId: parseInt(keyword),
+      moodIds: keywords, // 키워드 리스트를 포함
     });
 
     formData.append("post", new Blob([jsonData], { type: "application/json" }));
@@ -137,7 +150,6 @@ function UserWrite() {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
-          // 'Content-Type': 'multipart/form-data' // 브라우저가 자동으로 설정하게 합니다.
         },
         body: formData,
       });
@@ -149,7 +161,7 @@ function UserWrite() {
       console.log("time:", dealTime);
       console.log("price:", price);
       console.log("categoryId:", category);
-      console.log("moodId:", keyword);
+      console.log("moodIds:", keywords);
 
       // FormData의 모든 항목 로그 확인
       for (let [key, value] of formData.entries()) {
@@ -162,6 +174,7 @@ function UserWrite() {
 
       if (response.ok) {
         alert("글이 성공적으로 작성되었습니다.");
+        navigate("/"); // 글 작성 후 메인 페이지로 이동
       } else {
         console.error("Error response:", responseText);
         alert(`글 작성에 실패했습니다: ${responseText}`);
@@ -296,11 +309,14 @@ function UserWrite() {
           <Keyword>
             <KeywordName>키워드</KeywordName>
             <KeywordInput
-              value={keyword}
-              onChange={(e) => setKeyword(e.target.value)}
+              multiple // 다중 선택 가능하도록 추가
+              value={keywords}
+              onChange={handleKeywordChange}
             >
-              <option value="">키워드를 선택하세요</option>
-              {keywords.map((keyword) => (
+              <option value="" disabled>
+                키워드를 선택하세요
+              </option>
+              {keywordOptions.map((keyword) => (
                 <option key={keyword.id} value={keyword.id}>
                   {keyword.name}
                 </option>
