@@ -15,7 +15,7 @@ const TestTopNavDiv = styled.div`
 
   justify-content: center;
   align-items: center;
-  padding: 10px 0;
+
   margin-top: 20px;
   background-color: #dfd3c2;
 `;

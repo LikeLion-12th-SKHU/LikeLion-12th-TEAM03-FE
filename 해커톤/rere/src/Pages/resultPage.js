@@ -6,7 +6,7 @@ import Example from "../components/Example";
 function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
-  const [colorComments, setColorComments] = useState([]); // 배열로 변경
+  const [colorComments, setColorComments] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -20,20 +20,26 @@ function ResultPage() {
           throw new Error("No token found");
         }
 
+        // 로컬 스토리지에서 testResults 값 가져오기
+        const testResults = JSON.parse(localStorage.getItem("testResults"));
+        if (!testResults) {
+          throw new Error("No test results found");
+        }
+
         const response = await fetch("https://cinining.store/psy-test", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({}),
+          body: JSON.stringify(testResults), // testResults 데이터를 요청 본문에 포함
         });
 
         if (response.ok) {
           const data = await response.json();
           setAnimalPic(data.animalPic);
           setType(data.type);
-          setColorComments(data.colorComments || []); // 배열로 초기화
+          setColorComments(data.colorComments || []);
           setProducts(data.postList || []);
         } else {
           console.error("Failed to fetch data, status:", response.status);

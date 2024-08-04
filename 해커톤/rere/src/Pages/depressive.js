@@ -15,7 +15,7 @@ function Depressive() {
   const [isNextEnabled, setIsNextEnabled] = useState(false);
   const [score, setScore] = useState(0); // State to hold the current score
 
-  // colors 데이터는 하드코딩 되어 있음
+  // colors 데이터
   const colors = [
     { colorId: 1, left: "yellow", right: "yellow", score: -1 },
     { colorId: 2, left: "red", right: "white", score: +1 },
