@@ -6,34 +6,44 @@ import Example from "../components/Example";
 function ResultPage() {
   const [animalPic, setAnimalPic] = useState("");
   const [type, setType] = useState("");
-  const [colorComments, setColorComments] = useState(""); // 변경된 상태 변수
-  const [products, setProducts] = useState([]); // Array 타입의 제품 리스트 상태
-  const [isLoading, setIsLoading] = useState(true); // 로딩 상태 추가
+  const [colorComments, setColorComments] = useState([]); // 배열로 변경
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsLoading(true); // 데이터를 가져오기 전에 로딩 상태로 설정
+      setIsLoading(true);
       try {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          throw new Error("No token found");
+        }
+
         const response = await fetch("https://cinining.store/psy-test", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({}), // 빈 객체를 보냄
+          body: JSON.stringify({}),
         });
+
         if (response.ok) {
           const data = await response.json();
           setAnimalPic(data.animalPic);
           setType(data.type);
-          setColorComments(data.colorComments); // 변경된 데이터 필드
-          setProducts(data.postList); // 서버로부터 받은 데이터로 제품 리스트 설정
+          setColorComments(data.colorComments || []); // 배열로 초기화
+          setProducts(data.postList || []);
         } else {
-          console.error("Failed to fetch data");
+          console.error("Failed to fetch data, status:", response.status);
+          const errorText = await response.text();
+          console.error("Error details:", errorText);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
-        setIsLoading(false); // 데이터 가져오기 완료 후 로딩 상태 해제
+        setIsLoading(false);
       }
     };
 
@@ -54,7 +64,11 @@ function ResultPage() {
         <div className="result-animal-detail">
           <p className="personal-type">{type}</p>
           <br />
-          <p>{colorComments}</p> {/* 변경된 변수 사용 */}
+          {colorComments.length > 0 ? (
+            colorComments.map((comment, index) => <p key={index}>{comment}</p>)
+          ) : (
+            <p>No comments available.</p>
+          )}
         </div>
         <div className="progress-div">
           <Example />

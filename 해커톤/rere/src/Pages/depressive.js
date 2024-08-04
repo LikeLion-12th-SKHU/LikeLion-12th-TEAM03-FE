@@ -15,6 +15,7 @@ function Depressive() {
   const [isNextEnabled, setIsNextEnabled] = useState(false);
   const [score, setScore] = useState(0); // State to hold the current score
 
+  // colors 데이터는 하드코딩 되어 있음
   const colors = [
     { colorId: 1, left: "yellow", right: "yellow", score: -1 },
     { colorId: 2, left: "red", right: "white", score: +1 },
@@ -74,7 +75,7 @@ function Depressive() {
       // 최종 제출 데이터 준비
       const selectedColorIds = colors
         .filter((_, index) => selectedButtons[index])
-        .map((color) => color.colorId); // colorId로 변경
+        .map((color) => color.colorId);
 
       const additionalScore = colors
         .filter((_, index) => selectedButtons[index])
@@ -98,6 +99,7 @@ function Depressive() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT 토큰 추가
           },
           body: JSON.stringify({
             emotionId: updatedData.emotionId,
@@ -132,7 +134,7 @@ function Depressive() {
       <div className="grid-container">
         {colors.map((color, index) => (
           <button
-            key={color.colorId} // colorId로 변경
+            key={color.colorId}
             className={`grid-button ${
               selectedButtons[index] ? "selected" : ""
             }`}
