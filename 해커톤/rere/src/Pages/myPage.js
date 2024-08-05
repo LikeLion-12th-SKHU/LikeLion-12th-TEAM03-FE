@@ -14,7 +14,7 @@ function MyPage() {
   const fileInputRef = useRef(null);
   const [profileImage, setProfileImage] = useState("");
   const [daysSinceAccountCreation, setDaysSinceAccountCreation] = useState(0);
-  const [score, setScore] = useState(75); // 예시 점수
+  const [score, setScore] = useState(0); // 예시 점수
   const [scoreNeeded, setScoreNeeded] = useState(100); // 다음 레벨까지 필요한 점수
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -35,6 +35,10 @@ function MyPage() {
         differenceInTime / (1000 * 3600 * 24)
       );
       setDaysSinceAccountCreation(differenceInDays);
+    }
+    const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+    if (savedData.score) {
+      setScore(savedData.score);
     }
   }, []);
 
