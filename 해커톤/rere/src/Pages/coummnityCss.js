@@ -66,27 +66,14 @@ export const Welcome = styled.div`
 `;
 
 export const Main = styled.div`
-  height: 1rem;
   background-color: white;
   position: relative;
   bottom: 12rem;
-  height: 25rem;
+  height: fit-content;
   z-index: 5;
   padding-top: 1rem;
   padding-left: 1rem;
-`;
-
-export const Main2 = styled.div`
-  height: 1rem;
-  background-color: white;
-  position: relative;
-  bottom: 18rem;
-  height: 25rem;
-  z-index: 5;
-  padding-top: 1rem;
-  padding-left: 1rem;
-  border-top: 2px solid #c6b597;
-  margin-bottom: -22rem;
+  width: 100%;
 `;
 
 export const Title = styled.div`
@@ -98,7 +85,21 @@ export const SectionContainer = styled.div`
   display: flex;
   overflow-x: auto;
   gap: 16px;
-  padding-bottom: 2rem;
+  padding-bottom: 1rem;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #dfd3c2;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #56805a;
+    border-radius: 6px;
+  }
 `;
 
 export const Section = styled.div`
@@ -160,4 +161,99 @@ export const HeartCount = styled.div`
   left: 1.5rem;
   font-weight: 900;
   font-size: 1rem;
+`;
+
+export const Main2 = styled.div`
+  height: fit-content;
+  background-color: white;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  border-top: 2px solid #fcf4ec;
+  margin-top: -12rem;
+`;
+
+export const SectionContainer2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 1rem;
+  gap: 1rem;
+  height: 13.5rem;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #dfd3c2;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #56805a;
+    border-radius: 6px;
+  }
+`;
+
+export const Section2 = styled.div`
+  border: 2px solid #806e56;
+  width: 21rem;
+  border-radius: 15px;
+  height: 5rem;
+`;
+
+export const SectionTitle2 = styled.div`
+  width: fit-content;
+  position: relative;
+  top: 0.3rem;
+  left: 0.7rem;
+`;
+
+export const SectionKeyword2 = styled.div`
+  color: #56805a;
+  font-size: 0.7rem;
+  position: relative;
+  top: 0.5rem;
+  left: 0.7rem;
+`;
+
+export const SectionPlace2 = styled.div`
+  font-size: 0.7rem;
+  width: fit-content;
+  position: relative;
+  top: 1.5rem;
+  left: 0.7rem;
+  color: #56805a;
+`;
+
+export const SectionHeart2 = styled.div`
+  width: fit-content;
+  color: #98c697;
+  position: relative;
+  top: 0.7rem;
+  left: 7.7rem;
+  display: flex;
+  font-size: 0.8rem;
+`;
+
+export const HeartCount2 = styled.div`
+  color: #29351a;
+  width: fit-content;
+  position: relative;
+  bottom: 0.15rem;
+  left: 0.3rem;
+`;
+
+export const Picture2 = styled.img`
+  display: block;
+  width: 50%;
+  height: 5.15rem;
+  border-radius: 15px;
+  position: relative;
+  bottom: 0.95rem;
+  left: 10.5rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 1px solid #806e56;
 `;

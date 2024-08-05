@@ -42,6 +42,14 @@ import {
   HeartCount,
   SectionContainer,
   Main2,
+  SectionContainer2,
+  Section2,
+  SectionTitle2,
+  SectionKeyword2,
+  SectionPlace2,
+  SectionHeart2,
+  HeartCount2,
+  Picture2,
 } from "./coummnityCss";
 
 const dummyData = [
@@ -132,21 +140,21 @@ function Community() {
           </SectionContainer>
         </Main>
         <Main2>
-          <Title>최신 글</Title>
-          <SectionContainer>
+          <Title>따끈따끈 최신 글</Title>
+          <SectionContainer2>
             {dummyData.map((data, index) => (
-              <Section key={index}>
-                <Picture></Picture>
-                <SectionTitle>{data.title}</SectionTitle>
-                <SectionKeyword>{data.keyword}</SectionKeyword>
-                <SectionPlace>{data.place}</SectionPlace>
-                <SectionHeart>
+              <Section2 key={index}>
+                <SectionTitle2>{data.title}</SectionTitle2>
+                <SectionKeyword2>{data.keyword}</SectionKeyword2>
+                <SectionPlace2>{data.place}</SectionPlace2>
+                <SectionHeart2>
                   <FontAwesomeIcon icon={faHeart} />
-                  <HeartCount>{data.heartCount}</HeartCount>
-                </SectionHeart>
-              </Section>
+                  <HeartCount2>{data.heartCount}</HeartCount2>
+                </SectionHeart2>
+                <Picture2></Picture2>
+              </Section2>
             ))}
-          </SectionContainer>
+          </SectionContainer2>
         </Main2>
         <BottomNav />
       </FullScreen>

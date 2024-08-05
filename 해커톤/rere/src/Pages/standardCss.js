@@ -28,8 +28,22 @@ export const FullScreen = styled.div`
   height: fit-content;
   width: 100%;
   max-width: 500px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden; /* 전체 화면에서 X축 스크롤 제거 */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #dfd3c2;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #56805a;
+    border-radius: 6px;
+  }
 `;
 
 export const Header = styled.header`
