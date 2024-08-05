@@ -27,6 +27,11 @@ function Join() {
       return;
     }
 
+    if (nickname.length > 5) {
+      setError("Nickname must be 5 characters or less");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -42,14 +47,9 @@ function Join() {
       setIsLoading(false);
 
       if (response.ok) {
-
-        navigate("/login");
-        console.log("확인");
-
-        // 회원가입 성공 시 받은 토큰을 로컬 스토리지에 저장
+        localStorage.setItem("nickname", nickname);
         localStorage.setItem("token", data.token);
-        navigate("/login"); // 메인 페이지로 이동
-
+        navigate("/login"); // 로그인 페이지로 이동
       } else {
         setError(data.message || "회원가입 실패");
       }
@@ -85,7 +85,7 @@ function Join() {
           type="text"
           value={nickname}
           onChange={(e) => setNickName(e.target.value)}
-          placeholder="NickName"
+          placeholder="5자 이내"
           required
           className="join-input"
         />

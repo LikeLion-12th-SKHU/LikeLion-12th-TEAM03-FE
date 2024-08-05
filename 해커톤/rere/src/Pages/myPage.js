@@ -18,6 +18,7 @@ function MyPage() {
   const [scoreNeeded, setScoreNeeded] = useState(100); // 다음 레벨까지 필요한 점수
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [nickname, setNickname] = useState("");
 
   useEffect(() => {
     const savedProfileImage = localStorage.getItem("profileImage");
@@ -39,6 +40,10 @@ function MyPage() {
     const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
     if (savedData.score) {
       setScore(savedData.score);
+    }
+    const savedNickname = localStorage.getItem("nickname");
+    if (savedNickname) {
+      setNickname(savedNickname);
     }
   }, []);
 
@@ -121,7 +126,7 @@ function MyPage() {
               onChange={handleImageChange}
             />
             <div className="profile-name">
-              <p className="profile-name-text">라임색 머리</p>
+              <p className="profile-name-text">{nickname || "닉네임 없음"}</p>
               <p className="bornDay">
                 함께한 지{" "}
                 <span className="BD">{daysSinceAccountCreation}일</span>
