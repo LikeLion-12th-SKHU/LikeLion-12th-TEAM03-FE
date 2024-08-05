@@ -112,6 +112,10 @@ function UserWrite() {
     });
   };
 
+  const handleXButtonClick = () => {
+    navigate(-1); // 이전 페이지로 이동
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -190,7 +194,7 @@ function UserWrite() {
       <FullScreen>
         <Header>
           <HeaderLeftIcon>
-            <FontAwesomeIcon icon={faX} />
+            <FontAwesomeIcon icon={faX} onClick={handleXButtonClick} />
           </HeaderLeftIcon>
           <HeaderCenter>
             <HeaderCenterWrite>글쓰기</HeaderCenterWrite>
