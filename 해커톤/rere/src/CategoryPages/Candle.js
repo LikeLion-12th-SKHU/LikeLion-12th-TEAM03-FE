@@ -1,5 +1,6 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./category.css";
@@ -13,7 +14,6 @@ import {
   Header,
   HeaderLeft,
   HeaderCenter,
-  HeaderLeftLogo,
   HeaderCenter1,
   HeaderRight,
   Keywords,
@@ -21,7 +21,6 @@ import {
   Price,
   Main,
   Section,
-  LeftImg,
   RightDesc,
   Tag,
   Title,
@@ -33,44 +32,13 @@ import {
   ChevronImg,
   Words,
   InnerChevron,
+  LeftImg,
 } from "../Pages/standardCss";
-
-// 임시 데이터
-const sections = [
-  {
-    id: 1,
-    tag: "#따뜻한 #휴식",
-    title: "인테리어 조명 처리합니다",
-    place: "항동 - 8시간 전",
-    price: "30,000원",
-  },
-  {
-    id: 2,
-    tag: "#모던한 #디자인",
-    title: "모던한 가구 판매합니다",
-    place: "강남구 - 2시간 전",
-    price: "50,000원",
-  },
-  {
-    id: 3,
-    tag: "#따뜻한 #휴식",
-    title: "인테리어 조명 처리합니다",
-    place: "항동 - 8시간 전",
-    price: "30,000원",
-  },
-  {
-    id: 4,
-    tag: "#모던한 #디자인",
-    title: "모던한 가구 판매합니다",
-    place: "강남구 - 2시간 전",
-    price: "50,000원",
-  },
-  // 더 많은 데이터를 추가할 수 있음
-];
 
 function Candle() {
   const [dropdownOpen, setDropdownOpen] = useState(null);
   const [dropdownPosition, setDropdownPosition] = useState({ top: 0, left: 0 });
+  const [sections, setSections] = useState([]);
 
   const distanceRef = useRef(null);
   const priceRef = useRef(null);
@@ -99,6 +67,34 @@ function Candle() {
   const writeClick = () => {
     navigate(`/write`);
   };
+
+  const calculateTimeDifference = (createDate) => {
+    const now = new Date();
+    const created = new Date(createDate);
+    const diffInMs = now - created;
+    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+
+    if (diffInHours >= 24) {
+      const diffInDays = Math.floor(diffInHours / 24);
+      return `${diffInDays}일 전`;
+    }
+
+    return `${diffInHours}시간 전`;
+  };
+
+  useEffect(() => {
+    // 백엔드 API 호출
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("/posts");
+        setSections(response.data.posts);
+      } catch (error) {
+        console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className="main-container">
@@ -145,12 +141,17 @@ function Candle() {
               key={section.id}
               onClick={() => handleSectionClick(section.id)}
             >
-              <LeftImg />
+              <LeftImg src={section.imgUrl} />
               <RightDesc>
-                <Tag>{section.tag}</Tag>
+                <Tag>&#35;{section.mood.name}</Tag>
                 <Title>{section.title}</Title>
-                <Place>{section.place}</Place>
-                <PriceInfo>{section.price}</PriceInfo>
+                <Place>
+                  {section.location.name} •{" "}
+                  {calculateTimeDifference(section.createDate)}
+                </Place>
+                <PriceInfo>
+                  {section.price ? section.price.toLocaleString() : 0}원
+                </PriceInfo>
               </RightDesc>
             </Section>
           ))}
@@ -196,4 +197,5 @@ function Candle() {
     </div>
   );
 }
+
 export default Candle;

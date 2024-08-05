@@ -134,12 +134,22 @@ export const PlaceInput = styled.textarea`
   border: none;
 `;
 
-export const DealInput = styled.textarea`
+export const CategoryInput = styled.select`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 3% 2%;
+  border: none;
+  color: #806e56;
+`;
+
+export const DealInput = styled.input`
   background-color: #fcf4ec;
   border-radius: 20px;
   width: 41%;
-  padding: 1% 2%;
+  padding: 3% 2%;
   border: none;
+  color: #806e56;
 `;
 
 export const PriceName = styled.div`
@@ -148,13 +158,14 @@ export const PriceName = styled.div`
   align-items: center;
 `;
 
-export const PriceInput = styled.textarea`
+export const PriceInput = styled.input`
   background-color: #fcf4ec;
   border-radius: 20px;
-  width: 61%;
-  padding: 1% 2%;
+  width: 41%;
+  padding: 3% 2%;
   border: none;
   margin-left: 2%;
+  color: #806e56;
 `;
 
 export const Keyword = styled.div`
@@ -168,34 +179,23 @@ export const KeywordName = styled.div`
   align-items: center;
 `;
 
-export const KeywordInput = styled.div`
+export const KeywordInput = styled.select`
   background-color: #fcf4ec;
   border-radius: 20px;
   width: fit-content;
-  padding: 2% 3%;
+  padding: 3% 3%;
   border: none;
   margin-left: -2%;
   color: #806e56;
 `;
 
-export const Color = styled.div`
-  margin-top: 4%;
-  display: flex;
-`;
-
-export const ColordName = styled.div`
-  margin-right: 7%;
-  display: flex;
-  align-items: center;
-`;
-
-export const ColorInput = styled.div`
-  background-color: #d9d9d9;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+export const PlaceSelect = styled.select`
+  background-color: #fcf4ec;
+  border-radius: 20px;
+  width: 73%;
+  padding: 3% 2%;
   border: none;
-  margin-left: 2%;
   color: #806e56;
 `;
+
 // border: 1px solid black;
