@@ -7,14 +7,14 @@
   overflow: hidden; /* 플로트된 요소 포함 */
   padding: 10px;
   box-sizing: border-box; /* 패딩 포함 너비 계산 */
-  height: 80%;
+  height: 95vh;
 }
 .animal-circle-div {
   width: 50%; /* 이미지 컨테이너 너비 */
   height: 25%; /* 이미지 컨테이너 높이 */
   margin-right: 10px; /* 이미지와 텍스트 간의 간격 */
   margin-bottom: -6rem;
-  margin-top: 4.5rem;
+  margin-top: 7rem;
 }
 .animal-img {
   width: 100%; /* 이미지 너비 */

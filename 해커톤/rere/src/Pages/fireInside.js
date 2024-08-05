@@ -102,9 +102,9 @@ function FireInside() {
   };
 
   return (
-    <div className="main-container">
+    <div className="fireinside-main-container">
       <TestTopNav text="불안 체크" />
-      <div className="guide-container">
+      <div className="fireinside-guide-container">
         <p className="guide">
           물잔의 <br />
           <span>상태는 어떠한가요?</span>

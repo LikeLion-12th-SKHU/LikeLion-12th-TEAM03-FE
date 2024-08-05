@@ -8,16 +8,17 @@ html {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4열 */
-  gap: 5%; /* 버튼 사이 간격 */
-  margin-top: 20%;
+  gap: 0.1rem; /* 버튼 사이 간격 */
+  margin-top: 3rem;
   justify-content: center;
+  margin-left: 1.1rem;
 }
 
 .grid-button {
   border: 1px solid #ccc !important;
   width: 5rem; /* 버튼의 너비 */
   height: 3rem; /* 버튼의 높이 */
-  margin-top: 13%; /* 버튼 사이의 간격 */
+  margin-top: 1rem; /* 버튼 사이의 간격 */
   cursor: pointer;
   font-size: 0.9rem;
   text-align: center;
@@ -48,6 +49,7 @@ html {
 .guide-container {
   justify-content: center;
   display: flex;
+  margin-top: 16rem;
 }
 span {
   color: #46744b;

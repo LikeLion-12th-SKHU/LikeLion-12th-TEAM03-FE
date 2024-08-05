@@ -28,14 +28,14 @@ const MainLogoImg = styled.img`
   max-width: 100px;
   cursor: pointer;
   margin-top: 0;
-  margin-left: 40%;
+  margin-left: -1rem;
 `;
 const Share = styled.div`
   color: #29351a;
-  font-size: 25px;
+  font-size: 1.3rem;
   margin-left: 27%;
   cursor: pointer;
-  margin-right: 6%;
+  margin-right: -0.3rem;
 `;
 const ResultTopNav = () => {
   const navigate = useNavigate();
@@ -46,6 +46,13 @@ const ResultTopNav = () => {
 
   return (
     <TopNavContainer>
+      <FontAwesomeIcon
+        icon="fa-solid fa-chevron-left"
+        className="PrevPage"
+        onClick={() => {
+          handleNavigation("/main");
+        }}
+      />
       <MainLogoImg
         onClick={() => handleNavigation("/main")}
         src="/img/result-logo.png"
