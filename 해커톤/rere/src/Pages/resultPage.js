@@ -10,6 +10,7 @@ function ResultPage() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [score, setScore] = useState(0); // 초기 score 상태 정의
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,6 +55,19 @@ function ResultPage() {
   }, []);
 
   useEffect(() => {
+    const storedTestResults = localStorage.getItem("testResults");
+    if (storedTestResults) {
+      try {
+        const parsedResults = JSON.parse(storedTestResults);
+        const scoreFromResults = parsedResults.score || 0;
+        setScore(scoreFromResults); // testResults에서 score 값을 설정
+      } catch (error) {
+        console.error("Error parsing testResults:", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     console.log("colorComments state updated:", colorComments); // 상태 업데이트 후 로그
   }, [colorComments]);
 
@@ -78,6 +92,7 @@ function ResultPage() {
           )}
         </div>
         <div className="progress-div">
+          <div className="result-score">{score}점</div>
           <Example />
         </div>
         <div className="type-product-container">
