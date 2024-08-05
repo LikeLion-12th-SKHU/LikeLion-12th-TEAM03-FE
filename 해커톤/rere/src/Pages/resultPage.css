@@ -13,8 +13,8 @@
   width: 50%; /* 이미지 컨테이너 너비 */
   height: 25%; /* 이미지 컨테이너 높이 */
   margin-right: 10px; /* 이미지와 텍스트 간의 간격 */
-  margin-top: 10%;
-  border: 1px solid black;
+  margin-bottom: -6rem;
+  margin-top: 4.5rem;
 }
 .animal-img {
   width: 100%; /* 이미지 너비 */
@@ -26,7 +26,7 @@
   padding: 5%;
   text-align: center;
   box-sizing: border-box; /* 패딩 포함 너비 계산 */
-  border: 1px solid black;
+
   margin-bottom: 2rem;
   margin-top: 2rem;
 }
@@ -45,6 +45,7 @@
 }
 .type-contain-text {
   font-weight: 800;
+  margin-right: 0.5rem;
   color: #56805a;
 }
 .type-product-text {

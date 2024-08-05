@@ -65,7 +65,11 @@ function MyPage() {
           <div className="profile-container">
             <div className="profile" onClick={handlePhotoInputClick}>
               {profileImage ? (
-                <img src={profileImage} alt="Profile" />
+                <img
+                  src={profileImage}
+                  alt="Profile"
+                  className="profileImage"
+                />
               ) : (
                 <p>No Image</p>
               )}

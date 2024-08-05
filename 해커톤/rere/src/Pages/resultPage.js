@@ -9,15 +9,18 @@ function ResultPage() {
   const [colorComments, setColorComments] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
+      setError(null);
       try {
         const token = localStorage.getItem("token");
 
         if (!token) {
-          throw new Error("No token found");
+          setError("No token found. Please log in.");
+          return;
         }
 
         const response = await fetch("https://cinining.store/psy-test", {
@@ -28,18 +31,19 @@ function ResultPage() {
           },
         });
 
-        if (response.ok) {
-          const data = await response.json();
-          setAnimalPic(data.animalPic);
-          setType(data.type);
-          setColorComments(data.colorComments || []);
-          setProducts(data.postList || []);
-        } else {
-          console.error("Failed to fetch data, status:", response.status);
+        if (!response.ok) {
           const errorText = await response.text();
-          console.error("Error details:", errorText);
+          throw new Error(`Failed to fetch data: ${errorText}`);
         }
+
+        const data = await response.json();
+        console.log("API response data:", data); // API 응답 데이터 로그
+        setAnimalPic(data.animalPic);
+        setType(data.type);
+        setColorComments(data.colorComments || []);
+        setProducts(data.postList || []);
       } catch (error) {
+        setError(error.message);
         console.error("Error fetching data:", error);
       } finally {
         setIsLoading(false);
@@ -49,15 +53,19 @@ function ResultPage() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    console.log("colorComments state updated:", colorComments); // 상태 업데이트 후 로그
+  }, [colorComments]);
+
   return (
     <div className="main-container">
       <ResultTopNav />
       <div className="result-animal-container">
         <div className="animal-circle-div">
-          {animalPic ? (
-            <img src={animalPic} alt="Result Animal" className="animal-img" />
-          ) : (
+          {isLoading ? (
             <p>Loading...</p>
+          ) : (
+            <img src={animalPic} alt="Result Animal" className="animal-img" />
           )}
         </div>
         <div className="result-animal-detail">
@@ -82,8 +90,8 @@ function ResultPage() {
             {isLoading ? (
               <p>Loading products...</p>
             ) : products.length > 0 ? (
-              products.map((product, index) => (
-                <div key={index} className="product-item">
+              products.map((product) => (
+                <div key={product.id} className="product-item">
                   <img src={product.postImg} alt={product.postTitle} />
                   <p>{product.postTitle}</p>
                 </div>
@@ -94,6 +102,7 @@ function ResultPage() {
           </div>
         </div>
       </div>
+      {error && <p className="error">{error}</p>}
     </div>
   );
 }
