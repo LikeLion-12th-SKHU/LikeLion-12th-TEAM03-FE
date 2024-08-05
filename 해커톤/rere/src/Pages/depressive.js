@@ -1,10 +1,9 @@
-//우울 페이지
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./psyTest.css";
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-// color 4개 보내야함
+
 function Depressive() {
   const numRows = 5;
   const numCols = 4;
@@ -14,29 +13,38 @@ function Depressive() {
     Array(numRows * numCols).fill(false)
   );
   const [isNextEnabled, setIsNextEnabled] = useState(false);
+  const [score, setScore] = useState(0); // State to hold the current score
 
+  // colors 데이터
   const colors = [
-    { id: 1, left: "yellow", right: "yellow" },
-    { id: 2, left: "red", right: "white" },
-    { id: 3, left: "purple", right: "purple" },
-    { id: 4, left: "black", right: "black" },
-    { id: 5, left: "black", right: "blue" },
-    { id: 6, left: "white", right: "green" },
-    { id: 7, left: "black", right: "brown" },
-    { id: 8, left: "blue", right: "yellow" },
-    { id: 9, left: "brown", right: "brown" },
-    { id: 10, left: "purple", right: "yellow" },
-    { id: 11, left: "blue", right: "blue" },
-    { id: 12, left: "black", right: "green" },
-    { id: 13, left: "brown", right: "white" },
-    { id: 14, left: "white", right: "yellow" },
-    { id: 15, left: "blue", right: "red" },
-    { id: 16, left: "pink", right: "pink" },
-    { id: 17, left: "gray", right: "gray" },
-    { id: 18, left: "green", right: "green" },
-    { id: 19, left: "black", right: "purple" },
-    { id: 20, left: "#A68E31", right: "#A68E31" },
+    { colorId: 1, left: "yellow", right: "yellow", score: -1 },
+    { colorId: 2, left: "red", right: "white", score: +1 },
+    { colorId: 3, left: "purple", right: "purple", score: -1 },
+    { colorId: 4, left: "black", right: "black", score: -1 },
+    { colorId: 5, left: "black", right: "blue", score: -1 },
+    { colorId: 6, left: "white", right: "green", score: -1 },
+    { colorId: 7, left: "black", right: "brown", score: -1 },
+    { colorId: 8, left: "blue", right: "yellow", score: -1 },
+    { colorId: 9, left: "brown", right: "brown", score: -1 },
+    { colorId: 10, left: "purple", right: "yellow", score: -1 },
+    { colorId: 11, left: "blue", right: "blue", score: -1 },
+    { colorId: 12, left: "black", right: "green", score: -1 },
+    { colorId: 13, left: "brown", right: "white", score: +1 },
+    { colorId: 14, left: "white", right: "yellow", score: +1 },
+    { colorId: 15, left: "blue", right: "red", score: -1 },
+    { colorId: 16, left: "pink", right: "pink", score: -1 },
+    { colorId: 17, left: "gray", right: "gray", score: -1 },
+    { colorId: 18, left: "green", right: "green", score: -1 },
+    { colorId: 19, left: "black", right: "purple", score: -1 },
+    { colorId: 20, left: "#A68E31", right: "#A68E31", score: -1 },
   ];
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+    if (savedData.score) {
+      setScore(savedData.score);
+    }
+  }, []);
 
   const handleButtonClick = (index) => {
     const newSelectedButtons = [...selectedButtons];
@@ -62,38 +70,53 @@ function Depressive() {
     );
   };
 
-  const handleSubmit = async () => {
-    try {
+  const handleNextClick = async () => {
+    if (isNextEnabled) {
       // 최종 제출 데이터 준비
       const selectedColorIds = colors
         .filter((_, index) => selectedButtons[index])
-        .map((color) => color.id);
+        .map((color) => color.colorId);
 
-      const formData = new FormData();
-      formData.append("selectedColorIds", JSON.stringify(selectedColorIds));
+      const additionalScore = colors
+        .filter((_, index) => selectedButtons[index])
+        .reduce((acc, color) => acc + color.score, 0);
 
-      const response = await fetch("YOUR_SERVER_SUBMIT_ENDPOINT", {
-        method: "POST",
-        body: formData,
-      });
+      const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+      const newScore = (savedData.score || 0) + additionalScore;
 
-      if (!response.ok) {
-        throw new Error("Failed to submit data");
+      const updatedData = {
+        ...savedData,
+        colorIds: selectedColorIds,
+        score: newScore,
+      };
+
+      // Save updated data to local storage
+      localStorage.setItem("testResults", JSON.stringify(updatedData));
+
+      // Send data to the server
+      try {
+        const response = await fetch("https://cinining.store/psy-test", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT 토큰 추가
+          },
+          body: JSON.stringify({
+            emotionId: updatedData.emotionId,
+            colorIds: updatedData.colorIds,
+            score: updatedData.score, // score 추가
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Failed to submit data");
+        }
+
+        console.log("Submission successful");
+        navigate("/psytest/resultPage"); // 페이지 이동
+      } catch (error) {
+        console.error("Error submitting data:", error);
       }
-
-      console.log("Submission successful");
-      // 제출 후 페이지 전환 또는 알림 처리
-      // navigate("/some/path"); // 예시로 페이지 이동
-    } catch (error) {
-      console.error("Error submitting data:", error);
-    }
-  };
-
-  const handleNextClick = () => {
-    // 4개가 선택되었을 때만 데이터를 제출하고 다음 페이지로 이동
-    if (isNextEnabled) {
-      handleSubmit(); // 선택된 데이터 전송
-      navigate("/psytest/resultPage"); // 페이지 이동
     } else {
       alert("2개의 색상을 선택해 주세요.");
     }
@@ -111,7 +134,7 @@ function Depressive() {
       <div className="grid-container">
         {colors.map((color, index) => (
           <button
-            key={color.id}
+            key={color.colorId}
             className={`grid-button ${
               selectedButtons[index] ? "selected" : ""
             }`}
@@ -129,9 +152,10 @@ function Depressive() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/fireinside"
+        nextPath="/psytest/resultPage"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
+        buttonText="완료"
       />
     </div>
   );

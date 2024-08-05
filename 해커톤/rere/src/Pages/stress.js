@@ -1,10 +1,9 @@
-// 감정 페이지
 import React, { useState } from "react";
 import "./stress.css"; // CSS 파일
 import TestBottomNav from "../components/BottomNavContainer";
 import TestTopNav from "../components/TopNavContainer";
 import { useNavigate } from "react-router-dom";
-//emotion 보내기
+
 function Stress() {
   const numRows = 4; // 4행으로 감정 버튼 배치
   const numCols = 4; // 4열로 감정 버튼 배치
@@ -16,22 +15,22 @@ function Stress() {
   const [isNextEnabled, setIsNextEnabled] = useState(false); // '다음' 버튼 활성화 여부 상태
 
   const emotions = [
-    { id: 1, name: "행복한" },
-    { id: 2, name: "괴로운" },
-    { id: 3, name: "암울한" },
-    { id: 4, name: "감동적인" },
-    { id: 5, name: "신나는" },
-    { id: 6, name: "편안한" },
-    { id: 7, name: "두려운" },
-    { id: 8, name: "흥미로운" },
-    { id: 9, name: "초조한" },
-    { id: 10, name: "불안한" },
-    { id: 11, name: "기쁜" },
-    { id: 12, name: "걱정되는" },
-    { id: 13, name: "설레는" },
-    { id: 14, name: "무기력한" },
-    { id: 15, name: "답답한" },
-    { id: 16, name: "상쾌한" },
+    { emotionId: 1, name: "행복한", score: 10 },
+    { emotionId: 2, name: "괴로운", score: -10 },
+    { emotionId: 3, name: "암울한", score: -10 },
+    { emotionId: 4, name: "감동적인", score: 10 },
+    { emotionId: 5, name: "신나는", score: 10 },
+    { emotionId: 6, name: "편안한", score: 10 },
+    { emotionId: 7, name: "두려운", score: -10 },
+    { emotionId: 8, name: "흥미로운", score: 10 },
+    { emotionId: 9, name: "긴장되는", score: -10 },
+    { emotionId: 10, name: "불안한", score: -10 },
+    { emotionId: 11, name: "기쁜", score: 10 },
+    { emotionId: 12, name: "걱정되는", score: -10 },
+    { emotionId: 13, name: "설레는", score: 10 },
+    { emotionId: 14, name: "무기력한", score: -10 },
+    { emotionId: 15, name: "답답한", score: -10 },
+    { emotionId: 16, name: "상쾌한", score: 10 },
   ];
 
   const handleButtonClick = (index) => {
@@ -58,36 +57,24 @@ function Stress() {
     );
   };
 
-  const sendEmotionData = async (emotionId) => {
-    try {
-      const formData = new FormData();
-      formData.append("emotionId", emotionId);
-
-      const response = await fetch("YOUR_SERVER_ENDPOINT", {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send emotion data");
-      }
-
-      console.log("Emotion data sent successfully");
-    } catch (error) {
-      console.error("Error sending emotion data:", error);
-    }
-  };
-
   const handleNextClick = () => {
     if (isNextEnabled) {
-      // 선택된 감정의 ID를 찾아서 서버에 전송
+      // 선택된 감정의 ID를 찾아서 로컬 스토리지에 저장
       const selectedIndex = selectedButtons.findIndex(Boolean);
       if (selectedIndex !== -1) {
         const emotionData = emotions[selectedIndex];
-        sendEmotionData(emotionData.id);
-      }
+        const { emotionId, score } = emotionData;
 
-      navigate("/psytest/fireinside"); // 페이지 이동 처리
+        // 로컬 스토리지에 emotionId와 score 저장
+        const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+        savedData.emotionId = emotionId;
+        savedData.score = (savedData.score || 50) + score;
+        localStorage.setItem("testResults", JSON.stringify(savedData));
+
+        console.log("Emotion and score saved to localStorage:", savedData);
+
+        navigate("/psytest/fireinside"); // 페이지 이동 처리
+      }
     } else {
       alert("1개의 항목을 선택해 주세요.");
     }
@@ -107,7 +94,7 @@ function Stress() {
       <div className="grid-container">
         {emotions.map((emotion, index) => (
           <button
-            key={emotion.id}
+            key={emotion.emotionId} // emotionId로 변경
             className={`grid-button ${
               selectedButtons[index] ? "selected" : ""
             }`}

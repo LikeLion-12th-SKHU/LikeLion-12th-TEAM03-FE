@@ -59,7 +59,7 @@ span {
   max-width: 500px;
   height: 50%;
   background-color: rgb(252, 244, 236);
-  border-end-start-radius: 25%;
+  border-end-start-radius: 20%;
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@ span {
   width: 100%;
   height: 50%;
   background-color: white;
-  border-start-end-radius: 25%;
+  border-start-end-radius: 20%;
   align-items: center;
   display: flex;
 }
@@ -152,14 +152,14 @@ span {
 
 .today {
   font-weight: 800;
-  margin-right: 0.2em;
+  margin-right: 0.1rem;
   color: #29351a;
 }
 .comment {
   font-size: 120%;
   white-space: nowrap;
   text-align: right;
-  margin-right: 0.6rem;
+  margin-right: 1rem;
   width: 100%;
   margin-left: 20%;
 }
@@ -171,12 +171,13 @@ span {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+  margin-right: 0.5rem;
 }
 
 .keyword1 {
   width: 50%;
   font-size: 120%;
-  margin-right: 0.5rem;
+  margin-right: 0.2rem;
   margin-bottom: 10px;
 }
 

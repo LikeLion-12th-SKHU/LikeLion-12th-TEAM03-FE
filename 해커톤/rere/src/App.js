@@ -22,6 +22,7 @@ import UserWrite from "./Pages/userWrite";
 import Stress from "./Pages/stress";
 import ResultPage from "./Pages/resultPage";
 import Depressive from "./Pages/depressive";
+import Setting from "./Pages/setting";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
         <Route path="/details/:id" element={<DetailsSeller />} />
         <Route path="/psytest" element={<Stress />} />
         <Route path="/psytest/resultPage" element={<ResultPage />} />
+        <Route path="/setting" element={<Setting />} />
       </Routes>
     </Router>
   );

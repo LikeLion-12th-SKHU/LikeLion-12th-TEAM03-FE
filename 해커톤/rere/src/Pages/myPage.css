@@ -1,0 +1,260 @@
+.r-top-half {
+  width: 100%;
+  max-width: 500px;
+  height: 50%;
+  background-image: linear-gradient(
+    to right,
+    rgb(252, 244, 236) 50%,
+    #dfd3c2 50%
+  );
+  border-end-start-radius: 20%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 가로 중앙 정렬 */
+  box-sizing: border-box;
+}
+.r-bottom-half {
+}
+.rmc {
+  background-color: #dfd3c2;
+  width: 100%;
+  max-width: 500px;
+  height: 50%;
+  background-image: linear-gradient(
+    to right,
+    rgb(252, 244, 236) 50%,
+    #dfd3c2 50%
+  );
+}
+.rmc-top-container {
+  width: 100%;
+  max-width: 500px;
+  height: 50%;
+  background-color: #dfd3c2;
+  border-end-start-radius: 20%;
+}
+
+.num {
+  font-weight: bolder;
+  color: #29351a;
+}
+.profileImage {
+  margin-top: 1rem;
+}
+.profile-container {
+  width: 100%;
+  height: 40%;
+  margin-top: 7.4rem;
+  display: flex;
+  flex-direction: row;
+  margin-left: 1rem;
+}
+.profile {
+  width: 22%;
+  height: 100%;
+  border-radius: 50%; /* 동그라미 형태 */
+  overflow: hidden;
+  background-color: #ccc; /* 백업 배경색 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 0.4rem;
+}
+.profile-name {
+  width: 27%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0.8rem;
+}
+.profile-name-text {
+  margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  color: #29351a;
+}
+.bornDay {
+  font-size: 12px;
+  color: #29351a;
+  margin-bottom: 2rem;
+  margin-top: -0.3rem;
+}
+.BD {
+  color: #29351a;
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+.edit-profile {
+  font-size: 12px;
+  color: #29351a;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: -0.6rem;
+  margin-bottom: 1rem;
+}
+
+.edit-profile:hover {
+  text-decoration: none;
+}
+.complete {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 2rem;
+}
+.complete-text {
+  margin-bottom: -0.2rem;
+  font-weight: 600;
+  color: #29351a;
+}
+.review {
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0.4rem;
+}
+.rmc-bottom-container {
+  width: 100%;
+  max-width: 500px;
+  height: 50%;
+  background-color: #fcf4ec;
+  border-start-end-radius: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-end-start-radius: 20%;
+}
+.left-container {
+  width: 11rem;
+  height: 12rem;
+  background-color: white;
+  border-radius: 2rem;
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressbar-wrapper {
+  width: 110px; /* 원하는 크기로 조절 */
+  height: 110px; /* 원하는 크기로 조절 */
+}
+.circle-num {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-right: 0.3rem;
+  color: #29351a;
+}
+.circle-num2 {
+  font-weight: bolder;
+  color: #29351a;
+}
+.level-title {
+  margin-left: -4.6rem;
+  font-size: 0.7rem;
+  background-color: #806e56;
+  border: none;
+  color: white;
+  font-weight: 400;
+  border-radius: 1rem;
+  padding: 0.3rem 0.7rem;
+  margin-bottom: 0.7rem;
+}
+.level-title2 {
+  font-size: 0.8rem;
+  margin-top: 0.7rem;
+}
+.mileage-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.8rem;
+  margin-top: -3.3rem;
+  margin-left: -1.3rem;
+}
+.right-level-title {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  background-color: #806e56;
+  border: none;
+  color: white;
+  font-weight: 400;
+  border-radius: 1rem;
+}
+.rlt {
+  margin-left: 0.4rem;
+  color: #806e56;
+  font-size: 0.7rem;
+}
+.right-container {
+  width: 11rem;
+  height: 12rem;
+  background-color: white;
+  border-radius: 2rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mileage {
+  font-size: 2rem;
+  display: flex;
+  position: relative;
+}
+.point {
+  position: relative;
+  z-index: 1;
+  color: #29351a;
+}
+.mileage-circle {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 5rem;
+  border-radius: 50%;
+  background-color: #98c697;
+  z-index: 0;
+  position: absolute;
+}
+.mileage-method {
+  color: #c6b597;
+  margin-bottom: -2rem;
+  margin-top: 2rem;
+  font-size: 0.7rem;
+}
+.bottom-half-container {
+  width: 100%;
+  height: 80%;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.myPage-text {
+  padding: 1rem;
+  position: relative;
+  z-index: 1;
+  color: #29351a;
+  margin-left: 1rem;
+  border-bottom: 1px solid #fcf4ec;
+}
+
+.myPage-circle {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: -2.6rem;
+  margin-left: 1.3rem;
+  border-radius: 50%;
+  background-color: #98c697;
+  z-index: 0;
+  position: absolute;
+}

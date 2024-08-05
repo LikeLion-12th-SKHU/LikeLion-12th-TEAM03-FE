@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./TopNavContainer.css";
-import TextComponent from "./TextComponent";
-const TestTopNavDiv = styled.div`
+import "./myPageTop.css";
+const MyPageTopNavDiv = styled.div`
   position: fixed;
   top: 0;
   left: 50%;
@@ -12,14 +11,13 @@ const TestTopNavDiv = styled.div`
   max-width: 500px;
   height: 4%;
   display: flex;
-
   justify-content: center;
   align-items: center;
-
-  margin-top: 20px;
+  padding: 10px 0;
+  margin-top: 2.4rem;
   background-color: #dfd3c2;
 `;
-function TestTopNav({ text }) {
+function MyPageTop() {
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
@@ -27,20 +25,34 @@ function TestTopNav({ text }) {
   };
 
   return (
-    <TestTopNavDiv>
+    <MyPageTopNavDiv>
       <FontAwesomeIcon
         icon="fa-solid fa-chevron-left"
-        className="PrevPage"
+        className="PrevPage2"
         onClick={() => {
           handleNavigation("/main");
         }}
       />
 
-      <div className="test-title">
-        <TextComponent text={text} />
+      <div className="test-title2">
+        <FontAwesomeIcon
+          icon="fa-solid fa-bell"
+          className="bell"
+          onClick={() => {
+            handleNavigation("/main");
+          }}
+        />
+        &nbsp;&nbsp;&nbsp;
+        <FontAwesomeIcon
+          icon="fa-solid fa-gear"
+          className="gear"
+          onClick={() => {
+            handleNavigation("/setting");
+          }}
+        />
       </div>
       <div></div>
-    </TestTopNavDiv>
+    </MyPageTopNavDiv>
   );
 }
-export default TestTopNav;
+export default MyPageTop;
