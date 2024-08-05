@@ -25,9 +25,25 @@ const slideUp = keyframes`
 
 export const FullScreen = styled.div`
   background-color: white;
-  height: 880px;
+  height: fit-content;
   width: 100%;
   max-width: 500px;
+  overflow-y: auto;
+  overflow-x: hidden; /* 전체 화면에서 X축 스크롤 제거 */
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #dfd3c2;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #56805a;
+    border-radius: 6px;
+  }
 `;
 
 export const Header = styled.header`
@@ -43,6 +59,7 @@ export const Header = styled.header`
   position: fixed;
   width: 95%;
   max-width: 475px;
+  z-index: 10;
 `;
 
 export const HeaderLeft = styled.div`
@@ -97,6 +114,9 @@ export const Keywords = styled.div`
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
+  position: relative;
+  z-index: 7;
+  background-color: white;
 `;
 
 export const Distance = styled.div`
@@ -160,7 +180,8 @@ export const Words = styled.div`
 `;
 
 export const Main = styled.div`
-  margin: 5px auto;
+  margin-top: 5px;
+  margin-bottom: 16%;
 `;
 
 export const Section = styled.div`
@@ -175,7 +196,7 @@ export const Section = styled.div`
   }
 `;
 
-export const LeftImg = styled.div`
+export const LeftImg = styled.img`
   border: 2px solid #dfd3c2;
   border-radius: 20px;
   width: 45%;
@@ -206,7 +227,7 @@ export const Place = styled.div`
   font-size: 12px;
   color: #56805a;
   margin-top: 5px;
-  width: 100px;
+  width: 160px;
 `;
 
 export const PriceInfo = styled.div`
