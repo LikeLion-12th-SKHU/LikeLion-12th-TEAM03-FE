@@ -73,7 +73,7 @@ function Stress() {
 
         console.log("Emotion and score saved to localStorage:", savedData);
 
-        navigate("/psytest/fireinside"); // 페이지 이동 처리
+        navigate("/psytest/depressive"); // 페이지 이동 처리
       }
     } else {
       alert("1개의 항목을 선택해 주세요.");
@@ -105,7 +105,7 @@ function Stress() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/fireinside"
+        nextPath="/psytest/depressive"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
       />

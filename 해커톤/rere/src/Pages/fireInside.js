@@ -52,7 +52,7 @@ function FireInside() {
     );
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = async () => {
     if (isNextEnabled) {
       // 최종 선택된 버튼의 id를 찾고 데이터 전송
       const selectedIndex = selectedButtons.findIndex(Boolean);
@@ -64,13 +64,37 @@ function FireInside() {
 
         const updatedData = {
           ...savedData,
-          // emotionId는 유지하고 score만 업데이트
+          emotionId: emotionData.id,
           score: newScore,
         };
 
+        // Save updated data to local storage
         localStorage.setItem("testResults", JSON.stringify(updatedData));
 
-        navigate("/psytest/depressive"); // 페이지 이동 처리
+        // Send data to the server
+        try {
+          const response = await fetch("https://cinining.store/psy-test", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT 토큰 추가
+            },
+            body: JSON.stringify({
+              emotionId: updatedData.emotionId,
+              score: updatedData.score,
+              colorIds: updatedData.colorIds,
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to submit data");
+          }
+
+          console.log("Submission successful");
+          navigate("/psytest/resultPage"); // 페이지 이동
+        } catch (error) {
+          console.error("Error submitting data:", error);
+        }
       }
     } else {
       alert("1개의 항목을 선택해 주세요.");
@@ -103,7 +127,7 @@ function FireInside() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/depressive"
+        nextPath="/psytest/resultPage"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
         buttonText="완료"

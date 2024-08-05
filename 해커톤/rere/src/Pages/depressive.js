@@ -93,30 +93,8 @@ function Depressive() {
       // Save updated data to local storage
       localStorage.setItem("testResults", JSON.stringify(updatedData));
 
-      // Send data to the server
-      try {
-        const response = await fetch("https://cinining.store/psy-test", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`, // JWT 토큰 추가
-          },
-          body: JSON.stringify({
-            emotionId: updatedData.emotionId,
-            colorIds: updatedData.colorIds,
-            score: updatedData.score, // score 추가
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error("Failed to submit data");
-        }
-
-        console.log("Submission successful");
-        navigate("/psytest/resultPage"); // 페이지 이동
-      } catch (error) {
-        console.error("Error submitting data:", error);
-      }
+      // 페이지 이동
+      navigate("/psytest/fireinside");
     } else {
       alert("2개의 색상을 선택해 주세요.");
     }
@@ -152,10 +130,9 @@ function Depressive() {
         ))}
       </div>
       <TestBottomNav
-        nextPath="/psytest/resultPage"
+        nextPath="/psytest/fireinside"
         onNext={handleNextClick}
         isNextEnabled={isNextEnabled}
-        buttonText="완료"
       />
     </div>
   );

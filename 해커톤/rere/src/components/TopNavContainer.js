@@ -10,7 +10,7 @@ const TestTopNavDiv = styled.div`
   transform: translateX(-50%);
   width: 100%;
   max-width: 500px;
-  height: 4%;
+  height: 3rem;
   display: flex;
 
   justify-content: center;
