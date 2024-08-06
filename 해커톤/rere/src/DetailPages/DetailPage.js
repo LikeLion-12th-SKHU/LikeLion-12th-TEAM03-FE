@@ -65,6 +65,7 @@ function DetailsConsumer() {
           </HeaderRight>
         </Header>
         <ImgSection src={post.imgUrl} alt={post.title} />
+        <Keywords>&#35;{post.moods[0].name}</Keywords>
         <Title>{post.title}</Title>
         <Description>
           <IconHeader>
@@ -78,6 +79,7 @@ function DetailsConsumer() {
           <DetailDescription>
             <DescBox>
               <Deal>거래 장소</Deal>
+              <DealName>{post.location.name}</DealName>
             </DescBox>
             <DescBox>
               <Deal>거래 시간</Deal>

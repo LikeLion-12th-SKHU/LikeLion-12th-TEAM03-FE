@@ -311,7 +311,7 @@ function UserWrite() {
             <DealInput
               value={dealTime}
               onChange={(e) => setDealTime(e.target.value)}
-              placeholder="시간을 입력하세요."
+              placeholder="시간을 입력하세요. (숫자로만)"
             />
           </Place>
           <Place>
@@ -319,7 +319,7 @@ function UserWrite() {
             <PriceInput
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="가격을 입력해주세요"
+              placeholder="가격을 입력해주세요 (숫자로만)"
             />
           </Place>
           <Place>
