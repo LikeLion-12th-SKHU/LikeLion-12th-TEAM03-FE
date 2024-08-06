@@ -143,12 +143,8 @@ function Candle() {
             >
               <LeftImg src={section.imgUrl} />
               <RightDesc>
-                <Tag>&#35;{section.mood.name}</Tag>
                 <Title>{section.title}</Title>
-                <Place>
-                  {section.location.name} •{" "}
-                  {calculateTimeDifference(section.createDate)}
-                </Place>
+                <Place>{calculateTimeDifference(section.createDate)}</Place>
                 <PriceInfo>
                   {section.price ? section.price.toLocaleString() : 0}원
                 </PriceInfo>

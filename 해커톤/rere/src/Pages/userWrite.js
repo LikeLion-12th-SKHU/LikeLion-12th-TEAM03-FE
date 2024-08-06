@@ -50,13 +50,31 @@ function UserWrite() {
 
   // 거래 장소 목록
   const places = [
-    { id: 1, name: "강남구 삼성동" },
-    { id: 2, name: "서초구 서초동" },
-    { id: 3, name: "송파구 잠실동" },
-    { id: 4, name: "마포구 서교동" },
-    { id: 5, name: "영등포구 여의도동" },
-    { id: 6, name: "성동구 성수동" },
-    { id: 7, name: "용산구 이태원동" },
+    { id: 1, name: "서울특별시 강남구" },
+    { id: 2, name: "서울특별시 구로구" },
+    { id: 3, name: "서울특별시 강북구" },
+    { id: 4, name: "서울특별시 강서구" },
+    { id: 5, name: "서울특별시 관악구" },
+    { id: 6, name: "서울특별시 광진구" },
+    { id: 7, name: "서울특별시 구로구" },
+    { id: 8, name: "서울특별시 금천구" },
+    { id: 9, name: "서울특별시 노원구" },
+    { id: 10, name: "서울특별시 도봉구" },
+    { id: 11, name: "서울특별시 동대문구" },
+    { id: 12, name: "서울특별시 동작구" },
+    { id: 13, name: "서울특별시 마포구" },
+    { id: 14, name: "서울특별시 서대문구" },
+    { id: 15, name: "서울특별시 서초구" },
+    { id: 16, name: "서울특별시 성동구" },
+    { id: 17, name: "서울특별시 성북구" },
+    { id: 18, name: "서울특별시 송파구" },
+    { id: 19, name: "서울특별시 양천구" },
+    { id: 20, name: "서울특별시 영등포구" },
+    { id: 21, name: "서울특별시 용산구" },
+    { id: 22, name: "서울특별시 은평구" },
+    { id: 23, name: "서울특별시 종로구" },
+    { id: 24, name: "서울특별시 중구" },
+    { id: 25, name: "서울특별시 중랑구" },
   ];
 
   // 카테고리 목록
@@ -73,18 +91,26 @@ function UserWrite() {
   ];
 
   const keywordOptions = [
-    { id: 1, name: "#아늑한" },
-    { id: 2, name: "#미니멀한" },
-    { id: 3, name: "#고급스러운" },
-    { id: 4, name: "#실용적인" },
-    { id: 5, name: "#편안한" },
-    { id: 6, name: "#감성적인" },
-    { id: 7, name: "#세련된" },
-    { id: 8, name: "#깔끔한" },
-    { id: 9, name: "#모던한" },
-    { id: 10, name: "#따뜻한" },
-    { id: 11, name: "#휴식" },
-    { id: 12, name: "#디자인" },
+    { id: 1, name: "빈티지" },
+    { id: 2, name: "생동감있는" },
+    { id: 3, name: "자연친화적인" },
+    { id: 4, name: "클래식한" },
+    { id: 5, name: "차분한" },
+    { id: 6, name: "포근한" },
+    { id: 7, name: "모던한" },
+    { id: 8, name: "아기자기한" },
+    { id: 9, name: "미니멀리즘" },
+    { id: 10, name: "몽환적인" },
+    { id: 11, name: "에클레틱 스타일" },
+    { id: 12, name: "차분한" },
+    { id: 13, name: "스칸디나비아 스타일" },
+    { id: 14, name: "스포티한" },
+    { id: 15, name: "코스탈 스타일" },
+    { id: 16, name: "펑키한" },
+    { id: 17, name: "네추럴 스타일" },
+    { id: 18, name: "아늑한" },
+    { id: 19, name: "레트로 스타일" },
+    { id: 20, name: "보헤미안 스타일" },
   ];
 
   const handlePhotoInputClick = () => {
@@ -136,7 +162,7 @@ function UserWrite() {
       time: parseInt(dealTime),
       price: parseInt(price),
       categoryId: parseInt(category),
-      moodId: keywords, // 키워드 리스트를 포함
+      moodIds: keywords, // 키워드 리스트를 포함
     });
 
     formData.append("post", new Blob([jsonData], { type: "application/json" }));
@@ -178,7 +204,7 @@ function UserWrite() {
 
       if (response.ok) {
         alert("글이 성공적으로 작성되었습니다.");
-        navigate("/"); // 글 작성 후 메인 페이지로 이동
+        navigate(-1); // 글 작성 후 메인 페이지로 이동
       } else {
         console.error("Error response:", responseText);
         alert(`글 작성에 실패했습니다: ${responseText}`);
