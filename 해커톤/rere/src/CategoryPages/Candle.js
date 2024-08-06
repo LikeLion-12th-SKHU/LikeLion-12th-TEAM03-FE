@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import BottomNav from "../components/BottomNav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./category.css";
@@ -22,7 +21,6 @@ import {
   Main,
   Section,
   RightDesc,
-  Tag,
   Title,
   Place,
   PriceInfo,
@@ -87,12 +85,17 @@ function Candle() {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log("Fetching data from API...");
       try {
         const response = await fetch("https://cinining.store/posts");
+        console.log("Response received:", response);
+
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
+
         const data = await response.json();
+        console.log("Data received:", data);
         setSections(data.posts);
       } catch (error) {
         console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
