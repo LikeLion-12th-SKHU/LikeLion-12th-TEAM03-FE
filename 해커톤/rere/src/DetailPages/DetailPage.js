@@ -78,7 +78,6 @@ function DetailsConsumer() {
           <DetailDescription>
             <DescBox>
               <Deal>거래 장소</Deal>
-              <DealName>{post.location.name}</DealName>
             </DescBox>
             <DescBox>
               <Deal>거래 시간</Deal>
