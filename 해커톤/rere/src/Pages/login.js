@@ -8,7 +8,9 @@ function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -54,7 +56,6 @@ function Login() {
     <div className="login-container">
       <img src="/logo.png" alt="Logo" className="login-image" />
       <form className="login-form" onSubmit={handleLogin}>
-        <h2>로그인</h2>
         {error && <p className="error-message">{error}</p>}
         <input
           type="text"
@@ -73,8 +74,16 @@ function Login() {
           className="login-input"
         />
         <button type="submit" className="login-button">
-          {isLoading ? "Logging in..." : "Login"}
+          {isLoading ? "Logging in..." : "로그인"}
         </button>
+        <div
+          className="return-to-join"
+          onClick={() => {
+            handleNavigation("/");
+          }}
+        >
+          회원가입
+        </div>
       </form>
     </div>
   );

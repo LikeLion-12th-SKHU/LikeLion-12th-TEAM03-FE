@@ -17,26 +17,38 @@ function Depressive() {
 
   // colors 데이터
   const colors = [
-    { colorId: 1, left: "yellow", right: "yellow", score: -1 },
-    { colorId: 2, left: "red", right: "white", score: +1 },
-    { colorId: 3, left: "purple", right: "purple", score: -1 },
-    { colorId: 4, left: "black", right: "black", score: -1 },
-    { colorId: 5, left: "black", right: "blue", score: -1 },
-    { colorId: 6, left: "white", right: "green", score: -1 },
-    { colorId: 7, left: "black", right: "brown", score: -1 },
-    { colorId: 8, left: "blue", right: "yellow", score: -1 },
-    { colorId: 9, left: "brown", right: "brown", score: -1 },
-    { colorId: 10, left: "purple", right: "yellow", score: -1 },
-    { colorId: 11, left: "blue", right: "blue", score: -1 },
-    { colorId: 12, left: "black", right: "green", score: -1 },
-    { colorId: 13, left: "brown", right: "white", score: +1 },
-    { colorId: 14, left: "white", right: "yellow", score: +1 },
-    { colorId: 15, left: "blue", right: "red", score: -1 },
-    { colorId: 16, left: "pink", right: "pink", score: -1 },
-    { colorId: 17, left: "gray", right: "gray", score: -1 },
-    { colorId: 18, left: "green", right: "green", score: -1 },
-    { colorId: 19, left: "black", right: "purple", score: -1 },
-    { colorId: 20, left: "#A68E31", right: "#A68E31", score: -1 },
+    { colorId: 1, left: "yellow", right: "yellow", score: -1, mood: "밝은" },
+    { colorId: 2, left: "red", right: "white", score: +1, mood: "상큼한" },
+    { colorId: 3, left: "purple", right: "purple", score: -1, mood: "코스탈" },
+    { colorId: 4, left: "black", right: "black", score: -1, mood: "차가운" },
+    { colorId: 5, left: "black", right: "blue", score: -1, mood: "차분한" },
+    {
+      colorId: 6,
+      left: "white",
+      right: "green",
+      score: -1,
+      mood: "자연친화적인",
+    },
+    { colorId: 7, left: "black", right: "brown", score: -1, mood: "깔끔한" },
+    { colorId: 8, left: "blue", right: "yellow", score: -1, mood: "발랄한" },
+    { colorId: 9, left: "brown", right: "brown", score: -1, mood: "몽환적인" },
+    { colorId: 10, left: "purple", right: "yellow", score: -1, mood: "포근한" },
+    { colorId: 11, left: "blue", right: "blue", score: -1, mood: "선명한" },
+    { colorId: 12, left: "black", right: "green", score: -1, mood: "차분한" },
+    { colorId: 13, left: "brown", right: "white", score: +1, mood: "은은한" },
+    { colorId: 14, left: "white", right: "yellow", score: +1, mood: "상쾌한" },
+    { colorId: 15, left: "blue", right: "red", score: -1, mood: "따뜻한" },
+    { colorId: 16, left: "pink", right: "pink", score: -1, mood: "화사한" },
+    { colorId: 17, left: "gray", right: "gray", score: -1, mood: "칙칙한" },
+    { colorId: 18, left: "green", right: "green", score: -1, mood: "아늑한" },
+    { colorId: 19, left: "black", right: "purple", score: -1, mood: "연한" },
+    {
+      colorId: 20,
+      left: "#A68E31",
+      right: "#A68E31",
+      score: -1,
+      mood: "부드러운",
+    },
   ];
 
   useEffect(() => {
@@ -77,6 +89,10 @@ function Depressive() {
         .filter((_, index) => selectedButtons[index])
         .map((color) => color.colorId);
 
+      const selectedMoods = colors
+        .filter((_, index) => selectedButtons[index])
+        .map((color) => color.mood);
+
       const additionalScore = colors
         .filter((_, index) => selectedButtons[index])
         .reduce((acc, color) => acc + color.score, 0);
@@ -87,6 +103,7 @@ function Depressive() {
       const updatedData = {
         ...savedData,
         colorIds: selectedColorIds,
+        moods: selectedMoods,
         score: newScore,
       };
 

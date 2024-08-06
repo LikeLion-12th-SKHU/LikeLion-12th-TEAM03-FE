@@ -13,8 +13,8 @@ function Join() {
   useEffect(() => {
     // 컴포넌트가 마운트될 때 로컬 스토리지에서 토큰을 확인
     const token = localStorage.getItem("token");
-    if (token) {
-      // 토큰이 존재하면 자동으로 로그인 후 메인 페이지로 이동
+    if (token && token !== "undefined") {
+      // 토큰이 존재하고 값이 "undefined"가 아니면 자동으로 로그인 후 메인 페이지로 이동
       navigate("/main");
     }
   }, [navigate]);
@@ -90,7 +90,7 @@ function Join() {
           className="join-input"
         />
         <button type="submit" className="join-button">
-          {isLoading ? "Joining..." : "Join"}
+          {isLoading ? "..." : "Join"}
         </button>
       </form>
     </div>

@@ -28,6 +28,18 @@ const Main = () => {
     return <div className="today">{day},</div>;
   };
 
+  // mood 상태 변수 추가
+  const [word1, setWord1] = useState("");
+  const [word2, setWord2] = useState("");
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem("testResults")) || {};
+    if (savedData.moods && savedData.moods.length >= 2) {
+      setWord1(savedData.moods[0]);
+      setWord2(savedData.moods[1]);
+    }
+  }, []);
+
   return (
     <div className="real-main-container">
       <div className="top-half">
@@ -97,11 +109,11 @@ const Main = () => {
           <div className="keywords">
             <div className="keyword1">
               <div className="keyCircle1"></div>
-              <div className="word1">&#35;따뜻한</div>
+              <div className="word1">&#35;{word1}</div>
             </div>
             <div className="keyword2">
               <div className="keyCircle2"></div>
-              <div className="word2">&#35;휴식</div>
+              <div className="word2">&#35;{word2}</div>
             </div>
           </div>
         </div>
