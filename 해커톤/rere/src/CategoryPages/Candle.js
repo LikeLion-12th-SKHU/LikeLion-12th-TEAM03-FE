@@ -191,7 +191,6 @@ function Candle() {
         )}
         <Write onClick={writeClick}>
           <FontAwesomeIcon icon={faPlus} /> 글쓰기
-          <FontAwesomeIcon icon={faPlus} />
         </Write>
         <BottomNav />
       </FullScreen>
