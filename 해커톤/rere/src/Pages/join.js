@@ -39,8 +39,6 @@ function Join() {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "http://localhost:3000",
-          "Access-Control-Allow-Credentials": "true",
         },
         body: JSON.stringify({ loginId, password, nickname }),
       });
@@ -51,7 +49,7 @@ function Join() {
       if (response.ok) {
         localStorage.setItem("nickname", nickname);
         localStorage.setItem("token", data.token);
-        navigate("/login"); // 로그인 페이지로 이동
+        navigate("/login"); // 로그인 페이지로 이동123
       } else {
         setError(data.message || "회원가입 실패");
       }

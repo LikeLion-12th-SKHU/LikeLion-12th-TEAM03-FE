@@ -86,8 +86,6 @@ function MyPage() {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
-          "Access-Control-Allow-Origin": "http://localhost:3000",
-          "Access-Control-Allow-Credentials": "true",
         },
       });
 
