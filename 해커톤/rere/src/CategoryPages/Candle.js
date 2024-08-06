@@ -138,24 +138,25 @@ function Candle() {
           <Words>&#35;모던한</Words>
         </Keywords>
         <Main>
-          {sections.map((section) => (
-            <Section
-              key={section.id}
-              onClick={() => handleSectionClick(section.id)}
-            >
-              <LeftImg src={section.imgUrl} />
-              <RightDesc>
-                <Title>{section.title}</Title>
-                <Place>
-                  {section.location.name}&nbsp;&#45;&nbsp;
-                  {calculateTimeDifference(section.createDate)}
-                </Place>
-                <PriceInfo>
-                  {section.price ? section.price.toLocaleString() : 0}원
-                </PriceInfo>
-              </RightDesc>
-            </Section>
-          ))}
+          {sections &&
+            sections.map((section) => (
+              <Section
+                key={section.id}
+                onClick={() => handleSectionClick(section.id)}
+              >
+                <LeftImg src={section.imgUrl} />
+                <RightDesc>
+                  <Title>{section.title}</Title>
+                  <Place>
+                    {section.location.name}&nbsp;&#45;&nbsp;
+                    {calculateTimeDifference(section.createDate)}
+                  </Place>
+                  <PriceInfo>
+                    {section.price ? section.price.toLocaleString() : 0}원
+                  </PriceInfo>
+                </RightDesc>
+              </Section>
+            ))}
         </Main>
         {dropdownOpen === "거리순" && (
           <Dropdown

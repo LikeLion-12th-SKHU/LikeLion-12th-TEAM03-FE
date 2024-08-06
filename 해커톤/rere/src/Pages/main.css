@@ -219,6 +219,7 @@ span {
   text-align: right;
   max-width: fit-content;
   color: #29351a;
+  white-space: nowrap;
   font-weight: 700;
 }
 
