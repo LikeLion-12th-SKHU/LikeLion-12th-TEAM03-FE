@@ -65,7 +65,6 @@ function DetailsConsumer() {
           </HeaderRight>
         </Header>
         <ImgSection src={post.imgUrl} alt={post.title} />
-        <Keywords>&#35;{post.moods[0].name}</Keywords>
         <Title>{post.title}</Title>
         <Description>
           <IconHeader>
