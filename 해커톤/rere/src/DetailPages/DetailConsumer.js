@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronLeft,
@@ -17,7 +19,6 @@ import {
   Description,
   Footer,
 } from "./DetailCss";
-
 import {
   IconHeader,
   Question,
@@ -29,6 +30,28 @@ import {
 } from "./DetailConsumerCss";
 
 function DetailsConsumer() {
+  const { postId } = useParams();
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    console.log("postId:", postId); // postId가 제대로 전달되고 있는지 확인
+
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(`/posts/${postId}`);
+        setPost(response.data); // 데이터 구조에 맞게 설정
+      } catch (error) {
+        console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
+      }
+    };
+
+    fetchPost();
+  }, [postId]);
+
+  if (!post) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="main-container">
       <FullScreen>
@@ -36,14 +59,15 @@ function DetailsConsumer() {
           <HeaderLeft>
             <FontAwesomeIcon icon={faChevronLeft} />
           </HeaderLeft>
-          <HeaderCenter>인테리어 조명 처리합니다.</HeaderCenter>
+          <HeaderCenter>{post.title}</HeaderCenter>
           <HeaderRight>
             <FontAwesomeIcon icon={faListSquares} />
           </HeaderRight>
         </Header>
-        <ImgSection></ImgSection>
-        <Keywords>&#35;따뜻한</Keywords>
-        <Title>인테리어 조명 처리합니다.</Title>
+
+        <img src={post.imgUrl} alt={post.title} />
+
+        <Title>{post.title}</Title>
         <Description>
           <IconHeader>
             <FontAwesomeIcon icon={faChevronDown} />
@@ -56,15 +80,15 @@ function DetailsConsumer() {
           <DetailDescription>
             <DescBox>
               <Deal>거래 장소</Deal>
-              <DealName>서울시 구로구 항동 1-1</DealName>
+              <DealName>{post.location.name}</DealName>
             </DescBox>
             <DescBox>
               <Deal>거래 시간</Deal>
-              <DealName>3시</DealName>
+              <DealName>{post.time}시</DealName>
             </DescBox>
             <DescBox>
               <Deal>가격</Deal>
-              <DealName>20,000원</DealName>
+              <DealName>{post.price.toLocaleString()}원</DealName>
             </DescBox>
           </DetailDescription>
         </Description>

@@ -17,7 +17,7 @@ import FireInside from "./Pages/fireInside";
 import Interior from "./CategoryPages/Interior";
 import Fabric from "./CategoryPages/Fabric";
 import HouseHoldGoods from "./CategoryPages/HouseHoldGoods";
-import DetailsSeller from "./DetailPages/DetailSeller";
+import DetailConsumer from "./DetailPages/DetailConsumer";
 import UserWrite from "./Pages/userWrite";
 import Stress from "./Pages/stress";
 import ResultPage from "./Pages/resultPage";
@@ -50,7 +50,7 @@ function App() {
         <Route path="/write" element={<UserWrite />} />
         <Route path="/psytest/depressive" element={<Depressive />} />
         <Route path="/psytest/fireinside" element={<FireInside />} />
-        <Route path="/details/:id" element={<DetailsSeller />} />
+        <Route path="/details/:postId" element={<DetailConsumer />} />
         <Route path="/psytest" element={<Stress />} />
         <Route path="/psytest/resultPage" element={<ResultPage />} />
         <Route path="/setting" element={<Setting />} />
