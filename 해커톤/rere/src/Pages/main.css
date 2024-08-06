@@ -187,6 +187,7 @@ span {
   max-width: fit-content;
   color: #29351a;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .keyword2 {
