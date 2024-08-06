@@ -41,23 +41,31 @@ export const ImgSection = styled.img`
 `;
 
 export const Keywords = styled.div`
-  padding-left: 10px;
+  padding-left: 1rem;
   padding-top: 5px;
   color: #56805a;
 `;
 
 export const Title = styled.div`
-  padding-left: 10px;
+  padding-left: 1rem;
   padding-top: 5px;
-  font-size: 17px;
+  font-size: 1.5rem;
 `;
 export const Description = styled.div`
   width: 100%;
   max-width: 500px;
   background-color: #fcf4ec;
-  height: 250px;
+  height: 15rem;
   margin-top: 10px;
-  height: 53%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Description2 = styled.div`
+  border: 1.5px solid #806e56;
+  width: 90%;
+  height: 100%;
 `;
 
 export const UserInfo = styled.div`
@@ -129,3 +137,67 @@ export const Footer = styled.div`
   box-shadow: 1px 5px 7px gray;
 `;
 //border: 1px solid black;
+
+// 슬라이드 업 애니메이션
+const slideUp = keyframes`
+  from {
+    transform: translateY(100%); /* 아래에서 시작 */
+  }
+  to {
+    transform: translateY(0); /* 원래 위치로 */
+  }
+`;
+
+export const Modal = styled.div`
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 50%;
+  background-color: #fcf4ec;
+  border-radius: 10px 10px 0 0; /* 위쪽만 둥글게 */
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  animation: ${slideUp} 0.3s ease-out; /* 슬라이드 애니메이션 추가 */
+  z-index: 1000; /* 모달이 가장 위에 오도록 설정 */
+`;
+
+export const ModalContent = styled.div`
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  z-index: 999; /* 모달 뒤에 깔리도록 설정 */
+`;
+
+export const Title2 = styled.h2`
+  margin: 0;
+`;
+
+export const CloseButton = styled.button`
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #c2dfc3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+export const suggest = styled.p`
+  color: #806e56;
+`;

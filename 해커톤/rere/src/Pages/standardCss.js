@@ -215,6 +215,7 @@ export const Tag = styled.div`
   color: #56805a;
   font-weight: 700;
   width: 150px;
+  background-color: black;
 `;
 
 export const Title = styled.div`

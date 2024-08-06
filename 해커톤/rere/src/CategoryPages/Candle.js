@@ -61,6 +61,7 @@ function Candle() {
   );
 
   const handleSectionClick = (id) => {
+    console.log("아이디", id);
     navigate(`/details/${id}`);
   };
 
@@ -72,18 +73,20 @@ function Candle() {
     const now = new Date();
     const created = new Date(createDate);
     const diffInMs = now - created;
-    const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+    const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+    const diffInHours = Math.floor(diffInMinutes / 60);
 
     if (diffInHours >= 24) {
       const diffInDays = Math.floor(diffInHours / 24);
       return `${diffInDays}일 전`;
+    } else if (diffInHours > 0) {
+      return `${diffInHours}시간 전`;
+    } else {
+      return `${diffInMinutes}분 전`;
     }
-
-    return `${diffInHours}시간 전`;
   };
 
   useEffect(() => {
-    // 백엔드 API 호출
     const fetchData = async () => {
       try {
         const response = await axios.get("/posts");
@@ -136,21 +139,26 @@ function Candle() {
           <Words>&#35;모던한</Words>
         </Keywords>
         <Main>
-          {sections.map((section) => (
-            <Section
-              key={section.id}
-              onClick={() => handleSectionClick(section.id)}
-            >
-              <LeftImg src={section.imgUrl} />
-              <RightDesc>
-                <Title>{section.title}</Title>
-                <Place>{calculateTimeDifference(section.createDate)}</Place>
-                <PriceInfo>
-                  {section.price ? section.price.toLocaleString() : 0}원
-                </PriceInfo>
-              </RightDesc>
-            </Section>
-          ))}
+          {sections &&
+            sections.map((section) => (
+              <Section
+                key={section.postId}
+                onClick={() => handleSectionClick(section.postId)}
+              >
+                <LeftImg src={section.imgUrl} />
+                <RightDesc>
+                  <Title>{section.title}</Title>
+
+                  <Place>
+                    {section.location.name}&nbsp;&#45;&nbsp;
+                    {calculateTimeDifference(section.createDate)}
+                  </Place>
+                  <PriceInfo>
+                    {section.price ? section.price.toLocaleString() : 0}원
+                  </PriceInfo>
+                </RightDesc>
+              </Section>
+            ))}
         </Main>
         {dropdownOpen === "거리순" && (
           <Dropdown
@@ -160,6 +168,7 @@ function Candle() {
           >
             <DropdownItem>100km 이내</DropdownItem>
             <DropdownItem>50km 이내</DropdownItem>
+            <DropdownItem>30km 이내</DropdownItem>
             <DropdownItem>10km 이내</DropdownItem>
           </Dropdown>
         )}
@@ -169,27 +178,15 @@ function Candle() {
             top={dropdownPosition.top}
             left={dropdownPosition.left}
           >
-            <DropdownItem>10,000원 이하</DropdownItem>
-            <DropdownItem>50,000원 이하</DropdownItem>
-            <DropdownItem>100,000원 이하</DropdownItem>
+            <DropdownItem>높은 가격순</DropdownItem>
+            <DropdownItem>낮은 가격순</DropdownItem>
           </Dropdown>
         )}
-        {dropdownOpen === "HeaderCenter" && (
-          <Dropdown
-            isOpen={dropdownOpen === "HeaderCenter"}
-            top={dropdownPosition.top}
-            left={dropdownPosition.left}
-          >
-            <DropdownItem>소품</DropdownItem>
-            <DropdownItem>가구</DropdownItem>
-            <DropdownItem>조명</DropdownItem>
-          </Dropdown>
-        )}
+        <Write onClick={writeClick}>
+          <FontAwesomeIcon icon={faPlus} /> 글쓰기
+        </Write>
+        <BottomNav />
       </FullScreen>
-      <Write onClick={() => writeClick()}>
-        <FontAwesomeIcon icon={faPlus} /> 글쓰기
-      </Write>
-      <BottomNav />
     </div>
   );
 }
