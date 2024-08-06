@@ -88,8 +88,12 @@ function Candle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/posts");
-        setSections(response.data.posts);
+        const response = await fetch("/posts");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setSections(data.posts);
       } catch (error) {
         console.error("데이터를 가져오는 중 오류가 발생했습니다:", error);
       }
