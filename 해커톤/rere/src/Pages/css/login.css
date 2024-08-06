@@ -20,8 +20,9 @@ html {
 .login-image {
   width: 100%;
   height: auto;
-  max-width: 300px; /* 적절한 최대 너비 설정 */
+  max-width: 200px; /* 적절한 최대 너비 설정 */
   margin-bottom: 20px;
+  margin-top: 3rem;
   object-fit: contain; /* 이미지 비율 유지하며 컨테이너에 맞춤 */
 }
 
@@ -44,12 +45,14 @@ html {
 }
 
 .login-input {
-  width: calc(100% - 20px);
-  padding: 10px;
+  width: calc(100% - 40px);
   margin-bottom: 15px;
+  padding: 10px 10px 10px 20px;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  background-color: #c6b597;
+  color: #fcf4ec;
+  border-radius: 1rem;
 }
 
 .login-input:focus {
@@ -59,14 +62,15 @@ html {
 }
 
 .login-button {
-  width: 100%;
+  width: 40%;
   padding: 10px;
-  background-color: #29351a;
+  background-color: #56805a;
   border: none;
-  border-radius: 5px;
+  border-radius: 3rem;
   color: white;
   font-size: 16px;
   cursor: pointer;
+  font-family: "SUITE", sans-serif;
 }
 
 .login-button:hover {
@@ -76,4 +80,11 @@ html {
 .login-button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+}
+.return-to-join {
+  margin-right: -10rem;
+  margin-top: 1rem;
+  font-family: "SUITE", sans-serif;
+  font-size: 0.8rem;
+  color: #29351a;
 }

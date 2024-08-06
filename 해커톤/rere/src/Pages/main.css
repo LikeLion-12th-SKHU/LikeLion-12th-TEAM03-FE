@@ -187,17 +187,18 @@ span {
   max-width: fit-content;
   color: #29351a;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .keyword2 {
   width: 50%;
   font-size: 120%;
-  margin-left: 30%;
-  margin-right: 0.5rem;
+
+  margin-right: 0.2rem;
 }
 .keyCircle1 {
   position: relative;
-  width: 19%;
+  width: 20%;
   height: 70%;
   top: 15px;
   left: -5%;
@@ -209,7 +210,7 @@ span {
   width: 20%;
   height: 70%;
   top: 15px;
-  left: 23%;
+  left: -5%;
   background-color: #98c697;
   border-radius: 50%;
 }
@@ -217,8 +218,9 @@ span {
 .word2 {
   position: relative;
   text-align: right;
-  left: -5%;
+  max-width: fit-content;
   color: #29351a;
+  white-space: nowrap;
   font-weight: 700;
 }
 

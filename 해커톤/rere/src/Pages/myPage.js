@@ -202,7 +202,6 @@ function MyPage() {
           <div className="myPage-circle"></div>
           <div
             className="myPage-text"
-            className="myPage-text"
             onClick={() => {
               handleNavigation("/psytest/resultPage");
             }}

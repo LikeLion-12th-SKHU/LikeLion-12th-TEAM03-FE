@@ -36,26 +36,34 @@ html {
 }
 
 .join-input {
-  width: calc(100% - 20px);
+  width: calc(100% - 40px);
   margin-bottom: 15px;
-  padding: 10px;
-  font-size: 16px;
+  padding: 10px 10px 10px 20px;
+  font-size: 0.9rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  background-color: #c6b597;
+  color: #fcf4ec;
+  border-radius: 1rem;
+}
+
+::placeholder {
+  color: #fcf4ec; /* 원하는 색상 코드로 변경 */
+  opacity: 1; /* 기본적으로 일부 브라우저에서는 불투명도를 조정하므로 이를 설정 */
+  font-family: "SUITE", sans-serif;
 }
 
 .join-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #c6b597;
+  box-shadow: 0 0 5px #c6b597;
   outline: none;
 }
 
 .join-button {
-  width: 100%;
+  width: 40%;
   padding: 10px;
-  background-color: #29351a;
+  background-color: #56805a;
   border: none;
-  border-radius: 5px;
+  border-radius: 3rem;
   color: white;
   font-size: 16px;
   cursor: pointer;
